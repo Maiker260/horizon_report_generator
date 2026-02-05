@@ -1,0 +1,3 @@
+from .FILES_OF_INTEREST import FILES_OF_INTEREST
+
+__all__ = ["FILES_OF_INTEREST"]
