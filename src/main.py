@@ -11,7 +11,6 @@ def main(zip_path):
             data = gather_data(ctx)
 
             # Check Data
-            # print(data)
             for section, content in data.items():
                 print(section)
                 for k, v in content.items():
