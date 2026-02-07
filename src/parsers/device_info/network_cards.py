@@ -1,4 +1,5 @@
 import re
+import ipaddress
 
 def parse_nics(lines):
     cards = []
@@ -7,7 +8,8 @@ def parse_nics(lines):
     for raw_line in lines:
         line = raw_line.strip()
 
-        nic_match = re.match(r"\[(\d+)\]:\s+(?![0-9a-fA-F:]+$)(.+)", line)
+        nic_match = re.match(r"\[(\d+)\]:\s+(.+\s.+)", line)
+        ip_match = re.match(r"\[\d+\]:\s+(\S+)", line)
 
         if nic_match:
             if current:
@@ -24,12 +26,18 @@ def parse_nics(lines):
         if not current:
             continue
 
-        if "Connection Name" in line:
+        if line.startswith("Connection Name"):
             current["Connection Name"] = line.split(":", 1)[1].strip()
+            continue
 
-        elif re.search(r"\[\d+\]:\s+.+", line):
-            ip = line.split(":", 1)[1].strip()
-            current["IP Addresses"].append(ip)
+        if ip_match:
+            ip_candidate = ip_match.group(1)
+
+            try:
+                ipaddress.ip_address(ip_candidate)
+                current["IP Addresses"].append(ip_candidate)
+            except ValueError:
+                pass
 
     if current:
         cards.append(current)

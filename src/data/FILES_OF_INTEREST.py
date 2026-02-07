@@ -1,5 +1,5 @@
 FILES_OF_INTEREST = {
-    "server_info": ["systeminfo.txt"],
+    "device_info": ["systeminfo.txt", "ipconfig-all.txt"],
     "antivirus_security_apps": ["ver.txt"],
     "certificates": [],
     "horizon_apps": [],

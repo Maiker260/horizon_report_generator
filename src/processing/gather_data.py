@@ -1,8 +1,8 @@
-from src.parsers.server_info.server_info import server_info
+from src.parsers.device_info.device_info import device_info
 
 def gather_data(zip_ctx):
     data = {}
 
-    data["server_info"] = server_info(zip_ctx)
+    data["device_info"] = device_info(zip_ctx)
 
     return data
