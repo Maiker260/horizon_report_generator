@@ -1,14 +1,12 @@
+import re
 from src.parsers.device_info.systeminfo import systeminfo
 from src.data.FILES_OF_INTEREST import FILES_OF_INTEREST
-import re
-
-def testi(zip_ctx, files):
-    print("ipconfig")
+from src.parsers.device_info.ipconfig.ipconfig import ipconfig
 
 files = FILES_OF_INTEREST["device_info"]
 parsers = {
     "systeminfo": systeminfo,
-    "ipconfig": testi
+    "ipconfig": ipconfig
 }
 
 def device_info(zip_ctx):
@@ -23,6 +21,6 @@ def device_info(zip_ctx):
         file = match.group()
 
         if file in parsers:
-            data[file] = parsers[file](zip_ctx, filename)
+            data[file] = parsers[file](zip_ctx, filename, data)
 
     return data
