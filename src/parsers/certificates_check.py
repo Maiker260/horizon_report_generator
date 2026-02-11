@@ -1,5 +1,5 @@
 from src.data.FILES_OF_INTEREST import FILES_OF_INTEREST
 
-def horizon_apps(files):
-    print("horizon_apps")
+def certificates_check(files):
+    print("certificates")
     print(FILES_OF_INTEREST)

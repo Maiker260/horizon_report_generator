@@ -12,9 +12,13 @@ def main(zip_path):
 
             # Check Data
             for section, content in data.items():
-                print(f"{section}:\n")
-                for k, v in content.items():
-                    print(f"   {k}: {v}\n")
+                if content:
+                    print(f"{section}:\n")
+                    for k, v in content.items():
+                        print(f"   {k}: {v}\n")
+                else:
+                    print(f"{section}:\n")
+                    print("   None")
 
     except Exception as e:
         print("Error:", e)

@@ -9,7 +9,7 @@ parsers = {
     "ipconfig": ipconfig
 }
 
-def device_info(zip_ctx):
+def device_info_check(zip_ctx):
     data = {}
 
     for filename in files:
