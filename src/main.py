@@ -18,7 +18,7 @@ def main(zip_path):
                         print(f"   {k}: {v}\n")
                 else:
                     print(f"{section}:\n")
-                    print("   None")
+                    print("   None\n")
 
     except Exception as e:
         print("Error:", e)
