@@ -3,7 +3,6 @@ FILES_OF_INTEREST = {
     "server_roles": ["tasklist-svc.txt", "net-start.txt"],
     "horizon_services": ["net-start.txt"],
     "horizon_ports": ["netstat-abov.txt"],
-    "antivirus_security_apps": [],
+    "installed_software": ["installed_software.txt"],
     "certificates": [],
-    "horizon_apps": [],
 }

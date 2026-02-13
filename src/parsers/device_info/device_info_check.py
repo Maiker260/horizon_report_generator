@@ -33,4 +33,4 @@ def device_info_check(zip_ctx):
             else:
                 data[file] = parsers[file](zip_ctx, filename, data)
 
-    return data
+    return {key: value for key, value in data.items() if value}

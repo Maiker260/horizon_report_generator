@@ -3,7 +3,6 @@ DATA_TO_COLLECT = {
     "server_roles": [],
     "horizon_services": ["Omnissa", "VDMDS", "VMware"],
     "horizon_ports": [80, 443, 8443, 4172, 3389, 22389, 22636, 18443, 4001, 4002, 4100, 4101, 8009, 8472],
-    "antivirus_security_apps": [],
+    "installed_software": ["Omnissa", "VMware"],
     "certificates": [],
-    "horizon_apps": [],
 }

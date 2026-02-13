@@ -1,4 +1,3 @@
-import re
 from src.data.FILES_OF_INTEREST import FILES_OF_INTEREST
 from src.data.DATA_TO_COLLECT import DATA_TO_COLLECT
 
@@ -11,6 +10,7 @@ def horizon_ports_check(zip_ctx):
         "UDP": []
     }
 
+    seen_entries = set()
     last_entry = None
 
     for filename in files:
@@ -28,11 +28,7 @@ def horizon_ports_check(zip_ctx):
                     local_address = parts[1]
                     foreign_address = parts[2]
 
-                    if local_address.startswith("["):
-                        ip, port = local_address.split("]:")
-                        ip = ip + "]"
-                    else:
-                        ip, port = local_address.split(":")
+                    ip, port = local_address.rsplit(":", 1)
 
                     if int(port) not in ports:
                         last_entry = None
@@ -45,6 +41,10 @@ def horizon_ports_check(zip_ctx):
                         state = None
                         pid = parts[3]
 
+                    if state and not state == "LISTENING":
+                        last_entry = None
+                        continue
+
                     last_entry = {
                         "protocol": protocol,
                         "local_address": local_address,
@@ -54,9 +54,18 @@ def horizon_ports_check(zip_ctx):
                         "process": None
                     }
 
-                    data[protocol].append(last_entry)
-
                 elif line.startswith("[") and last_entry:
-                    last_entry["process"] = line.strip("[]")
+                    process_name = line.strip("[]")
+                    last_entry["process"] = process_name
+                    protocol = last_entry["protocol"]
+
+                    ip_part, port_part = last_entry["local_address"].rsplit(":", 1)
+                    unique_key = (protocol, ip_part, port_part, process_name)
+
+                    if unique_key not in seen_entries:
+                        seen_entries.add(unique_key)
+                        data[last_entry["protocol"]].append(last_entry)
+
+                    last_entry = None
 
     return data

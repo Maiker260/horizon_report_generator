@@ -5,10 +5,10 @@ from src.processing.gather_data import gather_data
 def main(zip_path):
     try:
         with zipfile.ZipFile(zip_path) as zip_file:
-            ctx = ZipContext(zip_file)
             data = {}
+            zip_ctx = ZipContext(zip_file)
 
-            data = gather_data(ctx)
+            data = gather_data(zip_ctx)
 
             # Check Data
             for section, content in data.items():
