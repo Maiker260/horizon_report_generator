@@ -1,7 +1,8 @@
-def apps_check(line, kwd):
+def apps_check(line, kwd, app_type):
     parts = line.split(" [", 1)
 
     data = {
+        "type": app_type,
         "kwd": kwd,
         "app_name": parts[0]
     }
@@ -11,7 +12,7 @@ def apps_check(line, kwd):
         word, date = raw_date.split(": ")
         data["app_info"] = {
             "installed": date,
-            "version": app_version
+            "version": app_version,
         }
 
     return data

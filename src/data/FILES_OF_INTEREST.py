@@ -4,5 +4,5 @@ FILES_OF_INTEREST = {
     "horizon_services": ["net-start.txt"],
     "horizon_ports": ["netstat-abov.txt"],
     "installed_software": ["installed_software.txt"],
-    "certificates": [],
+    "certificates": ["cert-store.txt"],
 }
