@@ -1,6 +1,7 @@
 import zipfile
 from src.reader.file_reader import ZipContext
 from src.processing.gather_data import gather_data
+from src.report.generate_report import generate_report
 
 def main(zip_path):
     try:
@@ -19,6 +20,9 @@ def main(zip_path):
                 else:
                     print(f"{section}:\n")
                     print("   None\n")
+            
+            # Generate Report
+            generate_report(data)
 
     except Exception as e:
         print("Error:", e)
