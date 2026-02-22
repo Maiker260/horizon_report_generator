@@ -28,8 +28,8 @@ def device_info_check(zip_ctx):
 
         if file in parsers:
             if file == "omnissa" or file == "vmware":
-                if not data.get("horizon-reg"):
-                    data["horizon-reg"] = parsers[file](zip_ctx, filename, data)
+                if not data.get("horizon_reg"):
+                    data["horizon_reg"] = parsers[file](zip_ctx, filename, data)
             else:
                 data[file] = parsers[file](zip_ctx, filename, data)
 

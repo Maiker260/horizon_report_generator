@@ -32,7 +32,7 @@ def installed_software_check(zip_ctx):
                             kwd = raw_kwd.lower()
 
                             if re.search(rf"\b{re.escape(kwd)}\b", lower_line):
-                                parsed = apps_check(line, kwd, app_type)
+                                parsed = apps_check(line, raw_kwd, app_type)
                                 data[pars_name].append(parsed)
                                 break
                             

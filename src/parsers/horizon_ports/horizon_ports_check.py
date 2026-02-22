@@ -47,6 +47,7 @@ def horizon_ports_check(zip_ctx):
 
                     last_entry = {
                         "protocol": protocol,
+                        "port_number": port,
                         "local_address": local_address,
                         "foreign_address": foreign_address,
                         "state": state,

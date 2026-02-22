@@ -11,18 +11,12 @@ def main(zip_path):
 
             data = gather_data(zip_ctx)
 
-            # Check Data
-            for section, content in data.items():
-                if content:
-                    print(f"{section}:\n")
-                    for k, v in content.items():
-                        print(f"   {k}: {v}\n")
-                else:
-                    print(f"{section}:\n")
-                    print("   None\n")
-            
+            # NEED TO CHECK WHAT REPORT SHOULD RETURN (CS, AGENT, CLIENT, UAG)
+
             # Generate Report
-            generate_report(data)
+            generate_report(data, zip_path)
 
     except Exception as e:
         print("Error:", e)
+
+        # Will create a .txt file with the errors

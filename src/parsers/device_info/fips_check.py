@@ -15,6 +15,6 @@ def fips_check(zip_ctx, filename, current_data):
                 key, value = line.split("=", 1)
                 value = value.strip().strip('"')
 
-                data[key] = int(value) == 1
+                data[key.strip('"')] = int(value) == 1
 
     return data
