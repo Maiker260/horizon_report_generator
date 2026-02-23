@@ -11,7 +11,7 @@ def installed_applications(data):
     applications = data["installed_software"]
 
     content = []
-    content.append("\n\n\nE. INSTALLED APPLICATIONS")
+    content.append("\n\nE. INSTALLED APPLICATIONS")
     content.append("-" * 30)
     content.append("")
 
@@ -37,7 +37,7 @@ def installed_applications(data):
             section_name = SECTION_TITLES.get(rule, rule.title())
 
             if app_type != "horizon_apps":
-                content.append(f"\n   {section_name}:")
+                content.append(f"\n   {section_name}: ({len(app_data)} item(s) found)")
                 content.append("   " + ("-" * len(section_name)))
 
             # Group by Vendor
@@ -59,8 +59,8 @@ def installed_applications(data):
                     installed = app_info["app_info"]["installed"]
                     version = app_info["app_info"]["version"]
 
-                    content.append(f"            - {name}")
-                    content.append(f"               Installed: {installed}")
-                    content.append(f"               Version: {version}")
+                    content.append(f"           - {name}")
+                    content.append(f"               Installed : {installed}")
+                    content.append(f"               Version   : {version}")
 
     return "\n".join(content)

@@ -6,6 +6,16 @@ def open_ports(data):
     content.append("-" * 30)
     content.append("")
 
+    field_names = [
+        "State",
+        "Process",
+        "Local Address",
+        "Foreign Address",
+        "PID"
+    ]
+    
+    max_width = max(len(key) for key in field_names)
+
     for protocol, info in ports.items():
         content.append(f"{protocol}:")
         content.append("-" * len(protocol))
@@ -21,20 +31,20 @@ def open_ports(data):
             grouped[port_number].append(port)
 
         for port_number in sorted(grouped.keys(), key=int):
-            content.append(f"  Port {port_number}:")
+            content.append(f"   Port {port_number}:")
 
             for entry in grouped[port_number]:
-                state = entry['state']
-                process = entry['process']
-                local_address = entry['local_address']
-                foreign_address = entry['foreign_address']
-                process_id = entry['PID']
+                fields = {
+                    "State": entry['state'],
+                    "Process": entry['process'],
+                    "Local Address": entry['local_address'],
+                    "Foreign Address": entry['foreign_address'],
+                    "PID": entry['PID']
+                }
 
-                content.append(f"      State: {state}")
-                content.append(f"      Process: {process}")
-                content.append(f"      Local Address: {local_address}")
-                content.append(f"      Foreign Address: {foreign_address}")
-                content.append(f"      PID: {process_id}")
+                for key, value in fields.items():
+                    content.append(f"      - {key:<{max_width}} : {value}")
+
                 content.append("")
 
     return "\n".join(content)

@@ -31,4 +31,4 @@ def certificates_check(zip_ctx):
             if current_cert_number is not None:
                 data[current_cert_number] = parse_certificate_block(buffer)
 
-    return data
+    return { certificate: info for certificate, info in data.items() if not info["archived"] }

@@ -6,7 +6,7 @@ def header(zip_path):
     now = date.strftime("%c")
 
     header = []
-    header.append("=" * 60)
+    header.append("=" * 50)
     header.append("SERVER REPORT")
     header.append(f"Generated: {now} (Local Time)")
     

@@ -6,11 +6,9 @@ def running_services(data):
     content.append("-" * 30)
 
     for name, info in services.items():
-        content.append(f"\n{name} Services\n")
+        content.append(f"\n{name} Services:\n")
 
         for service in info:
-            content.append(f" -{service}")
-
-    content.append("\nSource: net-start.txt")
+            content.append(f"   - {service}")
 
     return "\n".join(content)

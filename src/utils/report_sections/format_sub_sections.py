@@ -1,7 +1,7 @@
-def format_sub_sections(section, content):
+def format_sub_sections(section, content, max_width):
     
     if isinstance(section, list) and section:
         for server in section:
-            content.append(f"      - {server}")
+            content.append(f"    {'':<{max_width}}      {server}")
     else:
-        content.append("      - N/A")
+        content.append(f"    {'':<{max_width}}      N/A")

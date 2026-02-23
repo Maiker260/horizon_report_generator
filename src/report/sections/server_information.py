@@ -2,11 +2,12 @@ from src.utils.report_sections.format_sub_sections import format_sub_sections
 from src.utils.report_sections.extract_device_info import extract_device_info
 
 def server_information(data):
-    max_width = max(len(key) for key in data.keys())
     device_info = data["device_info"]
     systeminfo = device_info["systeminfo"]
 
     info = extract_device_info(device_info)
+    max_width = max(len(key) for key in info)
+
     hotfixes = systeminfo.get("Hotfix(s)", "N/A")
     network_cards = systeminfo.get("Network Card(s)", "N/A")
 
@@ -21,26 +22,38 @@ def server_information(data):
     # Hotfixes
     content.append(f"\nInstalled Patches:")
     for patch in hotfixes:
-        content.append(f" -{patch}")
+        content.append(f"   - {patch}")
 
     # NICs
+    field_names = [
+        "Index",
+        "Adapter",
+        "Interface",
+        "IP Addresses",
+        "DNS Servers"
+    ]
+
+    max_width_nic = max(len(key) for key in field_names)
     content.append(f"\nNetwork Interfaces:")
-    for nic in network_cards:
-        index = nic.get("Index", "N/A")
-        adapter = nic.get("Adapter", "N/A")
-        connection = nic.get("Connection Name", "N/A")
+    
+    for i, nic in enumerate(network_cards, start=1):
+        fields = {
+            "Adapter": nic.get("Adapter", "N/A"),
+            "Interface": nic.get("Connection Name", "N/A"),
+            "IP Addresses": nic.get("IP Addresses", []),
+            "DNS Servers": nic.get("DNS Servers", [])
+        }
 
-        ips = nic.get("IP Addresses", [])
-        dns = nic.get("DNS Servers", [])
+        content.append(f"\n   #{i}")
 
-        content.append(f"\n #{index}")
-        content.append(f"   -Adapter: {adapter}")
-        content.append(f"   -Interface: {connection}")
+        for key in field_names[1:]:
+            value = fields.get(key, "N/A")
 
-        content.append(f"   -IP Addresses:")
-        format_sub_sections(ips, content)
-        
-        content.append(f"   -DNS Servers:")
-        format_sub_sections(dns, content)
+            if key in ("IP Addresses", "DNS Servers"):
+                content.append(f"     - {key:<{max_width_nic}} :")
+                format_sub_sections(value, content, max_width_nic)
+                continue
+
+            content.append(f"     - {key:<{max_width_nic}} : {value}")
 
     return "\n".join(content)
