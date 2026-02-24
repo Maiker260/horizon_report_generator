@@ -17,6 +17,8 @@ parsers = {
 def gather_data(zip_ctx):
     data = {}
 
+        # NEED TO CHECK WHAT REPORT SHOULD RETURN (CS, AGENT, CLIENT, UAG)
+
     for name, parser_func in parsers.items():
         try:
             data[name] = parser_func(zip_ctx)

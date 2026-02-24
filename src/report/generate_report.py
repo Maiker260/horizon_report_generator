@@ -6,6 +6,7 @@ from src.report.sections.open_ports import open_ports
 from src.report.sections.installed_applications import installed_applications
 from src.report.sections.certificates import certificates
 from src.report.sections.footer import footer
+from pathlib import Path
 
 def generate_report(data, zip_path):
     try:
@@ -19,9 +20,19 @@ def generate_report(data, zip_path):
         report += certificates(data)
         report += footer()
 
-        print(report)
+        # print(report)
     except Exception as e:
             print(e)
 
-    # with open("report.txt", "w") as file:
-    #     file.write(report)
+    # Create .txt File
+    base_name = "Horizon Report"
+    extension = ".txt"
+    file_path = Path(f"{base_name}{extension}")
+    counter = 1
+
+    while file_path.exists():
+        file_path = Path(f"{base_name} ({counter}){extension}")
+        counter += 1
+
+    with open(file_path, "w", encoding="utf-8") as file:
+        file.write(report)

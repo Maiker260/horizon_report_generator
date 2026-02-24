@@ -60,7 +60,7 @@ def installed_applications(data):
                     version = app_info["app_info"]["version"]
 
                     content.append(f"           - {name}")
-                    content.append(f"               Installed : {installed}")
-                    content.append(f"               Version   : {version}")
+                    content.append(f"               Installed:  {installed}")
+                    content.append(f"               Version:    {version}")
 
     return "\n".join(content)

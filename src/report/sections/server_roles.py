@@ -6,7 +6,7 @@ def server_roles(data):
     content.append("-" * 30)
 
     if not roles:
-        content.append("\nNo Additional Roles found.")
+        content.append("\nNo Additional Roles Found.")
 
     field_names = [
         "Status",
@@ -14,7 +14,7 @@ def server_roles(data):
         "File",
     ]
 
-    max_width = max(len(key) for key in field_names)
+    max_width = max(len(key + ":") for key in field_names)
 
     for role, info in roles.items():
         fields = {
@@ -26,6 +26,6 @@ def server_roles(data):
         content.append(f"\n{role}")
 
         for key, value in fields.items():
-            content.append(f"   - {key:<{max_width}} : {value}")
+            content.append(f"   - {key  + ':':<{max_width}}  {value}")
 
     return "\n".join(content)

@@ -30,7 +30,7 @@ def certificates(data):
         "Private Key Exportable",
     ]
 
-    max_width = max(len(key) for key in field_names)
+    max_width = max(len(key + ":") for key in field_names)
 
     for i, vdm_cert in enumerate(vdm_certs, start=1):
             content.append(f"\n   #{i}")
@@ -63,19 +63,19 @@ def certificates(data):
                 value = value if value is not None else "False"
                 
                 if key == "Issuer" or key == "Subject":
-                    content.append(f"     - {key:<{max_width}} : {value['CN']}")
+                    content.append(f"     - {key + ':':<{max_width}}  {value['CN']}")
                     continue
 
                 if key == "Subject Alternative Name(s)":
-                    content.append(f"     - {key:<{max_width}} :")
+                    content.append(f"     - {key +':':<{max_width}} ")
 
                     if isinstance(value, list):
                         for item in value:
-                            content.append(f"         {'':<{max_width}} {item['value']}")
+                            content.append(f"        {'':<{max_width}} {item['value']}")
                     else:
                         content.append(f"        {'':<{max_width}}   {value}")
                     continue
 
-                content.append(f"     - {key:<{max_width}} : {value}")
+                content.append(f"     - {key +':':<{max_width}}  {value}")
                  
     return "\n".join(content)

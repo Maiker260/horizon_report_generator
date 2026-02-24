@@ -17,7 +17,7 @@ def server_information(data):
 
     # One line content
     for key, value in info.items():
-        content.append(f"{key:<{max_width}} : {value}")
+        content.append(f"{key + ':':<{max_width + 1}}  {value}")
 
     # Hotfixes
     content.append(f"\nInstalled Patches:")
@@ -50,10 +50,10 @@ def server_information(data):
             value = fields.get(key, "N/A")
 
             if key in ("IP Addresses", "DNS Servers"):
-                content.append(f"     - {key:<{max_width_nic}} :")
+                content.append(f"     - {key + ':':<{max_width_nic}} ")
                 format_sub_sections(value, content, max_width_nic)
                 continue
 
-            content.append(f"     - {key:<{max_width_nic}} : {value}")
+            content.append(f"     - {key + ':':<{max_width_nic}}   {value}")
 
     return "\n".join(content)
