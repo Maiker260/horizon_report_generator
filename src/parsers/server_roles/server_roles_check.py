@@ -1,9 +1,8 @@
 from src.data.UNWANTED_ROLES import UNWANTED_ROLES
 from src.data.FILES_OF_INTEREST import FILES_OF_INTEREST
 
-files = FILES_OF_INTEREST["server_roles"]
-
-def server_roles_check(zip_ctx):
+def server_roles_check(zip_ctx, component):
+    files = FILES_OF_INTEREST[component]["server_roles"]
     data = {}
 
     for filename in files:

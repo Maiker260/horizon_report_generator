@@ -1,12 +1,12 @@
 from src.data.DATA_TO_COLLECT import DATA_TO_COLLECT
 
-expected_ports = DATA_TO_COLLECT["horizon_ports"]
 
-def open_ports(data):
+def open_ports(data, component, letter):
+    expected_ports = DATA_TO_COLLECT[component]["horizon_ports"]
     ports = data["horizon_ports"]
 
     content = []
-    content.append("\n\n\nD. OPEN PORTS (HORIZON)")
+    content.append(f"\n\n\n{letter}. OPEN PORTS (HORIZON)")
     content.append("-" * 30)
     content.append("")
 
@@ -37,10 +37,15 @@ def open_ports(data):
         for port_number in sorted(expected_ports):
             port_str = str(port_number)
 
-            # content.append(f"   Port {port_str}:")
-
             if port_str not in grouped:
-                if protocol == "UDP" and port_str not in ["4172", "8443"]:
+                udp_ports = {
+                    "connection_server": [4172, 8443],
+                    "agent": [4172, 22443, 55000],
+                    "client": [443, 4172, 8443, 22443],
+                    "unified_access_gateway": [],
+                }
+
+                if protocol == "UDP" and port_str not in udp_ports[component]:
                     continue
                 
                 content.append(f"   Port {port_str}:")

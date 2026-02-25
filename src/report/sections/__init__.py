@@ -1,5 +1,5 @@
 from .header import header
-from .server_information import server_information
+from .device_information import device_information
 from .server_roles import server_roles
 from .running_services import running_services
 from .open_ports import open_ports
@@ -9,7 +9,7 @@ from .footer import footer
 
 __all__ = [
     "header", 
-    "server_information", 
+    "device_information", 
     "server_roles", 
     "running_services", 
     "open_ports", 

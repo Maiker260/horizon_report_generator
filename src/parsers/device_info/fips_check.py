@@ -1,11 +1,11 @@
-def fips_check(zip_ctx, filename, current_data):
+def fips_check(zip_ctx, filename, component, current_data):
     data = {}
 
     if not zip_ctx.exists(filename):
         return
 
     with zip_ctx.open(filename) as file:
-        # Reg files are encode in utf-16
+        # Registry files are encode in utf-16
         content = file.read().decode("utf-16")
 
         for line in content.splitlines():

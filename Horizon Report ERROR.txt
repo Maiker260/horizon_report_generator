@@ -1,0 +1,9 @@
+REPORT GENERATION FAILED
+============================================================
+
+Traceback (most recent call last):
+  File "/Users/maiker/Repos/horizon_report_generator/src/main.py", line 12, in main
+    with zipfile.ZipFile(zip_path) as zip_file:
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/zipfile.py", line 1239, in __init__
+    self.fp = io.open(file, filemode)
+FileNotFoundError: [Errno 2] No such file or directory: 'tmp/Agesnt-2512.zip'

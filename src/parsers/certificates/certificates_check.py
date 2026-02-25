@@ -2,9 +2,8 @@ from .constants import CERT_START_RE
 from .parse_certificate_block import parse_certificate_block
 from src.data.FILES_OF_INTEREST import FILES_OF_INTEREST
 
-files = FILES_OF_INTEREST["certificates"]
-
-def certificates_check(zip_ctx):
+def certificates_check(zip_ctx, component):
+    files = FILES_OF_INTEREST[component]["certificates"]
     data = {}
 
     for filename in files:

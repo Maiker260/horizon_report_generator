@@ -1,0 +1,476 @@
+==================================================
+SERVER REPORT
+Generated: Tue Feb 24 23:36:17 2026 (Local Time)
+Horizon Product: Connection Server
+Bundle: tmp/CS-2512.zip
+==================================================
+
+A. DEVICE INFORMATION
+------------------------------
+Hostname:           WIN-C2OSD2Q4M1E
+Windows Version:    Microsoft Windows Server 2016 Standard
+Build Version:      10.0.14393 N/A Build 14393
+Installation Date:  2/3/2026, 4:19:03 PM
+Uptime:             2/3/2026, 8:29:43 PM
+Time Zone:          (UTC-08:00) Pacific Time (US & Canada)
+Total Memory:       4,095 MB
+Available Memory:   472 MB
+Domain:             maikerdom.local
+Horizon Fips Mode:  False
+
+Installed Patches:
+   - KB3192137
+   - KB4589210
+   - KB5012170
+   - KB5073447
+   - KB5073722
+
+Network Interfaces:
+
+   #1
+     - Adapter:       Intel(R) PRO/1000 MT Network Connection
+     - Interface:     Ethernet0
+     - IP Addresses: 
+                      192.168.10.108
+                      fe80::d5c5:10aa:159f:9b1e
+     - DNS Servers: 
+                      192.168.10.107
+                      8.8.8.8
+
+   #2
+     - Adapter:       Intol(R) PRO/1000 MT Network Connection
+     - Interface:     Ethernet1
+     - IP Addresses: 
+                      193.168.10.108
+                      fe90::d5c5:10aa:159f:9b1e
+     - DNS Servers: 
+                      N/A
+
+   #3
+     - Adapter:       Antel(R) PRO/1000 MT Network Connection
+     - Interface:     Ethernet2
+     - IP Addresses: 
+                      122.168.10.108
+                      fa89::d5c5:10aa:159f:9b1e
+     - DNS Servers: 
+                      N/A
+
+
+B. ADDITIONAL SERVER ROLES
+------------------------------
+
+Domain Controller
+   - Status:    Detected (Running)
+   - Evidence:  ntds.exe
+   - File:      tasklist-svc.txt
+
+DNS Server
+   - Status:    Detected (Running)
+   - Evidence:  dns.exe
+   - File:      tasklist-svc.txt
+
+DHCP Server
+   - Status:    Detected (Running)
+   - Evidence:  dhcpserver.exe
+   - File:      tasklist-svc.txt
+
+Certificate Authority
+   - Status:    Detected (Running)
+   - Evidence:  CertSvc
+   - File:      tasklist-svc.txt
+
+
+C. RUNNING SERVICES (HORIZON)
+------------------------------
+
+Omnissa Services:
+
+   - Omnissa Horizon Blast Secure Gateway
+   - Omnissa Horizon Connection Server
+   - Omnissa Horizon Framework Manager
+   - Omnissa Horizon Log Collector
+   - Omnissa Horizon Message Bus
+   - Omnissa Horizon PCoIP Security Gateway
+   - Omnissa Horizon Pod Directory Service
+   - Omnissa Horizon Secure Gateway
+   - Omnissa Horizon Servlet Host
+   - OmnissaHzeDS
+
+VMware Services:
+
+   - VMware Alias Manager and Ticket Service
+   - VMware SVGA Helper Service.
+   - VMware Tools
+
+
+D. OPEN PORTS (HORIZON)
+------------------------------
+
+TCP:
+---
+   Port 80:
+      - Port Not In Use
+
+   Port 443:
+      - PID:              4112
+      - State:            LISTENING
+      - Process:          ws_TunnelService.exe
+      - Local Address:    0.0.0.0:443
+      - Foreign Address:  WIN-C2OSD2Q4M1E:0
+
+   Port 3389:
+      - PID:              836
+      - State:            LISTENING
+      - Process:          svchost.exe
+      - Local Address:    0.0.0.0:3389
+      - Foreign Address:  WIN-C2OSD2Q4M1E:0
+
+      - PID:              836
+      - State:            LISTENING
+      - Process:          svchost.exe
+      - Local Address:    [::]:3389
+      - Foreign Address:  WIN-C2OSD2Q4M1E:0
+
+   Port 4001:
+      - PID:              2988
+      - State:            LISTENING
+      - Process:          ws_MessageBusService.exe
+      - Local Address:    0.0.0.0:4001
+      - Foreign Address:  WIN-C2OSD2Q4M1E:0
+
+   Port 4002:
+      - PID:              2988
+      - State:            LISTENING
+      - Process:          ws_MessageBusService.exe
+      - Local Address:    0.0.0.0:4002
+      - Foreign Address:  WIN-C2OSD2Q4M1E:0
+
+   Port 4100:
+      - PID:              2988
+      - State:            LISTENING
+      - Process:          ws_MessageBusService.exe
+      - Local Address:    0.0.0.0:4100
+      - Foreign Address:  WIN-C2OSD2Q4M1E:0
+
+   Port 4101:
+      - PID:              2988
+      - State:            LISTENING
+      - Process:          ws_MessageBusService.exe
+      - Local Address:    0.0.0.0:4101
+      - Foreign Address:  WIN-C2OSD2Q4M1E:0
+
+   Port 4172:
+      - PID:              964
+      - State:            LISTENING
+      - Process:          SecurityGateway.exe
+      - Local Address:    0.0.0.0:4172
+      - Foreign Address:  WIN-C2OSD2Q4M1E:0
+
+   Port 8009:
+      - PID:              6700
+      - State:            LISTENING
+      - Process:          ws_TomcatService.exe
+      - Local Address:    127.0.0.1:8009
+      - Foreign Address:  WIN-C2OSD2Q4M1E:0
+
+   Port 8443:
+      - PID:              3992
+      - State:            LISTENING
+      - Process:          node.exe
+      - Local Address:    0.0.0.0:8443
+      - Foreign Address:  WIN-C2OSD2Q4M1E:0
+
+   Port 8472:
+      - Port Not In Use
+
+   Port 18443:
+      - Port Not In Use
+
+   Port 22389:
+      - Port Not In Use
+
+   Port 22636:
+      - Port Not In Use
+
+UDP:
+---
+   Port 3389:
+      - PID:              836
+      - State:            None
+      - Process:          svchost.exe
+      - Local Address:    0.0.0.0:3389
+      - Foreign Address:  *:*
+
+      - PID:              836
+      - State:            None
+      - Process:          svchost.exe
+      - Local Address:    [::]:3389
+      - Foreign Address:  *:*
+
+   Port 4172:
+      - PID:              964
+      - State:            None
+      - Process:          SecurityGateway.exe
+      - Local Address:    0.0.0.0:4172
+      - Foreign Address:  *:*
+
+   Port 8443:
+      - Port Not In Use
+
+
+E. INSTALLED APPLICATIONS
+------------------------------
+
+*Note: Only Horizon and security-related software are included in this section.
+
+
+Horizon:
+
+        Omnissa:
+           - Omnissa Horizon Connection Server
+               Installed:  2026-02-03
+               Version:    8.17
+
+        Vmware:
+           - VMware Tools
+               Installed:  2026-02-02
+               Version:    12.5
+
+Security Software:
+
+   Antivirus / EDR: (11 item(s) found)
+   ---------------
+
+        Bitdefender:
+           - Bitdefender GravityZone Endpoint Security Tools
+               Installed:  2026-02-03
+               Version:    6.38.0.199
+
+        CrowdStrike:
+           - CrowdStrike Falcon Sensor
+               Installed:  2026-02-02
+               Version:    7.11.18506.0
+
+        ESET:
+           - ESET NOD32 Antivirus
+               Installed:  2026-02-02
+               Version:    17.0.15.0
+
+        FortiClient:
+           - FortiClient
+               Installed:  2026-02-03
+               Version:    7.2.4.0972
+
+        Kaspersky:
+           - Kaspersky Endpoint Security
+               Installed:  2026-02-01
+               Version:    12.4.0.467
+
+        Malwarebytes:
+           - Malwarebytes Endpoint Agent
+               Installed:  2026-02-02
+               Version:    5.3.2.148
+
+        Microsoft Defender:
+           - Microsoft Defender for Endpoint
+               Installed:  2026-02-01
+               Version:    4.18.24010.7
+
+        SentinelOne:
+           - SentinelOne Agent
+               Installed:  2026-02-02
+               Version:    23.4.2.567
+
+        Sophos:
+           - Sophos Intercept X
+               Installed:  2026-02-01
+               Version:    2026.1.3
+
+        Symantec Endpoint Protection:
+           - Symantec Endpoint Protection
+               Installed:  2026-01-28
+               Version:    14.3.9204.6000
+
+        Trend Micro:
+           - Trend Micro Apex One
+               Installed:  2026-01-30
+               Version:    14.0.12345
+
+   Firewall: (1 item(s) found)
+   --------
+
+        FortiClient:
+           - FortiClient
+               Installed:  2026-02-03
+               Version:    7.2.4.0972
+
+   VPN Agent: (1 item(s) found)
+   ---------
+
+        FortiClient:
+           - FortiClient
+               Installed:  2026-02-03
+               Version:    7.2.4.0972
+
+
+F. CERTIFICATES
+------------------------------
+
+VDM Certificate(s):
+
+ * MULTIPLE VDM CERTIFICATES DETECTED.
+
+   #1
+     - Friendly Name:                vdm
+     - Serial Number:                2f1333e76e776920538c757f771368a805b408db
+     - Issuer:                       WIN-C2OSD2Q4M1E.maikerdom.local
+     - Subject:                      WIN-C2OSD2Q4M1E.maikerdom.local
+     - Subject Alternative Name(s): 
+                                     mydesktop-east01-local.com
+                                     mydesktop-west02-local.com
+                                     192.168.100.200
+                                     mydesktop-north03-local.com
+                                     myvdi-east01-local.com
+                                     192.168.1.10
+                                     mydesktop-east03-local.com
+     - Valid From (Not Before):      2/3/2026 4:34 PM
+     - Valid To (Not After):         8/2/2026 4:34 PM
+     - Has Private Key:              No
+     - Private Key Exportable:       N/A
+
+   #2
+     - Friendly Name:                vdm
+     - Serial Number:                221333e76e776920538c757f771368a805b408db
+     - Issuer:                       WIN-C2OSD2Q4M1E2.maikerdom.local
+     - Subject:                      WIN-C2OSD2Q4M1E.maikerdom.local
+     - Subject Alternative Name(s): 
+                                     mydesktop-east02-local.com
+                                     mydesktop-west03-local.com
+                                     192.168.100.200
+                                     mydesktop-north04-local.com
+                                     myvdi-east02-local.com
+                                     192.168.1.10
+                                     mydesktop-east04-local.com
+     - Valid From (Not Before):      2/3/2026 4:34 PM
+     - Valid To (Not After):         8/2/2026 4:34 PM
+     - Has Private Key:              No
+     - Private Key Exportable:       N/A
+
+
+
+
+
+
+
+
+==================================================
+REFERENCES & NOTES
+==================================================
+
+*IMPORTANT NOTE: A manual review of the original evidence files is recommended to confirm findings and ensure accuracy.
+
+Evidence Sources:
+  The following files were analyzed to generate this report:
+
+ - Device Info:
+     * systeminfo.txt
+     * ipconfig-all.txt
+     * omnissa-reg.txt
+     * vmware-reg.txt
+
+ - Server Roles:
+     * tasklist-svc.txt
+     * net-start.txt
+
+ - Horizon Services:
+     * net-start.txt
+
+ - Horizon Ports:
+     * netstat-abov.txt
+
+ - Installed Software:
+     * installed_software.txt
+
+ - Certificates:
+     * cert-store.txt
+
+
+Role Detection Indicators:
+  Server roles are identified based on running processes and services.
+  The following processes/services names are used as indicators:
+
+ - Domain Controller:      ntds.exe, NTDS
+ - DHCP Server:            dhcpserver.exe
+ - DNS Server:             dns.exe
+ - Certificate Authority:  CertSvc
+ - Hyper-V:                vmms.exe
+ - WSUS:                   wsusservice.exe
+ - IIS (Running):          w3wp.exe, inetinfo.exe
+
+
+Software Classification Categories:
+  Installed applications are categorized using keyword-based matching.
+
+ - Antivirus/EDR Vendors:
+     * Microsoft
+     * Symantec
+     * Norton
+     * McAfee / Trellix
+     * Trend Micro
+     * Kaspersky
+     * ESET
+     * Bitdefender
+     * Sophos
+     * CrowdStrike
+     * SentinelOne
+     * Cylance
+     * Palo Alto
+     * Fortinet
+     * Avast / AVG
+     * Webroot
+     * Malwarebytes
+     * Carbon Black
+     * FireEye
+     * Check Point
+     * Cisco
+     * Comodo
+     * ZoneAlarm
+     * F-Secure
+     * Panda
+     * VIPRE
+     * G DATA
+     * ClamAV
+
+ - Firewall / Network Security Vendors:
+     * ZTNA / Proxy / SSL Inspection
+     * Palo Alto
+     * Cisco
+     * Fortinet
+
+ - Monitoring Agent:
+     * ControlUp
+     * Nexthink
+     * Lakeside
+     * SysTrack
+     * Liquidware
+     * UberAgent
+
+ - Remote Tool:
+     * TeamViewer
+     * AnyDesk
+     * ConnectWise
+     * Kaseya
+     * ScreenConnect
+     * LogMeIn
+     * BeyondTrust
+
+ - VPN Agent:
+     * Cisco AnyConnect
+     * FortiClient
+     * GlobalProtect
+     * Zscaler
+     * Netskope
+     * Pulse Secure
+     * Ivanti
+     * SonicWall VPN
+

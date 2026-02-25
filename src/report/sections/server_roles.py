@@ -1,8 +1,8 @@
-def server_roles(data):
+def server_roles(data, component, letter):
     roles = data["server_roles"]
 
     content = []
-    content.append("\n\n\nB. ADDITIONAL SERVER ROLES")
+    content.append(f"\n\n\n{letter}. ADDITIONAL SERVER ROLES")
     content.append("-" * 30)
 
     if not roles:

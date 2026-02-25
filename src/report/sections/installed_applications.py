@@ -7,11 +7,11 @@ SECTION_TITLES = {
     "remote_tool": "Remote Tool"
 }
 
-def installed_applications(data):
+def installed_applications(data, component, letter):
     applications = data["installed_software"]
 
     content = []
-    content.append("\n\nE. INSTALLED APPLICATIONS")
+    content.append(f"\n\n{letter}. INSTALLED APPLICATIONS")
     content.append("-" * 30)
     content.append("")
 
@@ -19,10 +19,14 @@ def installed_applications(data):
 
     for app_type, info in applications.items():
         title = "Horizon" if app_type == "horizon_apps" else "Security Software"
-        content.append(f"\n{title}:")
+        content.append(f"{title}:\n")
 
         # Group by Type
         grouped = {}
+
+        if not info:
+            content.append(f"   No Antivirus/EDR, VPN, Monitoring Agent or Remote Tool found.")
+            continue
 
         for kwd in info:
             software_type = kwd["app_type"]
@@ -37,8 +41,9 @@ def installed_applications(data):
             section_name = SECTION_TITLES.get(rule, rule.title())
 
             if app_type != "horizon_apps":
-                content.append(f"\n   {section_name}: ({len(app_data)} item(s) found)")
+                content.append(f"   {section_name}: ({len(app_data)} item(s) found)")
                 content.append("   " + ("-" * len(section_name)))
+                content.append("")
 
             # Group by Vendor
             vendor_group = {}
@@ -52,15 +57,21 @@ def installed_applications(data):
                 vendor_group[vendor_name].append(app)
 
             for vendor, entry in sorted(vendor_group.items()):
-                content.append(f"\n        {format_vendor(vendor)}:")
+                content.append(f"        {format_vendor(vendor)}:")
                 
-                for app_info in entry:
-                    name = app_info["app_name"]
-                    installed = app_info["app_info"]["installed"]
-                    version = app_info["app_info"]["version"]
+                for app in entry:
+                    app_info = app.get("app_info") or {}
+    
+                    if not app_info:
+                        continue
+
+                    name = app.get("app_name", "Unknown")
+                    installed = app_info.get("installed", "N/A")
+                    version = app_info.get("version", "N/A")
 
                     content.append(f"           - {name}")
                     content.append(f"               Installed:  {installed}")
                     content.append(f"               Version:    {version}")
+                    content.append("")
 
     return "\n".join(content)

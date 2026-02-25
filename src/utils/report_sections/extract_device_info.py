@@ -1,16 +1,20 @@
-def extract_device_info(data):
-    sys_info = data["systeminfo"]
-    horizon_reg = data["horizon_reg"]
+from src.data.DATA_TO_COLLECT import DATA_TO_COLLECT
 
-    return {
-        "Hostname": sys_info.get("Host Name", "N/A"),
-        "Windows Version": sys_info.get("OS Name", "N/A"),
-        "Build Version": sys_info.get("OS Version", "N/A"),
-        "Installation Date": sys_info.get("Original Install Date", "N/A"),
-        "Uptime": sys_info.get("System Boot Time", "N/A"),
-        "Time Zone": sys_info.get("Time Zone", "N/A"),
-        "Total Memory": sys_info.get("Total Physical Memory", "N/A"),
-        "Available Memory": sys_info.get("Available Physical Memory", "N/A"),
-        "Domain": sys_info.get("Domain", "N/A"),
-        "Horizon Fips Mode": horizon_reg.get("FipsMode", "N/A"),
-    }
+def extract_device_info(data, component):
+    sys_info = data.get("systeminfo", {})
+
+    fields = (
+        DATA_TO_COLLECT.get(component, {}).get("device_info", [])
+    )
+
+    result = {}
+
+    for field in fields:
+        if field not in ["Network Card(s)", "Hotfix(s)"]:
+            result[field] = sys_info.get(field, "N/A")
+
+    if component == "connection_server":
+        horizon_reg = data.get("horizon_reg", {})
+        result["Horizon Fips Mode"] = horizon_reg.get("FipsMode", "N/A")
+
+    return result

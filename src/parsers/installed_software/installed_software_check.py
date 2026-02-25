@@ -4,17 +4,17 @@ from src.data.DATA_TO_COLLECT import DATA_TO_COLLECT
 from src.data.SOFTWARE_RULES import SOFTWARE_RULES
 from src.parsers.installed_software.apps_check import apps_check
 
-files = FILES_OF_INTEREST["installed_software"]
-PARSERS = {
-    "horizon_apps": {
-        "keywords": DATA_TO_COLLECT["installed_software"],
-    },
-    "security_software": {
-        "keywords": SOFTWARE_RULES,
+def installed_software_check(zip_ctx, component):
+    files = FILES_OF_INTEREST[component]["installed_software"]
+    PARSERS = {
+        "horizon_apps": {
+            "keywords": DATA_TO_COLLECT[component]["installed_software"],
+        },
+        "security_software": {
+            "keywords": SOFTWARE_RULES,
+        }
     }
-}
 
-def installed_software_check(zip_ctx):
     data = {name: [] for name in PARSERS}
 
     for filename in files:

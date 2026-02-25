@@ -9,8 +9,8 @@ BLOCK_PARSERS = {
     "Network Card(s)": parse_nics,
 }
 
-def systeminfo(zip_ctx, filename, current_data):
-    keywords = DATA_TO_COLLECT["device_info"]
+def systeminfo(zip_ctx, filename, component, current_data):
+    keywords = DATA_TO_COLLECT[component]["device_info"]
 
     data = {}
     current_block = None

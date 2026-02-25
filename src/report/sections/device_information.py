@@ -1,18 +1,18 @@
 from src.utils.report_sections.format_sub_sections import format_sub_sections
 from src.utils.report_sections.extract_device_info import extract_device_info
 
-def server_information(data):
+def device_information(data, component, letter):
     device_info = data["device_info"]
     systeminfo = device_info["systeminfo"]
 
-    info = extract_device_info(device_info)
+    info = extract_device_info(device_info, component)
     max_width = max(len(key) for key in info)
 
     hotfixes = systeminfo.get("Hotfix(s)", "N/A")
     network_cards = systeminfo.get("Network Card(s)", "N/A")
 
     content = []
-    content.append("\n\nA. SERVER INFORMATION")
+    content.append(f"\n\n{letter}. MACHINE INFORMATION")
     content.append("-" * 30)
 
     # One line content
@@ -20,9 +20,10 @@ def server_information(data):
         content.append(f"{key + ':':<{max_width + 1}}  {value}")
 
     # Hotfixes
-    content.append(f"\nInstalled Patches:")
-    for patch in hotfixes:
-        content.append(f"   - {patch}")
+    if component in ["connection_server", "agent"]:
+        content.append(f"\nInstalled Patches:")
+        for patch in hotfixes:
+            content.append(f"   - {patch}")
 
     # NICs
     field_names = [

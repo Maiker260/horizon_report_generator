@@ -1,10 +1,9 @@
 from src.data.FILES_OF_INTEREST import FILES_OF_INTEREST
 from src.data.DATA_TO_COLLECT import DATA_TO_COLLECT
 
-files = FILES_OF_INTEREST["horizon_services"]
-services = DATA_TO_COLLECT["horizon_services"]
-
-def horizon_services_check(zip_ctx):
+def horizon_services_check(zip_ctx, component):
+    files = FILES_OF_INTEREST[component]["horizon_services"]
+    services = DATA_TO_COLLECT[component]["horizon_services"]
     data = {service: [] for service in services}
 
     for filename in files:

@@ -4,7 +4,6 @@ from src.data.FILES_OF_INTEREST import FILES_OF_INTEREST
 from src.parsers.device_info.ipconfig.ipconfig import ipconfig
 from src.parsers.device_info.fips_check import fips_check
 
-files = FILES_OF_INTEREST["device_info"]
 parsers = {
     "systeminfo": systeminfo,
     "ipconfig": ipconfig,
@@ -12,7 +11,8 @@ parsers = {
     "vmware": fips_check
 }
 
-def device_info_check(zip_ctx):
+def device_info_check(zip_ctx, component):
+    files = FILES_OF_INTEREST[component]["device_info"]
     data = {}
 
     for filename in files:
@@ -29,8 +29,8 @@ def device_info_check(zip_ctx):
         if file in parsers:
             if file == "omnissa" or file == "vmware":
                 if not data.get("horizon_reg"):
-                    data["horizon_reg"] = parsers[file](zip_ctx, filename, data)
+                    data["horizon_reg"] = parsers[file](zip_ctx, filename, component, data)
             else:
-                data[file] = parsers[file](zip_ctx, filename, data)
+                data[file] = parsers[file](zip_ctx, filename, component, data)
 
     return {key: value for key, value in data.items() if value}

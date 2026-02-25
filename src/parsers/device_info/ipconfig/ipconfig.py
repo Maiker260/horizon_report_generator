@@ -1,6 +1,6 @@
 from src.parsers.device_info.ipconfig.get_dns_server import get_dns_server
 
-def ipconfig(zip_ctx, filename, current_data):
+def ipconfig(zip_ctx, filename, component, current_data):
     if not zip_ctx.exists(filename):
         return
     

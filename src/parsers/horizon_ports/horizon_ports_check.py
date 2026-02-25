@@ -1,10 +1,9 @@
 from src.data.FILES_OF_INTEREST import FILES_OF_INTEREST
 from src.data.DATA_TO_COLLECT import DATA_TO_COLLECT
 
-files = FILES_OF_INTEREST["horizon_ports"]
-ports = DATA_TO_COLLECT["horizon_ports"]
-
-def horizon_ports_check(zip_ctx):
+def horizon_ports_check(zip_ctx, component):
+    files = FILES_OF_INTEREST[component]["horizon_ports"]
+    ports = DATA_TO_COLLECT[component]["horizon_ports"]
     data = {
         "TCP": [],
         "UDP": []

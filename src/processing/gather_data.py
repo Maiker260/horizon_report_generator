@@ -1,30 +1,15 @@
-from src.parsers.device_info.device_info_check import device_info_check
-from src.parsers.server_roles.server_roles_check import server_roles_check
-from src.parsers.horizon_services.horizon_services_check import horizon_services_check
-from src.parsers.horizon_ports.horizon_ports_check import horizon_ports_check
-from src.parsers.installed_software.installed_software_check import installed_software_check
-from src.parsers.certificates.certificates_check import certificates_check
+from src.data.COMPONENT_CHECKS import COMPONENT_CHECKS
 
-parsers = {
-    "device_info": device_info_check,
-    "server_roles": server_roles_check,
-    "horizon_services": horizon_services_check,
-    "horizon_ports": horizon_ports_check,
-    "installed_software": installed_software_check,
-    "certificates": certificates_check,
-}
-
-def gather_data(zip_ctx):
+def gather_data(zip_ctx, component):
+    parsers = COMPONENT_CHECKS[component]["parsers"]
     data = {}
-
-        # NEED TO CHECK WHAT REPORT SHOULD RETURN (CS, AGENT, CLIENT, UAG)
 
     for name, parser_func in parsers.items():
         try:
-            data[name] = parser_func(zip_ctx)
+            data[name] = parser_func(zip_ctx, component)
         except Exception as e:
             data[name] = {
-                "error": str(e)
+                "Error": str(e)
             }
 
     return data

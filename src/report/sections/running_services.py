@@ -1,8 +1,8 @@
-def running_services(data):
+def running_services(data, component, letter):
     services = data["horizon_services"]
 
     content = []
-    content.append("\n\n\nC. RUNNING SERVICES (HORIZON)")
+    content.append(f"\n\n\n{letter}. RUNNING SERVICES (HORIZON)")
     content.append("-" * 30)
 
     for name, info in services.items():
