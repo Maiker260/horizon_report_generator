@@ -12,6 +12,7 @@ FILES_OF_INTEREST = {
         "horizon_services": ["net-start.txt"],
         "horizon_ports": ["netstat-abov.txt"],
         "installed_software": ["installed_software.txt"],
+        "horizon_features": ["omnissa-reg.txt"],
     },
     "client": {
         "device_info": ["systeminfo.txt", "ipconfig-all.txt"],

@@ -4,6 +4,7 @@ from src.parsers.horizon_services.horizon_services_check import horizon_services
 from src.parsers.horizon_ports.horizon_ports_check import horizon_ports_check
 from src.parsers.installed_software.installed_software_check import installed_software_check
 from src.parsers.certificates.certificates_check import certificates_check
+from src.parsers.horizon_features import horizon_features_check
 
 COMPONENT_CHECKS = {
     "connection_server": {
@@ -22,6 +23,7 @@ COMPONENT_CHECKS = {
             "horizon_services": horizon_services_check,
             "horizon_ports": horizon_ports_check,
             "installed_software": installed_software_check,
+            "horizon_features": horizon_features_check
         }
     },
     "client": {

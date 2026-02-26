@@ -62,6 +62,17 @@ DATA_TO_COLLECT = {
         "horizon_services": COMMON_DATA_TO_COLLECT["horizon_services"],
         "horizon_ports": [3389, 4172, 22443, 9427, 32111, 4001, 4002, 55000],
         "installed_software": COMMON_DATA_TO_COLLECT["installed_software"],
+        "horizon_features": {
+            r"HKEY_LOCAL_MACHINE\SOFTWARE\Omnissa\Horizon\Installer\Features_HorizonAgent": [
+                "ClientDriveRedirection", 
+                "PrintRedir", 
+                "ScannerRedirection", 
+                "SmartCard", 
+                "StorageDriveRedir", 
+                "USB"
+            ],
+        }
+        
     },
 
     "client": {
