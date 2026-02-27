@@ -9,7 +9,6 @@ COMMON_DATA_TO_COLLECT = {
     ],
     "horizon_services": [
         "Omnissa", 
-        "VDMDS", 
         "VMware"
     ],
     "installed_software": {
@@ -63,7 +62,8 @@ DATA_TO_COLLECT = {
         "horizon_ports": [3389, 4172, 22443, 9427, 32111, 4001, 4002, 55000],
         "installed_software": COMMON_DATA_TO_COLLECT["installed_software"],
         "horizon_features": {
-            r"HKEY_LOCAL_MACHINE\SOFTWARE\Omnissa\Horizon\Installer\Features_HorizonAgent": [
+            "registry_suffix": r"Installer\Features_HorizonAgent",
+            "values": [
                 "ClientDriveRedirection", 
                 "PrintRedir", 
                 "ScannerRedirection", 
@@ -72,7 +72,6 @@ DATA_TO_COLLECT = {
                 "USB"
             ],
         }
-        
     },
 
     "client": {

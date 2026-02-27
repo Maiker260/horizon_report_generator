@@ -6,7 +6,7 @@ def server_roles(data, component, letter):
     content.append("-" * 30)
 
     if not roles:
-        content.append("\nNo Additional Roles Found.")
+        content.append("\n   No Additional Roles Found.")
 
     field_names = [
         "Status",

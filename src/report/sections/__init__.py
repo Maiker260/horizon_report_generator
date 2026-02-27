@@ -5,6 +5,7 @@ from .running_services import running_services
 from .open_ports import open_ports
 from .installed_applications import installed_applications
 from .certificates import certificates
+from .horizon_features import horizon_features
 from .footer import footer
 
 __all__ = [
@@ -15,5 +16,6 @@ __all__ = [
     "open_ports", 
     "installed_applications",
     "certificates",
+    "horizon_features"
     "footer"
 ]

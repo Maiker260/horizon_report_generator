@@ -6,6 +6,7 @@ from src.report.sections.running_services import running_services
 from src.report.sections.open_ports import open_ports
 from src.report.sections.installed_applications import installed_applications
 from src.report.sections.certificates import certificates
+from src.report.sections.horizon_features import horizon_features
 from src.report.sections.footer import footer
 
 COMMON_REPORT_SECTIONS = [
@@ -22,7 +23,7 @@ REPORT_SECTIONS = {
         + COMMON_REPORT_SECTIONS[1:]
         + [certificates]
     ),
-    "agent": lambda: COMMON_REPORT_SECTIONS,
+    "agent": lambda: (COMMON_REPORT_SECTIONS + [horizon_features]),
     "client": lambda: COMMON_REPORT_SECTIONS,
     "unified_access_gateway": lambda: [],
 }

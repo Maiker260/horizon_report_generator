@@ -71,9 +71,10 @@ def certificates(data, component, letter):
 
                     if isinstance(value, list):
                         for item in value:
-                            content.append(f"        {'':<{max_width}} {item['value']}")
+                            san_value = item.get("value", "N/A")
+                            content.append(f"        {'':<{max_width}} {san_value}")
                     else:
-                        content.append(f"        {'':<{max_width}}   {value}")
+                        content.append(f"        {'':<{max_width}} {'N/A'}")
                     continue
 
                 content.append(f"     - {key +':':<{max_width}}  {value}")

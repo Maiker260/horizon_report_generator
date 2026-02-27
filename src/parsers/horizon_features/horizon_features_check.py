@@ -2,15 +2,18 @@ from src.data.FILES_OF_INTEREST import FILES_OF_INTEREST
 from src.data.DATA_TO_COLLECT import DATA_TO_COLLECT
 
 def horizon_features_check(zip_ctx, component):
-    horizon_features = FILES_OF_INTEREST[component]["horizon_features"]
+    files = FILES_OF_INTEREST[component]["horizon_features"]
     features = DATA_TO_COLLECT[component]["horizon_features"]
 
-    data = {key: None for key in features}
+    suffix = features["registry_suffix"]
+    expected_values = set(features["values"])
+
+    data = {}
 
     current_block = None
     block_lines = []
     
-    for filename in horizon_features:
+    for filename in files:
         if not zip_ctx.exists(filename):
             continue
 
@@ -31,7 +34,7 @@ def horizon_features_check(zip_ctx, component):
                     if current_block and block_lines:
                         data[current_block] = block_lines
 
-                    if stripped in data:
+                    if stripped.endswith(suffix):
                         current_block = stripped
                         block_lines = []
                     else:
@@ -47,7 +50,7 @@ def horizon_features_check(zip_ctx, component):
                     key = parts[0].strip().strip('"')
                     value = parts[1].strip().strip('"')
 
-                    if key in features[current_block]:
+                    if key in expected_values:
                         block_lines.append({
                             "key": key,
                             "value": value
@@ -56,5 +59,4 @@ def horizon_features_check(zip_ctx, component):
             if current_block and block_lines:
                 data[current_block] = block_lines
 
-
-    print(data)
+    return data

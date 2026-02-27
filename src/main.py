@@ -18,8 +18,8 @@ def main(zip_path):
             report = generate_report(data, zip_path, component)
 
             # print(report)
-            # save_report(report)
+            save_report(report)
 
     except Exception as e:
-        # save_error_log(e)
+        save_error_log(e)
         raise

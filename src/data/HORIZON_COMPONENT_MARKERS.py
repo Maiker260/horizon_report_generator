@@ -1,10 +1,10 @@
 HORIZON_COMPONENT_MARKERS = {
     "connection_server": {
         "dirs": [
-            "horizon-logs/broker",
-            "horizon-logs/bsg",
-            "horizon-logs/psg",
-            "horizon-logs/messagebus",
+            r".*-logs/broker",
+            r".*-logs/bsg",
+            r".*-logs/psg",
+            r".*-logs/messagebus",
         ],
         "files": [
             "adam.ldif",
@@ -21,8 +21,9 @@ HORIZON_COMPONENT_MARKERS = {
     "agent": {
         "dirs": [
             "blast-logs",
-            "horizon-sm-dumps",
+            r".*-sm-dumps",
             "vmlm-data",
+            "v4v-agent-logs",
         ],
         "files": [
             "rtav_agent_pcoip_session0.log",
@@ -30,23 +31,23 @@ HORIZON_COMPONENT_MARKERS = {
         ],
         "patterns": [
             r"vmware-vmtoolsd-.*\.log",
-            r"horizon-hzAgentMonService-.*\.log",
+            r".*-hzAgentMonService-.*\.log",
         ],
         "weight": 4,
     },
 
     "client": {
-        "dirs": [
-            "hzn-logs",
-            "hzn-config",
-            "hzn-event-logs",
-        ],
+        # "dirs": [
+        #     r".*-Print-Registry-Data",
+        #     r".*-USB-Registry-Data",
+        # ],
         "files": [
-            "Omnissa_Horizon_Client",
+            r".*_Horizon_Client",
         ],
         "patterns": [
-            r"Omnissa_Horizon_Client_.*\.log",
+            r".*_Horizon_Client_.*\.log",
             r".*ViewClientx64\.log",
+            r".*_HTML5MMRx64.log",
         ],
         "weight": 5,
     }
