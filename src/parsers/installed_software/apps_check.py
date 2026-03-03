@@ -7,14 +7,22 @@ def apps_check(line, kwd, app_type):
         "app_name": parts[0]
     }
 
+    
     if len(parts) > 1:
-        raw_date, raw_app_version = parts[1].strip("]").split(",")
-        app_version = raw_app_version.strip("v")
+        inside = parts[1].strip("]")
+        pieces = inside.split(",")
+
+        raw_date = pieces[0]
         word, date = raw_date.split(": ")
-        
+
+        version = "N/A"
+        if len(pieces) > 1:
+            raw_version = pieces[1]
+            version = raw_version.strip("v")
+
         data["app_info"] = {
             "installed": date,
-            "version": app_version,
+            "version": version,
         }
 
     return data

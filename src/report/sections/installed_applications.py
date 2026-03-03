@@ -69,8 +69,12 @@ def installed_applications(data, component, letter):
                 for app in entry:
                     app_info = app.get("app_info") or {}
     
-                    if not app_info:
-                        continue
+                    if app_info:
+                        installed = app_info.get("installed", "N/A")
+                        version = app_info.get("version", "N/A")
+                    else:
+                        installed = "N/A"
+                        version = "N/A"
 
                     name = app.get("app_name", "Unknown")
                     installed = app_info.get("installed", "N/A")
