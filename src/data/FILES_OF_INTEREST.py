@@ -6,6 +6,7 @@ FILES_OF_INTEREST = {
         "horizon_ports": ["netstat-abov.txt"],
         "installed_software": ["installed_software.txt"],
         "certificates": ["cert-store.txt"],
+        "locked_properties": ["locked.properties"]
     },
     "agent": {
         "device_info": ["systeminfo.txt", "ipconfig-all.txt"],

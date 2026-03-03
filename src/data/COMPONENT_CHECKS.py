@@ -5,6 +5,7 @@ from src.parsers.horizon_ports.horizon_ports_check import horizon_ports_check
 from src.parsers.installed_software.installed_software_check import installed_software_check
 from src.parsers.certificates.certificates_check import certificates_check
 from src.parsers.horizon_features import horizon_features_check
+from src.parsers.locked_properties.locked_properties_check import locked_properties_check
 
 COMMON_PARSERS = {
     "device_info": device_info_check,
@@ -19,6 +20,7 @@ COMPONENT_CHECKS = {
             **COMMON_PARSERS,
             "server_roles": server_roles_check,
             "certificates": certificates_check,
+            "locked_properties": locked_properties_check,
         }
     },
     "agent": {
