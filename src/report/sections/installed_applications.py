@@ -10,6 +10,9 @@ SECTION_TITLES = {
 def installed_applications(data, component, letter):
     applications = data["installed_software"]
 
+    if not isinstance(applications, dict):
+        raise ValueError("installed_applications expects Dict")
+
     content = []
     content.append(f"\n\n{letter}. INSTALLED APPLICATIONS")
     content.append("-" * 30)
@@ -25,7 +28,11 @@ def installed_applications(data, component, letter):
         grouped = {}
 
         if not info:
-            content.append(f"   No Antivirus/EDR, VPN, Monitoring Agent or Remote Tool found.")
+            if title == "Horizon":
+                content.append(f"   No Horizon Software found.")
+                content.append("")
+            else:
+                content.append(f"   No Antivirus/EDR, VPN, Monitoring Agent or Remote Tool found.")
             continue
 
         for kwd in info:

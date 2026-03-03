@@ -12,7 +12,7 @@ def horizon_features(data, component, letter):
             key = feature.get("key", "N/A")
             value = feature.get("value", "N/A")
 
-            content.append(f"\n   {key}:")
-            content.append(f"      Value: {value}")
+            content.append(f"\n   - {key}:")
+            content.append(f"        Value: {value}")
 
     return "\n".join(content)

@@ -1,4 +1,5 @@
 from src.parsers.device_info.ipconfig.get_dns_server import get_dns_server
+from src.utils.read_file_with_auto_encoding import read_file_with_auto_encoding
 
 def ipconfig(zip_ctx, filename, component, current_data):
     if not zip_ctx.exists(filename):
@@ -17,8 +18,10 @@ def ipconfig(zip_ctx, filename, component, current_data):
     block_lines = []
 
     with zip_ctx.open(filename) as file:
-        for raw_line in file:
-            line = raw_line.decode(errors="ignore")
+        content = read_file_with_auto_encoding(file)
+
+        for line in content.splitlines():
+            line = line.strip()
 
             if current_block:
                 if not line.strip() or line[0].isspace():

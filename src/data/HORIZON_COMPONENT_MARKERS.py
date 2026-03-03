@@ -37,10 +37,6 @@ HORIZON_COMPONENT_MARKERS = {
     },
 
     "client": {
-        # "dirs": [
-        #     r".*-Print-Registry-Data",
-        #     r".*-USB-Registry-Data",
-        # ],
         "files": [
             r".*_Horizon_Client",
         ],

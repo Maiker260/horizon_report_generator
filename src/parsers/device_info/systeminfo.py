@@ -3,6 +3,7 @@ from src.utils.normalize_line import normalize_line
 from src.data.DATA_TO_COLLECT import DATA_TO_COLLECT
 from src.parsers.device_info.hotfixes import parse_hotfixes
 from src.parsers.device_info.network_cards import parse_nics
+from src.utils.read_file_with_auto_encoding import read_file_with_auto_encoding
 
 BLOCK_PARSERS = {
     "Hotfix(s)": parse_hotfixes,
@@ -20,9 +21,9 @@ def systeminfo(zip_ctx, filename, component, current_data):
         return
 
     with zip_ctx.open(filename) as file:
-        for raw_line in file:
-            line = raw_line.decode(errors="ignore")
+        content = read_file_with_auto_encoding(file)
 
+        for line in content.splitlines():
             if current_block:
                 if line and line[0].isspace():
                     block_lines.append(line)

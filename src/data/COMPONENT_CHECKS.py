@@ -6,32 +6,30 @@ from src.parsers.installed_software.installed_software_check import installed_so
 from src.parsers.certificates.certificates_check import certificates_check
 from src.parsers.horizon_features import horizon_features_check
 
+COMMON_PARSERS = {
+    "device_info": device_info_check,
+    "horizon_services": horizon_services_check,
+    "horizon_ports": horizon_ports_check,
+    "installed_software": installed_software_check,
+}
+
 COMPONENT_CHECKS = {
     "connection_server": {
         "parsers": {
-            "device_info": device_info_check,
+            **COMMON_PARSERS,
             "server_roles": server_roles_check,
-            "horizon_services": horizon_services_check,
-            "horizon_ports": horizon_ports_check,
-            "installed_software": installed_software_check,
             "certificates": certificates_check,
         }
     },
     "agent": {
         "parsers": {
-            "device_info": device_info_check,
-            "horizon_services": horizon_services_check,
-            "horizon_ports": horizon_ports_check,
-            "installed_software": installed_software_check,
+            **COMMON_PARSERS,
             "horizon_features": horizon_features_check
         }
     },
     "client": {
         "parsers": {
-            "device_info": device_info_check,
-            "horizon_services": horizon_services_check,
-            "horizon_ports": horizon_ports_check,
-            "installed_software": installed_software_check,
+            **COMMON_PARSERS
         }
     },
     "unified_access_gateway": {}

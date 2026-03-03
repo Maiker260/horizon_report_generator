@@ -1,6 +1,7 @@
 from .constants import CERT_START_RE
 from .parse_certificate_block import parse_certificate_block
 from src.data.FILES_OF_INTEREST import FILES_OF_INTEREST
+from src.utils.read_file_with_auto_encoding import read_file_with_auto_encoding
 
 def certificates_check(zip_ctx, component):
     files = FILES_OF_INTEREST[component]["certificates"]
@@ -14,8 +15,10 @@ def certificates_check(zip_ctx, component):
             current_cert_number = None
             buffer = []
 
-            for raw_line in file:
-                line = raw_line.decode(errors="ignore")
+            content = read_file_with_auto_encoding(file)
+
+            for line in content.splitlines():
+                line = line.strip()
 
                 match = CERT_START_RE.search(line)
                 if (match):

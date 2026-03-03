@@ -2,6 +2,7 @@ import re
 from src.data.FILES_OF_INTEREST import FILES_OF_INTEREST
 from src.data.DATA_TO_COLLECT import DATA_TO_COLLECT
 from src.data.SOFTWARE_RULES import SOFTWARE_RULES
+from src.utils.read_file_with_auto_encoding import read_file_with_auto_encoding
 from src.parsers.installed_software.apps_check import apps_check
 
 def installed_software_check(zip_ctx, component):
@@ -22,8 +23,10 @@ def installed_software_check(zip_ctx, component):
             continue
 
         with zip_ctx.open(filename) as file:
-            for raw_line in file:
-                line = raw_line.decode(errors="ignore").strip()
+            content = read_file_with_auto_encoding(file)
+
+            for line in content.splitlines():
+                line = line.strip()
                 lower_line = line.lower()
 
                 for pars_name, config in PARSERS.items():

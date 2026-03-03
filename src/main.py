@@ -18,7 +18,9 @@ def main(zip_path):
             report = generate_report(data, zip_path, component)
 
             # print(report)
-            save_report(report)
+            report_path = save_report(report)
+
+            return report_path
 
     except Exception as e:
         save_error_log(e)

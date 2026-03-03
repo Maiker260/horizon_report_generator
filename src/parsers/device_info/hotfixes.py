@@ -11,5 +11,5 @@ def parse_hotfixes(lines):
 
         if match:
             hotfixes.append(match.group(1))
-    
+
     return hotfixes

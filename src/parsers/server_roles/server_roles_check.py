@@ -1,5 +1,6 @@
 from src.data.UNWANTED_ROLES import UNWANTED_ROLES
 from src.data.FILES_OF_INTEREST import FILES_OF_INTEREST
+from src.utils.read_file_with_auto_encoding import read_file_with_auto_encoding
 
 def server_roles_check(zip_ctx, component):
     files = FILES_OF_INTEREST[component]["server_roles"]
@@ -10,8 +11,10 @@ def server_roles_check(zip_ctx, component):
             continue
 
         with zip_ctx.open(filename) as file:
-            for raw_line in file:
-                line = raw_line.decode(errors="ignore").lower()
+            content = read_file_with_auto_encoding(file)
+
+            for line in content.splitlines():
+                line = line.lower()
 
                 for role, keywords in UNWANTED_ROLES.items():
                     if role in data:

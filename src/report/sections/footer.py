@@ -54,4 +54,19 @@ def footer(component):
     content.append("")
     content.append("")
 
+    # Disclaimer
+    content.append("=" * 50)
+    content.append("DISCLAIMER")
+    content.append("=" * 50)
+
+    content.append("\nThis tool is not an official product of Omnissa, VMware, or any other software vendor mentioned in this document. It is not endorsed, certified, or supported by any vendor.")
+    content.append("\nThis report is intended strictly for internal use within the organization. Unauthorized distribution, external sharing, or representation of this tool as an official vendor-supported solution is prohibited.")
+    content.append("\nUse of this report and its findings is at the discretion and responsibility of the reviewing party.")
+
+    content.append("\nCreated by: Miker Gutierrez (@gmiker)")
+    content.append("Source Code: https://github.com/Maiker260/horizon_report_generator")
+
+    content.append("")
+    content.append("")
+
     return "\n".join(content)
