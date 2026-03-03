@@ -44,6 +44,7 @@ if __name__ == "__main__":
             f"Report generated successfully.\n\nLocation:\n{report_path.resolve()}"
         )
 
+    # Raised when not a Supported Horizon Component
     except UnsupportedComponentError as e:
         show_error(str(e))
         sys.exit(1)
