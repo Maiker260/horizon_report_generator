@@ -21,8 +21,6 @@ def ipconfig(zip_ctx, filename, component, current_data):
         content = read_file_with_auto_encoding(file)
 
         for line in content.splitlines():
-            line = line.strip()
-
             if current_block:
                 if not line.strip() or line[0].isspace():
                     block_lines.append(line.strip())
