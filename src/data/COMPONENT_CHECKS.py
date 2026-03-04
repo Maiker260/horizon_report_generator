@@ -6,6 +6,7 @@ from src.parsers.installed_software.installed_software_check import installed_so
 from src.parsers.certificates.certificates_check import certificates_check
 from src.parsers.horizon_features import horizon_features_check
 from src.parsers.locked_properties.locked_properties_check import locked_properties_check
+from src.parsers.uag_parsers.server_info.server_info_check import server_info_check
 
 COMMON_PARSERS = {
     "device_info": device_info_check,
@@ -26,7 +27,7 @@ COMPONENT_CHECKS = {
     "agent": {
         "parsers": {
             **COMMON_PARSERS,
-            "horizon_features": horizon_features_check
+            "horizon_features": horizon_features_check,
         }
     },
     "client": {
@@ -34,5 +35,10 @@ COMPONENT_CHECKS = {
             **COMMON_PARSERS
         }
     },
-    "unified_access_gateway": {}
+    "unified_access_gateway": {
+        "parsers": {
+            "server_info": server_info_check,
+            "horizon_ports": "",
+        }
+    }
 }

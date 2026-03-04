@@ -15,7 +15,6 @@ HORIZON_COMPONENT_MARKERS = {
             r"SecurityGateway_.*\.log",
             r"catalina\..*\.log",
         ],
-        "weight": 5,
     },
 
     "agent": {
@@ -33,7 +32,6 @@ HORIZON_COMPONENT_MARKERS = {
             r"vmware-vmtoolsd-.*\.log",
             r".*-hzAgentMonService-.*\.log",
         ],
-        "weight": 4,
     },
 
     "client": {
@@ -45,6 +43,16 @@ HORIZON_COMPONENT_MARKERS = {
             r".*ViewClientx64\.log",
             r".*_HTML5MMRx64.log",
         ],
-        "weight": 5,
+    },
+    "unified_access_gateway": {
+        "files": [
+            "uag_config.ini",
+            "uag_config.json",
+            "uagstats.json",
+        ],
+        "patterns": {
+            r"esmanager.*\.log",
+            r"SecurityGateway_.*\.log"
+        }
     }
 }

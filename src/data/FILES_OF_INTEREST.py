@@ -21,5 +21,8 @@ FILES_OF_INTEREST = {
         "horizon_ports": ["netstat-abov.txt"],
         "installed_software": ["installed_software.txt"],
     },
-    "unified_access_gateway": "",
+    "unified_access_gateway": {
+        "server_info": ["uag_config.ini", "version.info"],
+        "horizon_ports": ["netstat.log"]
+    },
 }

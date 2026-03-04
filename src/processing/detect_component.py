@@ -5,7 +5,6 @@ def detect_component(zip_ctx):
     scores = {k: 0 for k in HORIZON_COMPONENT_MARKERS}
 
     for component, evidence in HORIZON_COMPONENT_MARKERS.items():
-        
         for d in evidence.get("dirs", []):
             if zip_ctx.exists_dir(d):
                 scores[component] += 1

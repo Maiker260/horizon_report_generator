@@ -82,5 +82,26 @@ DATA_TO_COLLECT = {
         "installed_software": COMMON_DATA_TO_COLLECT["installed_software"],
     },
 
-    "unified_access_gateway": {},
+    "unified_access_gateway": {
+        "server_info": [
+            "uagName",
+            "fipsEnabled",
+            "deploymentOption",
+            "minSHAHashSize",
+            "tls11Enabled",
+            "tls12Enabled",
+            "tls13Enabled",
+            "healthCheckUrl",
+            "hostClockSyncEnabled",
+            "blastExternalUrl",
+            "pcoipExternalUrl",
+            "proxyDestinationUrl",
+            "proxyDestinationUrlThumbprints",
+            "tunnelExternalUrl",
+            "ip0",
+            "netmask0",
+            "defaultGateway",
+        ],
+
+    },
 }

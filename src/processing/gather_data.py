@@ -6,7 +6,10 @@ def gather_data(zip_ctx, component):
 
     for name, parser_func in parsers.items():
         try:
-            data[name] = parser_func(zip_ctx, component)
+            if component == "unified_access_gateway":
+                data[name] = parser_func(zip_ctx)
+            else:
+                data[name] = parser_func(zip_ctx, component)
         except Exception as e:
             data[name] = {
                 "Error": str(e)
