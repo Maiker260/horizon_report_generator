@@ -83,25 +83,28 @@ DATA_TO_COLLECT = {
     },
 
     "unified_access_gateway": {
-        "server_info": [
-            "uagName",
-            "fipsEnabled",
-            "deploymentOption",
-            "minSHAHashSize",
-            "tls11Enabled",
-            "tls12Enabled",
-            "tls13Enabled",
-            "healthCheckUrl",
-            "hostClockSyncEnabled",
-            "blastExternalUrl",
-            "pcoipExternalUrl",
-            "proxyDestinationUrl",
-            "proxyDestinationUrlThumbprints",
-            "tunnelExternalUrl",
-            "ip0",
-            "netmask0",
-            "defaultGateway",
-        ],
-
+        "server_info": {
+            "General": [
+                "uagName",
+                "fipsEnabled",
+                "deploymentOption",
+                "ip0",
+                "netmask0",
+                "defaultGateway",
+                "tls11Enabled",
+                "tls12Enabled",
+                "tls13Enabled",
+                "hostClockSyncEnabled",
+            ],
+            "Horizon": [
+                "minSHAHashSize",
+                "healthCheckUrl",
+                "blastExternalUrl",
+                "pcoipExternalUrl",
+                "proxyDestinationUrl",
+                "proxyDestinationUrlThumbprints",
+                "tunnelExternalUrl",
+            ]
+        }
     },
 }

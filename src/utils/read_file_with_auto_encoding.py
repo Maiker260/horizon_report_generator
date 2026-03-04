@@ -1,5 +1,5 @@
-def read_file_with_auto_encoding(file_obj):
-    raw = file_obj.read()
+def read_file_with_auto_encoding(file):
+    raw = file.read()
 
     # UTF-16 BOM
     if raw.startswith(b'\xff\xfe') or raw.startswith(b'\xfe\xff'):
