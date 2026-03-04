@@ -12,9 +12,10 @@ COMMON_DATA_TO_COLLECT = {
         "VMware"
     ],
     "installed_software": {
-        "horizon": [
-            "Omnissa", "VMware"
-        ]
+        "Horizon": {
+            "Omnissa": ["omnissa"],
+            "VMware": ["vmware"]
+        }
     },
 }
 

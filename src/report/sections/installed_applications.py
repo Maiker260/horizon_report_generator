@@ -1,5 +1,3 @@
-from src.utils.report_sections.format_vendor import format_vendor
-
 SECTION_TITLES = {
     "Antivirus/EDR": "Antivirus / EDR",
     "vpn_agent": "VPN Agent",
@@ -56,7 +54,7 @@ def installed_applications(data, component, letter):
             vendor_group = {}
 
             for app in app_data:
-                vendor_name = app["kwd"]
+                vendor_name = app["vendor"]
 
                 if vendor_name not in vendor_group:
                    vendor_group[vendor_name] = []
@@ -64,17 +62,10 @@ def installed_applications(data, component, letter):
                 vendor_group[vendor_name].append(app)
 
             for vendor, entry in sorted(vendor_group.items()):
-                content.append(f"        {format_vendor(vendor)}:")
+                content.append(f"        {vendor}:")
                 
                 for app in entry:
                     app_info = app.get("app_info") or {}
-    
-                    if app_info:
-                        installed = app_info.get("installed", "N/A")
-                        version = app_info.get("version", "N/A")
-                    else:
-                        installed = "N/A"
-                        version = "N/A"
 
                     name = app.get("app_name", "Unknown")
                     installed = app_info.get("installed", "N/A")

@@ -1,22 +1,19 @@
-import re
 from src.data.FILES_OF_INTEREST import FILES_OF_INTEREST
 from src.data.DATA_TO_COLLECT import DATA_TO_COLLECT
 from src.data.SOFTWARE_RULES import SOFTWARE_RULES
 from src.utils.read_file_with_auto_encoding import read_file_with_auto_encoding
 from src.parsers.installed_software.apps_check import apps_check
+from src.utils.build_detection_index import build_detection_index
 
 def installed_software_check(zip_ctx, component):
+    SECURITY_INDEX = build_detection_index(SOFTWARE_RULES)
+    HORIZON_INDEX = build_detection_index(DATA_TO_COLLECT[component]["installed_software"])
     files = FILES_OF_INTEREST[component]["installed_software"]
-    PARSERS = {
-        "horizon_apps": {
-            "keywords": DATA_TO_COLLECT[component]["installed_software"],
-        },
-        "security_software": {
-            "keywords": SOFTWARE_RULES,
-        }
-    }
 
-    data = {name: [] for name in PARSERS}
+    data = {
+        "horizon_apps": [],
+        "security_software": []
+    }
 
     for filename in files:
         if not zip_ctx.exists(filename):
@@ -26,17 +23,30 @@ def installed_software_check(zip_ctx, component):
             content = read_file_with_auto_encoding(file)
 
             for line in content.splitlines():
-                line = line.strip()
-                lower_line = line.lower()
+                stripped = line.strip()
 
-                for pars_name, config in PARSERS.items():
-                    for app_type, kwds in config["keywords"].items():
-                        for raw_kwd in kwds:
-                            kwd = raw_kwd.lower()
+                detected = False
 
-                            if re.search(rf"\b{re.escape(kwd)}\b", lower_line):
-                                parsed = apps_check(line, raw_kwd, app_type)
-                                data[pars_name].append(parsed)
-                                break
-                            
+                for entry in SECURITY_INDEX:
+                    if entry["pattern"].search(stripped):
+                        parsed = apps_check(line, entry["alias"], entry["category"])
+
+                        parsed["vendor"] = entry["vendor"]
+                        data["security_software"].append(parsed)
+
+                        detected = True
+                        break
+
+                if detected:
+                    continue
+
+                for entry in HORIZON_INDEX:
+                    if entry["pattern"].search(stripped):
+                        parsed = apps_check(line, entry["alias"], entry["category"])
+                        
+                        parsed["vendor"] = entry["vendor"]
+                        data["horizon_apps"].append(parsed)
+
+                        break
+
     return data

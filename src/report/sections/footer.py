@@ -1,6 +1,6 @@
 from src.data.FILES_OF_INTEREST import FILES_OF_INTEREST
 from src.data.UNWANTED_ROLES import UNWANTED_ROLES
-from src.data.SOFTWARE_CATEGORIES import SOFTWARE_CATEGORIES
+from src.data.SOFTWARE_RULES import SOFTWARE_RULES
 
 def footer(component):
     content = []
@@ -46,7 +46,7 @@ def footer(component):
     content.append("\n\nSoftware Classification Categories:")
     content.append("  Installed applications are categorized using keyword-based matching.")
 
-    for category, vendors in SOFTWARE_CATEGORIES.items():
+    for category, vendors in SOFTWARE_RULES.items():
         content.append(f"\n - {category}:")
         for vendor in vendors:
             content.append(f"     * {vendor}")
