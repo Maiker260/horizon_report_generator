@@ -83,7 +83,7 @@ DATA_TO_COLLECT = {
     },
 
     "unified_access_gateway": {
-        "server_info": {
+        "uag_info": {
             "General": [
                 "uagName",
                 "fipsEnabled",
@@ -105,6 +105,7 @@ DATA_TO_COLLECT = {
                 "proxyDestinationUrlThumbprints",
                 "tunnelExternalUrl",
             ]
-        }
+        },
+        "horizon_ports": [9443, 443, 8443, 22443, 4172, 3389, 9427, 32111, 5500]
     },
 }

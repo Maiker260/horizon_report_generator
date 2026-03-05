@@ -8,6 +8,7 @@ from src.report.sections.installed_applications import installed_applications
 from src.report.sections.certificates import certificates
 from src.report.sections.locked_properties import locked_properties
 from src.report.sections.horizon_features import horizon_features
+from src.report.sections.uag.uag_info import uag_info
 from src.report.sections.footer import footer
 
 COMMON_REPORT_SECTIONS = [
@@ -27,7 +28,9 @@ REPORT_SECTIONS = {
     ),
     "agent": lambda: (COMMON_REPORT_SECTIONS + [horizon_features]),
     "client": lambda: COMMON_REPORT_SECTIONS,
-    "unified_access_gateway": lambda: [],
+    "unified_access_gateway": lambda: [
+        uag_info, open_ports
+    ],
 }
 
 def generate_report(data, zip_path, component):
@@ -45,6 +48,7 @@ def generate_report(data, zip_path, component):
     for index, report_section in enumerate(sections):
         try:
             letter = string.ascii_uppercase[index]
+
             report += report_section(data, component, letter)
 
         except Exception as e:

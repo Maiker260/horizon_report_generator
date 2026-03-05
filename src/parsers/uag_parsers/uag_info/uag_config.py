@@ -1,19 +1,13 @@
-from src.data.FILES_OF_INTEREST import FILES_OF_INTEREST
-from src.data.DATA_TO_COLLECT import DATA_TO_COLLECT
 from src.utils.read_file_with_auto_encoding import read_file_with_auto_encoding
+from src.data.DATA_TO_COLLECT import DATA_TO_COLLECT
 
-def server_info_check(zip_ctx):
-    files = FILES_OF_INTEREST["unified_access_gateway"]["server_info"]
-    sections = DATA_TO_COLLECT["unified_access_gateway"]["server_info"]
+def uag_config(zip_ctx, filename):
+    sections = DATA_TO_COLLECT["unified_access_gateway"]["uag_info"]
 
-    data = []
+    data = {}
     to_parse_sections = []
 
-    for filename in files:
-        if not zip_ctx.exists(filename):
-            continue
-
-        with zip_ctx.open(filename) as file:
+    with zip_ctx.open(filename) as file:
             content = read_file_with_auto_encoding(file)
 
             current_section = None
@@ -57,10 +51,6 @@ def server_info_check(zip_ctx):
             key, value = config_line.split("=", 1)
 
             if key.strip() in sections[name]:
-                data.append({
-                    "name": key.strip(),
-                    "value": value.strip(),
-                })
+                data[key.strip()] = value.strip()
 
-    print(data)
     return data

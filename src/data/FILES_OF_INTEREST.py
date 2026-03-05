@@ -22,7 +22,7 @@ FILES_OF_INTEREST = {
         "installed_software": ["installed_software.txt"],
     },
     "unified_access_gateway": {
-        "server_info": ["uag_config.ini", "version.info"],
+        "uag_info": ["uag_config.ini", "version.info"],
         "horizon_ports": ["netstat.log"]
     },
 }

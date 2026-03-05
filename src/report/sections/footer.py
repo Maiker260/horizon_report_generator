@@ -43,13 +43,14 @@ def footer(component):
             content.append(f" - {role + ':':<{max_width}}  {indicators_list}")
 
     # Software Classification Methodology
-    content.append("\n\nSoftware Classification Categories:")
-    content.append("  Installed applications are categorized using keyword-based matching.")
+    if not component == "unified_access_gateway":
+        content.append("\n\nSoftware Classification Categories:")
+        content.append("  Installed applications are categorized using keyword-based matching.")
 
-    for category, vendors in SOFTWARE_RULES.items():
-        content.append(f"\n - {category}:")
-        for vendor in vendors:
-            content.append(f"     * {vendor}")
+        for category, vendors in SOFTWARE_RULES.items():
+            content.append(f"\n - {category}:")
+            for vendor in vendors:
+                content.append(f"     * {vendor}")
 
     content.append("")
     content.append("")

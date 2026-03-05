@@ -6,7 +6,8 @@ from src.parsers.installed_software.installed_software_check import installed_so
 from src.parsers.certificates.certificates_check import certificates_check
 from src.parsers.horizon_features import horizon_features_check
 from src.parsers.locked_properties.locked_properties_check import locked_properties_check
-from src.parsers.uag_parsers.server_info.server_info_check import server_info_check
+from src.parsers.uag_parsers.uag_info.uag_info_check import uag_info_check
+from src.parsers.uag_parsers.uag_ports.uag_ports_check import uag_ports_check
 
 COMMON_PARSERS = {
     "device_info": device_info_check,
@@ -37,8 +38,8 @@ COMPONENT_CHECKS = {
     },
     "unified_access_gateway": {
         "parsers": {
-            "server_info": server_info_check,
-            "horizon_ports": "",
+            "uag_info": uag_info_check,
+            "horizon_ports": uag_ports_check,
         }
     }
 }

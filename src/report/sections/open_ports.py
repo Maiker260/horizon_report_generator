@@ -1,6 +1,5 @@
 from src.data.DATA_TO_COLLECT import DATA_TO_COLLECT
 
-
 def open_ports(data, component, letter):
     expected_ports = DATA_TO_COLLECT[component]["horizon_ports"]
     ports = data["horizon_ports"]
@@ -21,7 +20,7 @@ def open_ports(data, component, letter):
     max_width = max(len(key + ":") for key in field_names)
 
     for protocol, info in ports.items():
-        content.append(f"{protocol}:")
+        content.append(f"{protocol.upper()}:")
         content.append("-" * len(protocol))
 
         grouped = {}
@@ -42,7 +41,7 @@ def open_ports(data, component, letter):
                     "connection_server": [4172, 8443],
                     "agent": [4172, 22443, 55000],
                     "client": [443, 4172, 8443, 22443],
-                    "unified_access_gateway": [],
+                    "unified_access_gateway": [22443, 4172, 5500],
                 }
 
                 if protocol == "UDP" and port_str not in udp_ports[component]:

@@ -15,13 +15,13 @@ def main(zip_path):
             component = detect_component(zip_ctx)
             data = gather_data(zip_ctx, component)
 
-            # report = generate_report(data, zip_path, component)
+            report = generate_report(data, zip_path, component)
 
             # print(report)
-            # report_path = save_report(report)
+            report_path = save_report(report)
 
-            # return report_path
+            return report_path
 
     except Exception as e:
-        # save_error_log(e)
+        save_error_log(e)
         raise
