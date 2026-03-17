@@ -7,6 +7,6 @@ if len(sys.argv) < 2:
     sys.exit(1)
 
 zip_path = Path(sys.argv[1])
-# zip_path = Path("tmp") / "UAG-Testi.zip"
+# zip_path = Path("tmp") / "CS-2406.zip"
 
 main(zip_path)

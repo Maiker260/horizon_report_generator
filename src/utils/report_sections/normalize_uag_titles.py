@@ -8,6 +8,12 @@ ACRONYMS = {
     "uag": "UAG",
     "pcoip": "PCoIP",
     "fips": "FIPS",
+    "proxy Destination": "Connection Server"
+}
+
+PHRASE_REPLACEMENTS = {
+    "Proxy Destination URL": "Connection Server URL",
+    "Proxy Destination URL Thumbprints": "Connection Server URL Thumbprints",
 }
 
 def normalize_uag_titles(text: str) -> str:
@@ -35,4 +41,9 @@ def normalize_uag_titles(text: str) -> str:
         else:
             normalized_words.append(word.capitalize())
 
-    return " ".join(normalized_words)
+    result = " ".join(normalized_words)
+
+    for old, new in PHRASE_REPLACEMENTS.items():
+        result = result.replace(old, new)
+
+    return result

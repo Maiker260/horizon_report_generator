@@ -50,9 +50,9 @@ HORIZON_COMPONENT_MARKERS = {
             "uag_config.json",
             "uagstats.json",
         ],
-        "patterns": {
+        "patterns": [
             r"esmanager.*\.log",
             r"SecurityGateway_.*\.log"
-        }
+        ]
     }
 }

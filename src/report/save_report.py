@@ -1,7 +1,14 @@
 from pathlib import Path
 
-def save_report(report):
-    base_name = "Horizon Report"
+KEY_FIXES = {
+    "connection_server": "CS",
+    "unified_access_gateway": "UAG",
+}
+
+def save_report(report, component):
+    key = KEY_FIXES.get(component, component.title())
+
+    base_name = f"Horizon {key} Report"
     extension = ".txt"
     file_path = Path(f"{base_name}{extension}")
     counter = 1

@@ -9,7 +9,6 @@ from .constants import (
     SECTION_HEADERS,
 )
 
-
 def parse_certificate_block(lines):
     cert = {
         "archived": False,
@@ -55,6 +54,7 @@ def parse_certificate_block(lines):
         else:
             # Sections
             matched_section = False
+
             for header, sec_name in SECTION_HEADERS.items():
                 if stripped.startswith(header):
                     cert[sec_name] = {}
