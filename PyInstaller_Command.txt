@@ -1,0 +1,1 @@
+pyinstaller --onefile --noconsole run.py --name HorizonReportGenerator --icon=icon.ico --clean --paths .

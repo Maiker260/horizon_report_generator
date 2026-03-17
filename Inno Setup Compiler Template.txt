@@ -1,0 +1,39 @@
+[Setup]
+AppName=Horizon Report Generator
+AppId=HorizonReportGenerator
+AppVersion=1.0.0
+DefaultDirName={pf}\Horizon Report Generator
+DefaultGroupName=Horizon Report Generator
+OutputBaseFilename=HorizonReportGeneratorInstaller
+SetupIconFile=icon.ico
+UninstallDisplayIcon={app}\HorizonReportGenerator.exe
+Compression=lzma
+SolidCompression=yes
+PrivilegesRequired=admin
+
+[Files]
+Source: "dist\HorizonReportGenerator.exe"; DestDir: "{app}"; Flags: ignoreversion
+
+[Registry]
+; Main Key (submenu)
+Root: HKLM; Subkey: "Software\Classes\SystemFileAssociations\.zip\shell\HorizonReport"; \
+    ValueType: string; ValueName: "MUIVerb"; ValueData: "Horizon Report"; Flags: uninsdeletekey
+
+Root: HKLM; Subkey: "Software\Classes\SystemFileAssociations\.zip\shell\HorizonReport"; \
+    ValueType: string; ValueName: "Icon"; ValueData: "{app}\HorizonReportGenerator.exe"
+
+Root: HKLM; Subkey: "Software\Classes\SystemFileAssociations\.zip\shell\HorizonReport"; \
+    ValueType: string; ValueName: "SubCommands"; ValueData: ""; Flags: uninsdeletevalue
+
+; Sub-option
+Root: HKLM; Subkey: "Software\Classes\SystemFileAssociations\.zip\shell\HorizonReport\shell\GenerateReport"; \
+    ValueType: string; ValueName: "MUIVerb"; ValueData: "Horizon Report Generator"; Flags: uninsdeletekey
+    
+Root: HKLM; Subkey: "Software\Classes\SystemFileAssociations\.zip\shell\HorizonReport\shell\GenerateReport"; \
+    ValueType: string; ValueName: "Icon"; ValueData: "{app}\HorizonReportGenerator.exe"; Flags: uninsdeletevalue
+
+Root: HKLM; Subkey: "Software\Classes\SystemFileAssociations\.zip\shell\HorizonReport\shell\GenerateReport\command"; \
+    ValueType: string; ValueName: ""; ValueData: """{app}\HorizonReportGenerator.exe"" ""%1"""; Flags: uninsdeletekey
+   
+[Icons]
+Name: "{group}\Horizon Report Generator"; Filename: "{app}\HorizonReportGenerator.exe"
