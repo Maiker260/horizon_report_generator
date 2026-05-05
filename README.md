@@ -4,12 +4,13 @@ A lightweight and practical tool to generate structured, easy-to-read reports fr
 
 ## Screenshots
 
-![Windows Menu](./assets/screenshots/Windows%20Menu.web)
+### Context Menu Integration
+<img src="./assets/screenshots/WindowsMenu.webp" alt="Windows Menu" width="600"/>
 
-![Report Example 1](./assets/screenshots/First.webp)
-![Report Example 2](./assets/screenshots/Second.webp)
-![Report Example 3](./assets/screenshots/Third.webp)
-
+### Generated Report
+<img src="./assets/screenshots/First.webp" alt="First" width="600"/>
+<img src="./assets/screenshots/Second.webp" alt="Second" width="600"/>
+<img src="./assets/screenshots/Third.webp" alt="Third" width="600"/>
 
 ## Overview
 
