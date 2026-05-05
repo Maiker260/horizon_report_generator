@@ -2,6 +2,14 @@
 
 A lightweight and practical tool to generate structured, easy-to-read reports from Omnissa / VMware Horizon log bundles.
 
+## Screenshots
+
+![Windows Menu](./assets/screenshots/Windows%20Menu.web)
+
+![Report Example 1](./assets/screenshots/First.webp)
+![Report Example 2](./assets/screenshots/Second.webp)
+![Report Example 3](./assets/screenshots/Third.webp)
+
 
 ## Overview
 
