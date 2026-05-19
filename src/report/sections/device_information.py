@@ -38,19 +38,11 @@ def device_information(data, component, letter):
             content.append(f"   - {patch}")
 
     # NICs
-    field_names = [
-        "Index",
-        "Adapter",
-        "Interface",
-        "IP Addresses",
-        "DNS Servers"
-    ]
-
-    max_width_nic = max(len(key) for key in field_names)
     content.append(f"\nNetwork Interfaces:")
     
     for i, nic in enumerate(network_cards, start=1):
         fields = {
+            "Index": "",
             "Adapter": nic.get("Adapter", "N/A"),
             "Interface": nic.get("Connection Name", "N/A"),
             "IP Addresses": nic.get("IP Addresses", []),
@@ -59,7 +51,10 @@ def device_information(data, component, letter):
 
         content.append(f"\n   #{i}")
 
-        for key in field_names[1:]:
+        keys = list(fields)
+        max_width_nic = max(len(key) for key in keys)
+
+        for key in keys[1:]:
             value = fields.get(key, "N/A")
 
             if key in ("IP Addresses", "DNS Servers"):

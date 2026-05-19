@@ -8,20 +8,14 @@ def server_roles(data, component, letter):
     if not roles:
         content.append("\n   No Additional Roles Found.")
 
-    field_names = [
-        "Status",
-        "Evidence",
-        "File",
-    ]
-
-    max_width = max(len(key + ":") for key in field_names)
-
     for role, info in roles.items():
         fields = {
             "Status": "Detected (Running)",
             "Evidence": info["evidence"],
             "File": info["file"],
         }
+
+        max_width = max(len(key + ":") for key in fields)
 
         content.append(f"\n{role}")
 

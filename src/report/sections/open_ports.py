@@ -9,16 +9,6 @@ def open_ports(data, component, letter):
     content.append("-" * 30)
     content.append("")
 
-    field_names = [
-        "State",
-        "Process",
-        "Local Address",
-        "Foreign Address",
-        "PID"
-    ]
-    
-    max_width = max(len(key + ":") for key in field_names)
-
     for protocol, info in ports.items():
         content.append(f"{protocol.upper()}:")
         content.append("-" * len(protocol))
@@ -62,6 +52,8 @@ def open_ports(data, component, letter):
                     "Local Address": entry['local_address'],
                     "Foreign Address": entry['foreign_address'],
                 }
+
+                max_width = max(len(key + ":") for key in fields)
 
                 for key, value in fields.items():
                     content.append(f"      - {key + ':':<{max_width}}  {value}")

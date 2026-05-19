@@ -18,20 +18,6 @@ def certificates(data, component, letter):
     if len(vdm_certs) > 1:
         content.append("\n * MULTIPLE VDM CERTIFICATES DETECTED.")
 
-    field_names = [
-        "Friendly Name",
-        "Serial Number",
-        "Issuer",
-        "Subject",
-        "Subject Alternative Name(s)",
-        "Valid From (Not Before)",
-        "Valid To (Not After)",
-        "Has Private Key",
-        "Private Key Exportable",
-    ]
-
-    max_width = max(len(key + ":") for key in field_names)
-
     for i, vdm_cert in enumerate(vdm_certs, start=1):
             content.append(f"\n   #{i}")
 
@@ -58,6 +44,8 @@ def certificates(data, component, letter):
                 "Has Private Key": has_private_key_display,
                 "Private Key Exportable": private_key_exportable_display,
             }
+
+            max_width = max(len(key + ":") for key in fields)
 
             for key, value in fields.items():
                 value = value if value is not None else "False"
