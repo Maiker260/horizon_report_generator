@@ -20,11 +20,11 @@ def main(zip_path):
 
             data = gather_data(zip_ctx, component)
             report = generate_report(data, zip_path, component)
-            print(report)
-            # report_path = save_report(report, component)
+            # print(report)
+            report_path = save_report(report, component)
 
-            # return report_path
+            return report_path
 
     except Exception as e:
-        # save_error_log(e)
+        save_error_log(e)
         raise
