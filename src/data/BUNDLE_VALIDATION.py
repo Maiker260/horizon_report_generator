@@ -9,7 +9,7 @@ BUNDLE_VALIDATION = {
         ],
         "structural": [
             r".*-logs/broker",
-            "adam.ldif",
+            r"adam.*\.ldif",
         ],
     },
     "agent": {
