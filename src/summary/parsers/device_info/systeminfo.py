@@ -1,0 +1,49 @@
+from src.summary.utils.search_keyword import search_keyword
+from src.summary.utils.normalize_line import normalize_line
+from src.summary.data.DATA_TO_COLLECT import DATA_TO_COLLECT
+from src.summary.parsers.device_info.hotfixes import parse_hotfixes
+from src.summary.parsers.device_info.network_cards import parse_nics
+from src.common.utils.read_file_with_auto_encoding import read_file_with_auto_encoding
+
+BLOCK_PARSERS = {
+    "Hotfix(s)": parse_hotfixes,
+    "Network Card(s)": parse_nics,
+}
+
+def systeminfo(zip_ctx, filename, component, current_data):
+    keywords = DATA_TO_COLLECT[component]["device_info"]
+
+    data = {}
+    current_block = None
+    block_lines = []
+
+    if not zip_ctx.exists(filename):
+        return
+
+    with zip_ctx.open(filename) as file:
+        content = read_file_with_auto_encoding(file)
+
+        for line in content.splitlines():
+            if current_block:
+                if line and line[0].isspace():
+                    block_lines.append(line)
+                    continue
+
+                data[current_block] = BLOCK_PARSERS[current_block](block_lines)
+                current_block = None
+                block_lines = []
+
+            for keyword in keywords - data.keys():
+                if search_keyword(line, keyword):
+                    if keyword in BLOCK_PARSERS:
+                        current_block = keyword
+                        block_lines = []
+                    else:
+                        key, value = normalize_line(line)
+                        data[key] = value
+                    break
+
+    if current_block:
+        data[current_block] = BLOCK_PARSERS[current_block](block_lines)
+
+    return data

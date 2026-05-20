@@ -1,13 +1,16 @@
 import zipfile
-from src.reader.file_reader import ZipContext
-from src.processing.gather_data import gather_data
-from src.report.generate_report import generate_report
-from src.processing.detect_component import detect_component
-from src.report.save_report import save_report
-from src.report.save_error_log import save_error_log
-from src.processing.validate_bundle import validate_bundle
+from src.common.reader.file_reader import ZipContext
+from src.common.processing.detect_component import detect_component
+from src.common.processing.validate_bundle import validate_bundle
+from src.common.report.save_error_log import save_error_log
+from src.common.report.save_report import save_report
+from src.summary.generate_log_summary import generate_log_summary
 
-def main(zip_path):
+features = {    
+    "log_summary": generate_log_summary
+}
+
+def main(zip_path, feature):
     try:
         with zipfile.ZipFile(zip_path) as zip_file:
             zip_ctx = ZipContext(zip_file)
@@ -16,13 +19,12 @@ def main(zip_path):
 
             validate_bundle(zip_ctx, component)
 
-            data = gather_data(zip_ctx, component)
-            report = generate_report(data, zip_path, component)
+            report = features[feature](zip_path, zip_ctx, component)
             # print(report)
-            report_path = save_report(report, component)
+            report_path = save_report(report, component, feature)
 
             return report_path
 
     except Exception as e:
-        save_error_log(e)
+        save_error_log(e, feature)
         raise

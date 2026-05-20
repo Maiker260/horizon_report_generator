@@ -7,6 +7,10 @@ if len(sys.argv) < 2:
     sys.exit(1)
 
 zip_path = Path(sys.argv[1])
-# zip_path = Path("tmp") / "CS-2406.zip"
+feature = Path(sys.argv[2])
 
-main(zip_path)
+# zip_path = Path("tmp") / "CS-2406.zip"
+# feature = "log_summary"
+# feature = "log_analysis"
+
+main(zip_path, feature)

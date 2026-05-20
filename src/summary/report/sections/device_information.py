@@ -1,0 +1,68 @@
+from src.summary.utils.report_sections.format_sub_sections import format_sub_sections
+from src.summary.utils.report_sections.extract_device_info import extract_device_info
+
+KEY_FIXES = {
+    "OS Name": "Operating System",
+    "System Boot Time": "Boot Time",
+    "Original Install Date": "OS Install Date",
+    "Total Physical Memory": "Total Memory",
+    "Available Physical Memory": "Available Memory",
+    "Horizon Fips Mode": "Horizon FIPS Mode",
+}
+
+def device_information(data, component, letter):
+    device_info = data["device_info"]
+    systeminfo = device_info["systeminfo"]
+
+    info = extract_device_info(device_info, component)
+    max_width = max(len(KEY_FIXES.get(key, key)) for key in info)
+
+    hotfixes = systeminfo.get("Hotfix(s)", "N/A")
+    network_cards = systeminfo.get("Network Card(s)", "N/A")
+
+    content = []
+    content.append(f"\n\n{letter}. MACHINE INFORMATION")
+    content.append("-" * 30)
+
+    # One line content
+    for key, value in info.items():
+        key = KEY_FIXES.get(key, key)
+
+        label = f"{key}:"
+        content.append(f"{label:<{max_width + 1}}  {value}")
+
+    # Hotfixes
+    if component in ["connection_server", "agent"]:
+        content.append(f"\nInstalled Patches:")
+        for patch in hotfixes:
+            content.append(f"   - {patch}")
+
+    # NICs
+    content.append(f"\nNetwork Interfaces:")
+    
+    for i, nic in enumerate(network_cards, start=1):
+        fields = {
+            "Index": "",
+            "Adapter": nic.get("Adapter", "N/A"),
+            "Interface": nic.get("Connection Name", "N/A"),
+            "IP Addresses": nic.get("IP Addresses", []),
+            "DNS Servers": nic.get("DNS Servers", [])
+        }
+
+        content.append(f"\n   #{i}")
+
+        keys = list(fields)
+        max_width_nic = max(len(key) for key in keys)
+
+        for key in keys[1:]:
+            value = fields.get(key, "N/A")
+
+            if key in ("IP Addresses", "DNS Servers"):
+                label = f"{key}:"
+                content.append(f"     - {label:<{max_width_nic}} ")
+                format_sub_sections(value, content, (max_width_nic))
+                continue
+
+            content.append(f"     - {key + ':':<{max_width_nic + 1}}  {value}")
+
+    return "\n".join(content)
