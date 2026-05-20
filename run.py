@@ -29,6 +29,7 @@ if __name__ == "__main__":
             sys.exit(1)
 
         zip_path = Path(sys.argv[1])
+        feature = sys.argv[2]
 
         if not zip_path.exists():
             show_error("The selected file does not exist.")
@@ -38,7 +39,7 @@ if __name__ == "__main__":
             show_error("Only ZIP files are supported.")
             sys.exit(1)
 
-        report_path = main(zip_path)
+        report_path = main(zip_path, feature)
 
         show_info(
             f"Report generated successfully.\n\nLocation:\n{report_path.resolve()}"
