@@ -5,9 +5,11 @@ from src.common.processing.validate_bundle import validate_bundle
 from src.common.report.save_error_log import save_error_log
 from src.common.report.save_report import save_report
 from src.summary.generate_log_summary import generate_log_summary
+from src.analysis.generate_log_analysis import generate_log_analysis
 
 features = {    
-    "log_summary": generate_log_summary
+    "log_summary": generate_log_summary,
+    "log_analysis": generate_log_analysis
 }
 
 def main(zip_path, feature):
