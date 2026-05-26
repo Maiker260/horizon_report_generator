@@ -6,6 +6,7 @@ from src.common.report.save_error_log import save_error_log
 from src.common.report.save_report import save_report
 from src.summary.generate_log_summary import generate_log_summary
 from src.analysis.generate_log_analysis import generate_log_analysis
+from src.common.data.BUNDLE_VALIDATION import BUNDLE_VALIDATION
 
 features = {    
     "log_summary": generate_log_summary,
@@ -21,7 +22,7 @@ def main(zip_path, feature):
 
             validate_bundle(zip_ctx, component)
 
-            report = features[feature](zip_path, zip_ctx, component)
+            report = features[feature](zip_path, zip_ctx, component, feature)
             # print(report)
             report_path = save_report(report, component, feature)
 

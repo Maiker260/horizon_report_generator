@@ -7,6 +7,9 @@ KEY_FIXES = {
 }
 
 def validate_bundle(zip_ctx, component):
+    if component not in BUNDLE_VALIDATION:
+        raise ValueError(f"Invalid component: {component}")
+
     markers = BUNDLE_VALIDATION[component]
     component = KEY_FIXES.get(component, component.title())
 

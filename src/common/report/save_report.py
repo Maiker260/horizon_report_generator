@@ -1,5 +1,5 @@
 from pathlib import Path
-from .NAME_FIXES import KEY_FIXES, FEATURE_FIXES
+from src.common.report.utils.NAME_FIXES import FEATURE_FIXES, KEY_FIXES
 
 def save_report(report, component, feature):
     key = KEY_FIXES.get(component, component.title())

@@ -2,14 +2,8 @@ from src.summary.data.FILES_OF_INTEREST import FILES_OF_INTEREST
 from src.summary.data.UNWANTED_ROLES import UNWANTED_ROLES
 from src.summary.data.SOFTWARE_RULES import SOFTWARE_RULES
 
-def footer(component):
+def summary_references_notes(component):
     content = []
-    content.append("\n\n\n\n\n\n\n")
-    content.append("=" * 50)
-    content.append("REFERENCES & NOTES")
-    content.append("=" * 50)
-
-    content.append("\n*IMPORTANT NOTE: A manual review of the original evidence files is recommended to confirm findings and ensure accuracy.")
 
     # Evidence Sources:
     content.append("\nEvidence Sources:")
@@ -26,17 +20,7 @@ def footer(component):
         content.append("  Server roles are identified based on running processes and services.")
         content.append("  The following processes/services names are used as indicators:\n")
 
-        role_field_names = [
-            "Domain Controller",
-            "DHCP Server",
-            "DNS Server",
-            "Certificate Authority",
-            "Hyper-V",
-            "WSUS",
-            "IIS"
-        ]
-
-        max_width = max(len(key + ":") for key in role_field_names)
+        max_width = max(len(key + ":") for key in UNWANTED_ROLES)
 
         for role, indicators in UNWANTED_ROLES.items():
             indicators_list = ", ".join(indicators)
@@ -51,21 +35,6 @@ def footer(component):
             content.append(f"\n - {category}:")
             for vendor in vendors:
                 content.append(f"     * {vendor}")
-
-    content.append("")
-    content.append("")
-
-    # Disclaimer
-    content.append("=" * 50)
-    content.append("DISCLAIMER")
-    content.append("=" * 50)
-
-    content.append("\nThis tool is not an official product of Omnissa, VMware, or any other software vendor mentioned in this document. It is not endorsed, certified, or supported by any vendor.")
-    content.append("\nThis report is intended strictly for internal use within the organization. Unauthorized distribution, external sharing, or representation of this tool as an official vendor-supported solution is prohibited.")
-    content.append("\nUse of this report and its findings is at the discretion and responsibility of the reviewing party.")
-
-    content.append("\nCreated by: Miker Gutierrez (@gmiker)")
-    content.append("Source Code: https://github.com/Maiker260/horizon_report_generator")
 
     content.append("")
     content.append("")

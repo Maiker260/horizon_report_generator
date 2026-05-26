@@ -1,24 +1,26 @@
 CERTIFICATE_RULES = [
     {
         "name": "Certificate Upload Issue",
-        "category": "certificates",
+        "category": "certificate",
         "patterns": [
             "Failed to upload ESManager certificate"
         ],
-        "recommendation": [
-            "Check https://kb.omnissa.com/s/article/91732",
+        "recommendations": [],
+        "references": [
+            "https://kb.omnissa.com/s/article/91732"
         ]
     },
     {
         "name": "Unexpected thumbprint on a Blast certificate",
-        "category": "certificates",
+        "category": "certificate",
         "patterns": [
             "Expected thumbprint is",
             "Actual thumbprint is",
             "Cannot verify target host"
         ],
-        "recommendation": [
-            "Check https://kb.omnissa.com/s/article/91732",
+        "recommendations": [],
+        "references": [
+            "https://kb.omnissa.com/s/article/91732"
         ]
     },
 ]

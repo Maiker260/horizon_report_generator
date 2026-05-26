@@ -1,6 +1,7 @@
-from pathlib import Path
 import traceback
-from .NAME_FIXES import FEATURE_FIXES
+from pathlib import Path
+
+from src.common.report.utils.NAME_FIXES import FEATURE_FIXES
 
 def save_error_log(exception: Exception, feature):
     feature_name = FEATURE_FIXES.get(feature)

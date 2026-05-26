@@ -1,8 +1,9 @@
 import datetime
+from src.common.report.utils.NAME_FIXES import FEATURE_FIXES
 
 date = datetime.datetime.now()
 
-def header(zip_path, component):
+def header(zip_path, component, feature):
     component = component.replace("_", " ").title()
     now = date.strftime("%c")
 
@@ -16,7 +17,7 @@ def header(zip_path, component):
 
     header = []
     header.append("=" * 50)
-    header.append("LOG BUNDLE REPORT")
+    header.append(FEATURE_FIXES[feature].upper())
     header.append(f"{'Generated' + ':':<{max_width}}  {now} (Local Time)")
     
     header.append(f"{'Bundle' + ':':<{max_width}}  {zip_path}")
