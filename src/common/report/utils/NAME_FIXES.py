@@ -4,6 +4,6 @@ KEY_FIXES = {
 }
 
 FEATURE_FIXES = {
-    "log_summary": "Summary Report",
+    "summary_report": "Summary Report",
     "log_analysis": "Log Analysis"
 }

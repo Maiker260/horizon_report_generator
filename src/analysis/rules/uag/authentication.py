@@ -3,7 +3,7 @@ AUTHENTICATION_RULES = [
         "name": "SAML Validation Failed",
         "category": "authentication",
         "patterns": [
-            r"Error on performing SAML validation\: SAML Assertion is valid between NotBefore"
+            r"Error on performing SAML validation: SAML Assertion is valid between NotBefore"
         ],
         "recommendations": [
             "Check that the UAG and Identity Provider time is in sync",

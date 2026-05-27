@@ -5,7 +5,9 @@ FILES_OF_INTEREST = {
     "unified_access_gateway": [
         "admin.log", "bsg.log", "esmanager.log"
     ],
-    "agent": [],
+    "agent": [
+        "setuperr.log", 
+    ],
     "client": [
         r"horizon-protocol-.*\.log", r"omnissa-horizon-client-.*\.txt"
     ],

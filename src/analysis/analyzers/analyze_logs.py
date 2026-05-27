@@ -7,21 +7,33 @@ def analyze_logs(zip_ctx, component):
     data = []
 
     for filename in files:
-        if not zip_ctx.exists(filename):
-            continue
+        is_pattern = any(char in filename for char in "^$.*+?[](){}|\\")
 
-        with zip_ctx.open(filename) as file:
-            content = read_file_with_auto_encoding(file)
+        if is_pattern:
+            matched_files = zip_ctx.find_pattern(filename)
 
-            for line in content.splitlines():
-                line = line.strip()
+            if not matched_files:
+                continue
 
-                if not line:
-                    continue
+        else:
+            if not zip_ctx.exists(filename):
+                continue
 
-                result = rule_parser(line, component, filename)
+            matched_files = [filename]
 
-                if result:
-                    data.append(result)
+        for matched_file in matched_files:
+             with zip_ctx.open(matched_file) as file:
+                content = read_file_with_auto_encoding(file)
+
+                for line in content.splitlines():
+                    line = line.strip()
+
+                    if not line:
+                        continue
+
+                    result = rule_parser(line, component, matched_file)
+
+                    if result:
+                        data.append(result)
 
     return data

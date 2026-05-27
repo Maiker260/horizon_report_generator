@@ -4,12 +4,11 @@ from src.common.processing.detect_component import detect_component
 from src.common.processing.validate_bundle import validate_bundle
 from src.common.report.save_error_log import save_error_log
 from src.common.report.save_report import save_report
-from src.summary.generate_log_summary import generate_log_summary
+from src.summary.generate_summary_report import generate_summary_report
 from src.analysis.generate_log_analysis import generate_log_analysis
-from src.common.data.BUNDLE_VALIDATION import BUNDLE_VALIDATION
 
 features = {    
-    "log_summary": generate_log_summary,
+    "summary_report": generate_summary_report,
     "log_analysis": generate_log_analysis
 }
 

@@ -3,7 +3,7 @@ CERTIFICATE_RULES = [
         "name": "Certificate Upload Issue",
         "category": "certificate",
         "patterns": [
-            "Failed to upload ESManager certificate"
+            r"Failed to upload ESManager certificate"
         ],
         "recommendations": [],
         "references": [
@@ -14,9 +14,9 @@ CERTIFICATE_RULES = [
         "name": "Unexpected thumbprint on a Blast certificate",
         "category": "certificate",
         "patterns": [
-            "Expected thumbprint is",
-            "Actual thumbprint is",
-            "Cannot verify target host"
+            r"Expected thumbprint is",
+            r"Actual thumbprint is",
+            r"Cannot verify target host"
         ],
         "recommendations": [],
         "references": [

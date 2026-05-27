@@ -10,9 +10,11 @@ zip_path = Path(sys.argv[1])
 feature = sys.argv[2]
 
 # zip_path = Path("tmp") / "CS-2406.zip"
+# zip_path = Path("tmp") / "Client-2512T.zip"
 # zip_path = Path("tmp") / "NDC.zip"
 # zip_path = Path("tmp") / "UAG-2406 Testi.zip"
-# feature = "log_summary"
+
+# feature = "summary_report"
 # feature = "log_analysis"
 
 main(zip_path, feature)

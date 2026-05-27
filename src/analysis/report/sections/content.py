@@ -1,4 +1,3 @@
-from src.common.report.utils.section_title import section_title
 from src.analysis.utils.normalize_findings import normalize_findings
 from src.analysis.utils.count_categories import count_categories
 
@@ -20,15 +19,24 @@ def content(data):
 
     report.append("Findings By Category:")
 
-    for category, count in categories.items():
+    if not categories:
+        report.append("   No categories found.")
+    else:
         max_width = max(len(key + ":") for key in categories)
 
-        report.append(f"   {category.title() + ':':<{max_width}}  {count}")
+        for category, count in categories.items():
+            report.append(f"   {category.title() + ':':<{max_width}}  {count}")
 
     # Findings
     report.append("\n")
     report.append("B. FINDINGS")
     report.append("-" * 30)
+
+    if not normalized_data:
+        report.append("")
+        report.append("No findings matched the analysis patterns.")
+        report.append("")
+        return "\n".join(report)
 
     FIXED_NAMES = {
         "rule_name": "Name",

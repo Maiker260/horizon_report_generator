@@ -19,6 +19,13 @@ class ZipContext:
         regex = re.compile(pattern)
         return any(regex.match(name) for name in self._names)
     
+    def find_pattern(self, pattern):
+        regex = re.compile(pattern)
+
+        return [
+            name for name in self._names if regex.match(name)
+        ]
+        
     def open(self, filename):
         for f in self.files:
             if PurePosixPath(f).name == filename:

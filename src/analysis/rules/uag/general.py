@@ -3,7 +3,7 @@ GENERAL_RULES = [
         "name": "UAG admin console shows 'Horizon destination server' as down/red",
         "category": "general",
         "patterns": [
-            r"javax\.net\.ssl\.SSLHandshakeException\: General SSLEngine problem"
+            r"javax\.net\.ssl\.SSLHandshakeException: General SSLEngine problem"
         ],
         "recommendations": [
             "Verify if the thumbprint matches with the cert used for the Connection Server URL",
@@ -19,7 +19,7 @@ GENERAL_RULES = [
         "name": "UAG admin account is locked.",
         "category": "general",
         "patterns": [
-            "UAG admin account is locked"
+            r"UAG admin account is locked"
         ],
         "recommendations": [
             "Reset the UAG Admin Password",

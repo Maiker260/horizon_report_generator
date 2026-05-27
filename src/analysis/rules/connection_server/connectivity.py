@@ -3,7 +3,7 @@ CONNECTIVITY_RULES = [
         "name": "Unexpected Origin Found",
         "category": "connectivity",
         "patterns": [
-            "Unexpected Origin",
+            r"ERROR.*Unexpected Origin:",
         ],
         "recommendations": [
             "Add the CSs, LBs and UAGs FQDNs to the locked.properties file",
