@@ -17,6 +17,16 @@ COMMON_DATA_TO_COLLECT = {
             "VMware": ["vmware"]
         }
     },
+    "log_level": {
+        "registry_suffix": [
+            r"Omnissa\Horizon",
+            r"SOFTWARE\VMware, Inc.\VMware VDM"
+        ],
+        "values": [
+            "DebugEnabled",
+            "TraceEnabled"
+        ]
+    }
 }
 
 DATA_TO_COLLECT = {
@@ -46,6 +56,7 @@ DATA_TO_COLLECT = {
             "certificate extensions",
             "cert_friendly_name_prop_id(11)"
         ],
+        "log_level": COMMON_DATA_TO_COLLECT["log_level"],
     },
 
     "agent": {
@@ -63,7 +74,9 @@ DATA_TO_COLLECT = {
         "horizon_ports": [3389, 4172, 22443, 9427, 32111, 4001, 4002, 55000],
         "installed_software": COMMON_DATA_TO_COLLECT["installed_software"],
         "horizon_features": {
-            "registry_suffix": r"Installer\Features_HorizonAgent",
+            "registry_suffix": [
+                r"Installer\Features_HorizonAgent",
+            ],
             "values": [
                 "ClientDriveRedirection", 
                 "PrintRedir", 
@@ -72,7 +85,8 @@ DATA_TO_COLLECT = {
                 "StorageDriveRedir", 
                 "USB"
             ],
-        }
+        },
+        "log_level": COMMON_DATA_TO_COLLECT["log_level"],
     },
 
     "client": {
@@ -80,6 +94,7 @@ DATA_TO_COLLECT = {
         "horizon_services": COMMON_DATA_TO_COLLECT["horizon_services"],
         "horizon_ports": [443, 4172, 8443, 3389, 22443, 9427, 32111],
         "installed_software": COMMON_DATA_TO_COLLECT["installed_software"],
+        "log_level": COMMON_DATA_TO_COLLECT["log_level"],
     },
 
     "unified_access_gateway": {

@@ -7,9 +7,14 @@ class ZipContext:
         self.files = zip_file.namelist()
 
         self._names = [PurePosixPath(f).name for f in self.files]
+        self._names_set = set(self._names)
+
+        self._file_lookup = {
+            PurePosixPath(f).name: f for f in self.files
+        }
 
     def exists(self, filename):
-        return any(PurePosixPath(f).name == filename for f in self.files)
+        return filename in self._names_set
     
     def exists_dir(self, dirname):
         dirname = dirname.rstrip("/") + "/"
@@ -25,9 +30,11 @@ class ZipContext:
         return [
             name for name in self._names if regex.match(name)
         ]
-        
+    
     def open(self, filename):
-        for f in self.files:
-            if PurePosixPath(f).name == filename:
-                return self.zip_file.open(f)
+        full_path = self._file_lookup.get(filename)
+
+        if full_path:
+            return self.zip_file.open(full_path)
+
         return None

@@ -12,6 +12,7 @@ from src.summary.report.sections.locked_properties import locked_properties
 from src.summary.report.sections.horizon_features import horizon_features
 from src.summary.report.sections.uag.uag_info import uag_info
 from src.summary.report.sections.references_notes import summary_references_notes
+from src.summary.utils.report_sections.format_log_level import format_log_level
 
 COMMON_REPORT_SECTIONS = [
     device_information,
@@ -37,9 +38,13 @@ REPORT_SECTIONS = {
 
 def generate_report(data, zip_path, component, feature):     
     report = ""
+    log_level = None
+
+    if component  != "unified_access_gateway":
+        log_level = format_log_level(component, data["device_info"]["horizon_reg"]["log_level"])
 
     # Header
-    report += header(zip_path, component, feature)
+    report += header(zip_path, component, feature, log_level)
 
     # Content
     sections = REPORT_SECTIONS.get(component, lambda: [])()

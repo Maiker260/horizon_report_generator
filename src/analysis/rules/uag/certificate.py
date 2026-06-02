@@ -1,26 +1,35 @@
+from src.analysis.utils.rule_constructor import Rule
+
 CERTIFICATE_RULES = [
-    {
-        "name": "Certificate Upload Issue",
-        "category": "certificate",
-        "patterns": [
-            r"Failed to upload ESManager certificate"
+    Rule(
+        name="Certificate Upload Issue",
+        category="certificate",
+        match_type="contains",
+        patterns=[
+            "Failed to upload ESManager certificate"
         ],
-        "recommendations": [],
-        "references": [
+        source_files=[
+            "admin.log"
+        ],
+        recommendations=[],
+        references=[
             "https://kb.omnissa.com/s/article/91732"
         ]
-    },
-    {
-        "name": "Unexpected thumbprint on a Blast certificate",
-        "category": "certificate",
-        "patterns": [
-            r"Expected thumbprint is",
-            r"Actual thumbprint is",
-            r"Cannot verify target host"
+    ),
+    Rule(
+        name="Unexpected thumbprint on a Blast certificate",
+        category="certificate",
+        patterns=[
+            "Expected thumbprint is",
+            "Actual thumbprint is",
+            "Cannot verify target host"
         ],
-        "recommendations": [],
-        "references": [
+        source_files=[
+            "bsg.log"
+        ],
+        recommendations=[],
+        references=[
             "https://kb.omnissa.com/s/article/91732"
         ]
-    },
+    ),
 ]

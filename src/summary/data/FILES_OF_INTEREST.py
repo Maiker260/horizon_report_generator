@@ -9,14 +9,14 @@ FILES_OF_INTEREST = {
         "locked_properties": ["locked.properties"]
     },
     "agent": {
-        "device_info": ["systeminfo.txt", "ipconfig-all.txt"],
+        "device_info": ["systeminfo.txt", "ipconfig-all.txt", "omnissa-reg.txt", "vmware-reg.txt"],
         "horizon_services": ["net-start.txt"],
         "horizon_ports": ["netstat-abov.txt"],
         "installed_software": ["installed_software.txt"],
         "horizon_features": ["omnissa-reg.txt", "vmware-reg.txt"],
     },
     "client": {
-        "device_info": ["systeminfo.txt", "ipconfig-all.txt"],
+        "device_info": ["systeminfo.txt", "ipconfig-all.txt", "omnissa-reg.txt", "vmware-reg.txt"],
         "horizon_services": ["net-start.txt"],
         "horizon_ports": ["netstat-abov.txt"],
         "installed_software": ["installed_software.txt"],

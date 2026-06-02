@@ -1,31 +1,41 @@
+from src.analysis.utils.rule_constructor import Rule
+
 GENERAL_RULES = [
-    {
-        "name": "UAG admin console shows 'Horizon destination server' as down/red",
-        "category": "general",
-        "patterns": [
-            r"javax\.net\.ssl\.SSLHandshakeException: General SSLEngine problem"
+    Rule(
+        name="UAG admin console shows 'Horizon destination server' as down/red",
+        category="general",
+        match_type="contains",
+        patterns=[
+            "javax.net.ssl.SSLHandshakeException: General SSLEngine problem"
         ],
-        "recommendations": [
+        source_files=[
+            "esmanager.log"
+        ],
+        recommendations=[
             "Verify if the thumbprint matches with the cert used for the Connection Server URL",
             "Ensure the FQDN used in the UAG configuration matches the Connection Server FQDN",
             "Verify a full certificate chain is present",
             "Verify connectivity between the Connection Server and the UAG",
         ],
-        "references": [
+        references=[
             "https://kb.omnissa.com/s/article/57161"
         ]
-    },
-    {
-        "name": "UAG admin account is locked.",
-        "category": "general",
-        "patterns": [
-            r"UAG admin account is locked"
+    ),
+    Rule(
+        name="UAG admin account is locked.",
+        category="general",
+        match_type="contains",
+        patterns=[
+            "UAG admin account is locked"
         ],
-        "recommendations": [
+        source_files=[
+            "admin.log"
+        ],
+        recommendations=[
             "Reset the UAG Admin Password",
         ],
-        "references": [
+        references=[
             "https://kb.omnissa.com/s/article/91516"
         ]
-    },
+    ),
 ]

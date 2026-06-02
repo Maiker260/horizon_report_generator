@@ -5,9 +5,10 @@ from src.analysis.report.sections.references_notes import analysis_references_no
 
 def generate_report(data, zip_path, component, feature):     
     report = ""
+    log_level = False
 
     # Header
-    report += header(zip_path, component, feature)
+    report += header(zip_path, component, feature, log_level)
 
     # Content
     report += content(data)

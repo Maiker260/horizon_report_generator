@@ -2,6 +2,7 @@ from src.analysis.rulesets.uag_ruleset import UAG_RULESET
 from src.analysis.rulesets.cs_ruleset import CONNECTION_SERVER_RULESET
 from src.analysis.rulesets.agent_ruleset import AGENT_RULESET
 from src.analysis.rulesets.client_ruleset import CLIENT_RULESET
+from src.analysis.utils.build_parser_result import build_parser_result
 
 rulesets = {
     "unified_access_gateway": UAG_RULESET,
@@ -10,19 +11,34 @@ rulesets = {
     "client": CLIENT_RULESET,
 }
 
-def rule_parser(line, component, filename):
-    rules = rulesets[component]
+def rule_parser(line, rules, filename):
+    line_lower = line.lower()
+
+    # Test
+    # if not hasattr(rule_parser, "_printed"):
+    #     print(f"Rules loaded: {len(rules)}")
+
+    #     print(
+    #         f"Contains rules: "
+    #         f"{sum(1 for r in rules if r.match_type == 'contains')}"
+    #     )
+
+    #     print(
+    #         f"Regex rules: "
+    #         f"{sum(1 for r in rules if r.match_type == 'regex')}"
+    #     )
+
+    #     rule_parser._printed = True
 
     for rule in rules:
-        for pattern in rule["compiled_patterns"]:
-            if pattern.search(line):
-                return {
-                    "line_found": line,
-                    "source_file": filename,
-                    "rule_name": rule["name"],
-                    "category": rule["category"],
-                    "recommendations": rule.get("recommendations", []),
-                    "references": rule.get("references", [])
-                }
-    
+        if rule.match_type == "contains":
+            for pattern in rule.lower_patterns:
+                if pattern in line_lower:
+                    return build_parser_result(rule, line, filename)
+
+        elif rule.match_type == "regex":
+            for pattern in rule.compiled_patterns:
+                if pattern.search(line):
+                    return build_parser_result(rule, line, filename)
+
     return None

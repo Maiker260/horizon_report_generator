@@ -1,6 +1,6 @@
 from src.common.utils.read_file_with_auto_encoding import read_file_with_auto_encoding
 
-def fips_check(zip_ctx, filename, component, current_data):
+def fips_check(zip_ctx, filename):
     data = {}
 
     if not zip_ctx.exists(filename):
@@ -14,9 +14,9 @@ def fips_check(zip_ctx, filename, component, current_data):
             line = line.strip()
 
             if line.strip().startswith('"FipsMode"'):
-                key, value = line.split("=", 1)
+                _, value = line.split("=", 1)
                 value = value.strip().strip('"')
 
-                data[key.strip('"')] = int(value) == 1
+                return int(value) == 1
 
-    return data
+    return None
