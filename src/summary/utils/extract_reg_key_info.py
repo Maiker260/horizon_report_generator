@@ -2,7 +2,7 @@ from src.common.utils.read_file_with_auto_encoding import read_file_with_auto_en
 
 def extract_reg_key_info(zip_ctx, files, features):
     suffixes = tuple(features["registry_suffix"])
-    expected_values = set(features["values"])
+    expected_values = {v.casefold() for v in features["values"]}
 
     data = {}
 
@@ -50,7 +50,7 @@ def extract_reg_key_info(zip_ctx, files, features):
                     key = parts[0].strip().strip('"')
                     value = parts[1].strip().strip('"')
 
-                    if key in expected_values:
+                    if key.casefold() in expected_values:
                         block_lines.append({
                             "key": key,
                             "value": value

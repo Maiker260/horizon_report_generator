@@ -76,15 +76,30 @@ DATA_TO_COLLECT = {
         "horizon_features": {
             "registry_suffix": [
                 r"Installer\Features_HorizonAgent",
+                "WebRTCRedir"
             ],
             "values": [
+                "BlastUDP",
                 "ClientDriveRedirection", 
+                "FIDO2Redirection",
                 "PrintRedir", 
                 "ScannerRedirection", 
                 "SmartCard", 
                 "StorageDriveRedir", 
-                "USB"
+                "USB",
+                "teamsEnabled"
             ],
+        },
+        "log_level_features": {
+            "registry_suffix": [
+                "UsbRedirection",
+                "PrintRedir",
+                "ViewScanner",
+                "FIDO2",
+                "SDR",
+                "RTAV",
+            ],
+            "values": ["loglevel"]
         },
         "log_level": COMMON_DATA_TO_COLLECT["log_level"],
     },

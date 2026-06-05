@@ -6,6 +6,7 @@ from .installed_applications import installed_applications
 from .certificates import certificates
 from .horizon_features import horizon_features
 from .references_notes import summary_references_notes
+from .log_level_features import log_level_features
 
 __all__ = [
     "device_information", 
@@ -15,5 +16,6 @@ __all__ = [
     "installed_applications",
     "certificates",
     "horizon_features",
-    "summary_references_notes"
+    "summary_references_notes",
+    "log_level_features"
 ]

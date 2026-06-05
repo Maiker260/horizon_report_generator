@@ -3,7 +3,7 @@ from src.common.utils.read_file_with_auto_encoding import read_file_with_auto_en
 from src.analysis.parsers.rule_parser import rule_parser
 from src.analysis.utils.get_rules_for_file import get_rules_for_file
 
-#Test
+# Test
 # import time
 
 def analyze_logs(zip_ctx, component):
@@ -38,7 +38,7 @@ def analyze_logs(zip_ctx, component):
                 matched_file
             )
 
-            #Test
+            # Test
             # print(
             #     f"{matched_file}: "
             #     f"{len(active_rules)} active rules"

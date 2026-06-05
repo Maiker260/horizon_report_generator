@@ -23,13 +23,14 @@ def device_information(data, component, letter):
     content = []
     content.append(f"\n\n{letter}. MACHINE INFORMATION")
     content.append("-" * 30)
+    content.append("")
 
     # One line content
     for key, value in info.items():
         key = KEY_FIXES.get(key, key)  
         label = f"{key}:"
         
-        content.append(f"{label:<{max_width + 1}}  {value}")    
+        content.append(f"{label:<{max_width + 1}}  {value}")
 
     # Hotfixes
     if component in ["connection_server", "agent"]:

@@ -10,8 +10,10 @@ from src.summary.report.sections.installed_applications import installed_applica
 from src.summary.report.sections.certificates import certificates
 from src.summary.report.sections.locked_properties import locked_properties
 from src.summary.report.sections.horizon_features import horizon_features
+from src.summary.report.sections.log_level_features import log_level_features
 from src.summary.report.sections.uag.uag_info import uag_info
 from src.summary.report.sections.references_notes import summary_references_notes
+
 from src.summary.utils.report_sections.format_log_level import format_log_level
 
 COMMON_REPORT_SECTIONS = [
@@ -29,7 +31,11 @@ REPORT_SECTIONS = {
         + [certificates]
         + [locked_properties]
     ),
-    "agent": lambda: (COMMON_REPORT_SECTIONS + [horizon_features]),
+    "agent": lambda: (
+        COMMON_REPORT_SECTIONS 
+        + [horizon_features] 
+        + [log_level_features]
+    ),
     "client": lambda: COMMON_REPORT_SECTIONS,
     "unified_access_gateway": lambda: [
         uag_info, open_ports

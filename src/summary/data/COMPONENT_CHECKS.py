@@ -5,6 +5,7 @@ from src.summary.parsers.horizon_ports.horizon_ports_check import horizon_ports_
 from src.summary.parsers.installed_software.installed_software_check import installed_software_check
 from src.summary.parsers.certificates.certificates_check import certificates_check
 from src.summary.parsers.horizon_features import horizon_features_check
+from src.summary.parsers.log_level_features.log_level_features_check import log_level_features_check
 from src.summary.parsers.locked_properties.locked_properties_check import locked_properties_check
 from src.summary.parsers.uag_parsers.uag_info.uag_info_check import uag_info_check
 from src.summary.parsers.uag_parsers.uag_ports.uag_ports_check import uag_ports_check
@@ -29,6 +30,7 @@ COMPONENT_CHECKS = {
         "parsers": {
             **COMMON_PARSERS,
             "horizon_features": horizon_features_check,
+            "log_level_features": log_level_features_check
         }
     },
     "client": {
