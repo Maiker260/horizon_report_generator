@@ -4,8 +4,8 @@ from src.analysis.rules.connection_server.connectivity import CONNECTIVITY_RULES
 from src.analysis.rules.connection_server.provisioning import PROVISION_RULES
 
 CONNECTION_SERVER_RULESET = compile_rules(
-    REPLICATION_RULES +
-    CONNECTIVITY_RULES +
-    PROVISION_RULES
+    REPLICATION_RULES 
+    + CONNECTIVITY_RULES 
+    + PROVISION_RULES
 )
 

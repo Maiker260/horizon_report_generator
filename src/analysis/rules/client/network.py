@@ -9,7 +9,7 @@ NETWORK_RULES = [
             "VDPCONNECT_HOST_UNREACHABLE"
         ],
         source_files=[
-            r"horizon-protocol-.*\.log", r"omnissa-horizon-client-.*\.txt"
+            r"horizon-protocol-.*\.log", r".*-horizon-client-.*\.txt"
         ],
         recommendations=[
             "This error typically indicates that a socket connection attempt has failed because the host is unreachable"
@@ -24,7 +24,7 @@ NETWORK_RULES = [
             "VDPCONNECT_HOSTNAME_NOT_RESOLVABLE"
         ],
         source_files=[
-            r"horizon-protocol-.*\.log", r"omnissa-horizon-client-.*\.txt"
+            r"horizon-protocol-.*\.log", r".*-horizon-client-.*\.txt"
         ],
         recommendations=[
             "The client is unable to translate a given hostname into an IP address",
@@ -40,7 +40,7 @@ NETWORK_RULES = [
             "VDPCONNECT_NETWORK_UNREACHABLE"
         ],
         source_files=[
-            r"horizon-protocol-.*\.log", r"omnissa-horizon-client-.*\.txt"
+            r"horizon-protocol-.*\.log", r".*-horizon-client-.*\.txt"
         ],
         recommendations=[
             "This error typically indicates that a socket connection attempt has failed because the network is unreachable"
@@ -55,7 +55,7 @@ NETWORK_RULES = [
             "VDPCONNECT_CONN_TIMEDOUT"
         ],
         source_files=[
-            r"horizon-protocol-.*\.log", r"omnissa-horizon-client-.*\.txt"
+            r"horizon-protocol-.*\.log", r".*-horizon-client-.*\.txt"
         ],
         recommendations=[
             "This error typically indicates that a socket connection attempt has failed because the network is unreachable"
@@ -70,7 +70,7 @@ NETWORK_RULES = [
             "VDPCONNECT_CONN_REFUSED"
         ],
         source_files=[
-            r"horizon-protocol-.*\.log", r"omnissa-horizon-client-.*\.txt"
+            r"horizon-protocol-.*\.log", r".*-horizon-client-.*\.txt"
         ],
         recommendations=[
             "This error typically indicates that a socket connection attempt has failed because the service is not available on the target device",
@@ -86,7 +86,7 @@ NETWORK_RULES = [
             "VDPCONNECT_CONN_ACCESS_DENIED"
         ],
         source_files=[
-            r"horizon-protocol-.*\.log", r"omnissa-horizon-client-.*\.txt"
+            r"horizon-protocol-.*\.log", r".*-horizon-client-.*\.txt"
         ],
         recommendations=[
             "This error typically seen when the Horizon agent software returns an error forbidden when establishing a connection to network concerns"
@@ -101,7 +101,7 @@ NETWORK_RULES = [
             "VDPCONNECT_CONN_TERMINATED"
         ],
         source_files=[
-            r"horizon-protocol-.*\.log", r"omnissa-horizon-client-.*\.txt"
+            r"horizon-protocol-.*\.log", r".*-horizon-client-.*\.txt"
         ],
         recommendations=[
             "This error typically seen when the Horizon Client software initiates the termination of an established connection to network concerns"
@@ -116,7 +116,7 @@ NETWORK_RULES = [
             "VDPCONNECT_CONN_RESET"
         ],
         source_files=[
-            r"horizon-protocol-.*\.log", r"omnissa-horizon-client-.*\.txt"
+            r"horizon-protocol-.*\.log", r".*-horizon-client-.*\.txt"
         ],
         recommendations=[
             "This error occurs when the remote server or network suddenly resets your horizon client connection without adequately notifying your computer"
@@ -131,7 +131,7 @@ NETWORK_RULES = [
             "VDPCONNECT_REJECTED"
         ],
         source_files=[
-            r"horizon-protocol-.*\.log", r"omnissa-horizon-client-.*\.txt"
+            r"horizon-protocol-.*\.log", r".*-horizon-client-.*\.txt"
         ],
         recommendations=[
             "The client computer is unable to establish a connection with another device or server",
@@ -147,7 +147,7 @@ NETWORK_RULES = [
             "VDPCONNECT_GATEWAY_ERROR"
         ],
         source_files=[
-            r"horizon-protocol-.*\.log", r"omnissa-horizon-client-.*\.txt"
+            r"horizon-protocol-.*\.log", r".*-horizon-client-.*\.txt"
         ],
         recommendations=[
             "This error typically encountered when the Blast Secure Gateway (BSG ) encounters a response where it is unable to connect to the agent",
@@ -163,7 +163,7 @@ NETWORK_RULES = [
             "VDPCONNECT_GATEWAY_TIMEOUT"
         ],
         source_files=[
-            r"horizon-protocol-.*\.log", r"omnissa-horizon-client-.*\.txt"
+            r"horizon-protocol-.*\.log", r".*-horizon-client-.*\.txt"
         ],
         recommendations=[
             "This error typically encountered when the Blast Secure Gateway (BSG ) encounters a response where it cannot find the route to the host or it encounters a lack of availability of service",
@@ -179,7 +179,7 @@ NETWORK_RULES = [
             "VDPCONNECT_PEER_UNAVAILABLE"
         ],
         source_files=[
-            r"horizon-protocol-.*\.log", r"omnissa-horizon-client-.*\.txt"
+            r"horizon-protocol-.*\.log", r".*-horizon-client-.*\.txt"
         ],
         recommendations=[
             "This error message indicates that the connection encountered an unavailable peer, which could be due to network issues, firewalls, or proxies that are temporarily blocking the connection",
@@ -195,7 +195,7 @@ NETWORK_RULES = [
             "VDPCONNECT_PEER_ERROR"
         ],
         source_files=[
-            r"horizon-protocol-.*\.log", r"omnissa-horizon-client-.*\.txt"
+            r"horizon-protocol-.*\.log", r".*-horizon-client-.*\.txt"
         ],
         recommendations=[],
         references=["https://kb.omnissa.com/s/article/91181"]

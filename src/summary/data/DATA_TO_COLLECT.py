@@ -109,6 +109,18 @@ DATA_TO_COLLECT = {
         "horizon_services": COMMON_DATA_TO_COLLECT["horizon_services"],
         "horizon_ports": [443, 4172, 8443, 3389, 22443, 9427, 32111],
         "installed_software": COMMON_DATA_TO_COLLECT["installed_software"],
+        "log_level_features": {
+            "registry_suffix": [
+                "UsbRedirection",
+                "PrintRedir",
+                "ScannerRedirection",
+                "FIDO2",
+                "SDR",
+                "RTAV",
+                "tsdr"
+            ],
+            "values": ["loglevel"]
+        },
         "log_level": COMMON_DATA_TO_COLLECT["log_level"],
     },
 

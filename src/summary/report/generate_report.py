@@ -36,7 +36,10 @@ REPORT_SECTIONS = {
         + [horizon_features] 
         + [log_level_features]
     ),
-    "client": lambda: COMMON_REPORT_SECTIONS,
+    "client": lambda: (
+        COMMON_REPORT_SECTIONS
+        + [log_level_features]
+    ),
     "unified_access_gateway": lambda: [
         uag_info, open_ports
     ],

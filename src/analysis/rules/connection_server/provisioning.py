@@ -48,7 +48,7 @@ PROVISION_RULES = [
         recommendations=[
             "Indicates that the server is currently not available to process the requested operation",
             "Server not ready to process request",
-            "Resources that the server are reliant on are unavailable due to administrative operations or other causes."
+            "Resources that the server is reliant on are unavailable due to administrative operations or other causes."
         ],
         references=[
             "https://kb.omnissa.com/s/article/91066"
@@ -137,9 +137,7 @@ PROVISION_RULES = [
         source_files=[
             r"debug-.*\.txt"
         ],
-        recommendations=[
-            "Ensure to configure a server at optimal proximity to the agent subnet IP range"
-        ],
+        recommendations=[],
         references=[
             "https://kb.omnissa.com/s/article/92582"
         ]
@@ -149,7 +147,7 @@ PROVISION_RULES = [
         category="provisioning",
         match_type="regex",
         patterns=[
-            r"CPException: After waiting for 300 seconds internal template VM.*is still not powered off\. Giving up"
+            r"CPException: After waiting for 300 seconds internal template VM.*is still not powered off"
         ],
         source_files=[
             r"debug-.*\.txt"
@@ -167,7 +165,7 @@ PROVISION_RULES = [
         category="provisioning",
         match_type="regex",
         patterns=[
-            r"UNKNOWN_FAULT_FATAL After waiting for 600 seconds Replica.*still has not finished customization\. Giving up"
+            r"UNKNOWN_FAULT_FATAL After waiting for 600 seconds Replica.*still has not finished customization"
         ],
         source_files=[
             r"debug-.*\.txt"

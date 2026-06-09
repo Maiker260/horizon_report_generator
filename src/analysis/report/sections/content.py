@@ -1,10 +1,8 @@
-from src.analysis.utils.normalize_findings import normalize_findings
 from src.analysis.utils.count_categories import count_categories
 
 def content(data):
-    normalized_data = normalize_findings(data)
-    categories = count_categories(normalized_data)
-
+    total_findings = len(data)
+    categories = count_categories(data)
     report = []
 
     # Summary
@@ -13,8 +11,8 @@ def content(data):
     report.append("-" * 30)
     report.append("")
 
-    report.append(f"Total Findings:   {len(data)}")
-    report.append(f"Unique Findings:  {len(normalized_data)}")
+    report.append(f"Total Findings:   {total_findings}")
+    report.append(f"Unique Findings:  {total_findings}")
     report.append("")
 
     report.append("Findings By Category:")
@@ -32,7 +30,7 @@ def content(data):
     report.append("B. FINDINGS")
     report.append("-" * 30)
 
-    if not normalized_data:
+    if not total_findings:
         report.append("")
         report.append("No findings matched the analysis patterns.")
         report.append("")
@@ -40,15 +38,17 @@ def content(data):
 
     FIXED_NAMES = {
         "rule_name": "Name",
-        "source_file": "Source File",
+        "source_files": "Source File(s)",
         "category": "Category",
         "occurrences": "Occurrences",
-        "line_found": "Sample Line",
+        "last_line": "Last Seen",
+        "first_line": "First Seen",
+        "samples": "Samples",
         "recommendations": "Recommendations",
-        "references": "References"
+        "references": "References",
     }
 
-    for index, finding in enumerate(normalized_data):
+    for index, finding in enumerate(data):
         report.append("")
         report.append("-" * 20)
         report.append(f"Finding #{index + 1}")
@@ -56,8 +56,12 @@ def content(data):
         report.append("")
 
         for key, label in FIXED_NAMES.items():
-            report.append(f"{label}:")
             value = finding[key]
+
+            if not value:
+                continue
+            
+            report.append(f"{label}:")
 
             if isinstance(value, list):
                 for item in value:

@@ -5,8 +5,8 @@ from src.analysis.rules.uag.general import GENERAL_RULES
 from src.analysis.rules.uag.network import NETWORK_RULES
 
 UAG_RULESET = compile_rules(
-    AUTHENTICATION_RULES +
-    CERTIFICATE_RULES +
-    GENERAL_RULES +
-    NETWORK_RULES
+    AUTHENTICATION_RULES 
+    + CERTIFICATE_RULES 
+    + GENERAL_RULES 
+    + NETWORK_RULES
 )

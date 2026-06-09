@@ -35,7 +35,8 @@ COMPONENT_CHECKS = {
     },
     "client": {
         "parsers": {
-            **COMMON_PARSERS
+            **COMMON_PARSERS,
+            "log_level_features": log_level_features_check
         }
     },
     "unified_access_gateway": {

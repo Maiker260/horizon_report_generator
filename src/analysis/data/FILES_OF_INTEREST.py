@@ -6,9 +6,9 @@ FILES_OF_INTEREST = {
         "admin.log", "bsg.log", "esmanager.log"
     ],
     "agent": [
-        "setuperr.log", 
+        "setuperr.log", r".*-html5Server-.*\.log"
     ],
     "client": [
-        r"horizon-protocol-.*\.log", r"omnissa-horizon-client-.*\.txt"
+        r"horizon-protocol-.*\.log", r".*-horizon-client-.*\.txt",
     ],
 }

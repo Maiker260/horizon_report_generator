@@ -9,7 +9,7 @@ CERTIFICATE_RULES = [
             "VDPCONNECT_CONNECT_TLS",
         ],
         source_files=[
-            r"horizon-protocol-.*\.log", r"omnissa-horizon-client-.*\.txt"
+            r"horizon-protocol-.*\.log", r".*-horizon-client-.*\.txt"
         ],
         recommendations=[
             "This error typically indicates that a certificate issue is impeding connection",
