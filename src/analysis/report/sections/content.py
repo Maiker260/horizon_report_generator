@@ -12,7 +12,6 @@ def content(data):
     report.append("")
 
     report.append(f"Total Findings:   {total_findings}")
-    report.append(f"Unique Findings:  {total_findings}")
     report.append("")
 
     report.append("Findings By Category:")
