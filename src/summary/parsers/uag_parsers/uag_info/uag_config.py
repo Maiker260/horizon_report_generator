@@ -8,12 +8,17 @@ def uag_config(zip_ctx, filename):
     to_parse_sections = []
 
     with zip_ctx.open(filename) as file:
-            content = read_file_with_auto_encoding(file)
+            reader = read_file_with_auto_encoding(file)
 
             current_section = None
             sub_lines = []
 
-            for line in content.splitlines():
+            for line in reader:
+                line = line.strip()
+
+                if not line:
+                    continue
+
                 if line.startswith("["):
                     stripped = line.strip("[]")
 

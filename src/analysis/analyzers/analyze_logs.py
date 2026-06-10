@@ -3,126 +3,104 @@ from src.common.utils.read_file_with_auto_encoding import read_file_with_auto_en
 from src.analysis.parsers.rule_parser import rule_parser
 from src.analysis.utils.get_rules_for_file import get_rules_for_file
 
-# Test
-# import time
-
-def analyze_logs(zip_ctx, component):
+def analyze_logs(zip_ctx, component, progress_callback=None):
     files = FILES_OF_INTEREST[component]
 
     findings = {}
     MAX_SAMPLES = 3
 
-    # Test
-    # total_read_time = 0
-    # total_regex_time = 0
-    # total_lines = 0
-    # total_matches = 0
+    # File list for progress tracking
+    all_matched_files = []
 
     for filename in files:
-        is_pattern = any(char in filename for char in "^$.*+?[](){}|\\")
+        is_pattern = any(
+            char in filename
+            for char in "^$.*+?[](){}|\\"
+        )
 
         if is_pattern:
-            matched_files = zip_ctx.find_pattern(filename)
-
-            if not matched_files:
-                continue
-
-        else:
-            if not zip_ctx.exists(filename):
-                continue
-
-            matched_files = [filename]
-
-        for matched_file in matched_files:
-
-            active_rules = get_rules_for_file(
-                component,
-                matched_file
+            all_matched_files.extend(
+                zip_ctx.find_pattern(filename)
             )
 
-            # Test
-            # print(
-            #     f"{matched_file}: "
-            #     f"{len(active_rules)} active rules"
-            # )
+        elif zip_ctx.exists(filename):
+            all_matched_files.append(filename)
 
-            with zip_ctx.open(matched_file) as file:
+    total_files = len(all_matched_files)
 
-                # Test
-                # t0 = time.perf_counter()
+    for index, matched_file in enumerate(
+        all_matched_files,
+        start=1
+    ):
+        if progress_callback:
+            progress_callback(
+                current=index,
+                total=total_files,
+                filename=matched_file
+            )
 
-                content = read_file_with_auto_encoding(file)
+        active_rules = get_rules_for_file(
+            component,
+            matched_file
+        )
 
-                # Test
-                # total_read_time += time.perf_counter() - t0
+        with zip_ctx.open(matched_file) as file:
+            reader = read_file_with_auto_encoding(file)
 
-                for line in content.splitlines():
-                    line = line.strip()
+            for line in reader:
+                line = line.strip()
 
-                    if not line:
-                        continue
+                if not line:
+                    continue
 
-                    # Test
-                    # t0 = time.perf_counter()
+                result = rule_parser(line, active_rules, matched_file)
 
-                    result = rule_parser(line, active_rules, matched_file)
+                if not result:
+                    continue
 
-                    if not result:
-                        continue
+                key = (
+                    result["rule_name"],
+                    result["category"]
+                )
 
-                    key = (
-                        result["rule_name"],
-                        result["category"]
+                timestamp = line.split()[0]
+
+                if key not in findings:
+                    findings[key] = {
+                        "rule_name": result["rule_name"],
+                        "source_files": {
+                            result["source_file"]
+                        },
+                        "category": result["category"],
+                        "recommendations": result["recommendations"],
+                        "references": result["references"],
+                        "occurrences": 1,
+                        "first_line": timestamp,
+                        "last_line": timestamp,
+                        "samples": [line]
+                    }
+
+                else:
+                    findings[key]["occurrences"] += 1
+
+                    findings[key]["source_files"].add(
+                        result["source_file"]
                     )
 
-                    timestamp = line.split()[0]
+                    # Order Timestamps
+                    if timestamp < findings[key]["first_line"]:
+                        findings[key]["first_line"] = timestamp
 
-                    if key not in findings:
-                        findings[key] = {
-                            "rule_name": result["rule_name"],
-                            "source_files": {
-                                result["source_file"]
-                            },
-                            "category": result["category"],
-                            "recommendations": result["recommendations"],
-                            "references": result["references"],
-                            "occurrences": 1,
-                            "first_line": timestamp,
-                            "last_line": timestamp,
-                            "samples": [line]
-                        }
+                    if timestamp > findings[key]["last_line"]:
+                        findings[key]["last_line"] = timestamp
 
-                    else:
-                        findings[key]["occurrences"] += 1
+                    # Group Samples
+                    samples = findings[key]["samples"]
 
-                        findings[key]["source_files"].add(
-                            result["source_file"]
-                        )
+                    samples.append(line)
 
-                        # Order Timestamps
-                        if timestamp < findings[key]["first_line"]:
-                            findings[key]["first_line"] = timestamp
-
-                        if timestamp > findings[key]["last_line"]:
-                            findings[key]["last_line"] = timestamp
-
-                        # Group Samples
-                        samples = findings[key]["samples"]
-
-                        samples.append(line)
-
-                        if len(samples) > MAX_SAMPLES:
-                            samples.pop(0)
-
-                    # Test
-                    # total_regex_time += time.perf_counter() - t0
-                    # total_lines += 1
-    
-    # Test
-    # print(f"Lines processed: {total_lines}")
-    # print(f"Matches found: {total_matches}")
-    # print(f"Read time: {total_read_time:.3f}s")
-    # print(f"Regex time: {total_regex_time:.3f}s")
+                    if len(samples) > MAX_SAMPLES:
+                        samples.pop(0)
 
     return [
         {

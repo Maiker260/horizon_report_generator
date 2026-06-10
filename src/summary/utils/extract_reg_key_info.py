@@ -14,10 +14,10 @@ def extract_reg_key_info(zip_ctx, files, features):
             continue
 
         with zip_ctx.open(filename) as file:
-            content = read_file_with_auto_encoding(file)
+            reader = read_file_with_auto_encoding(file)
 
-            for raw_line in content.splitlines():
-                line = raw_line.strip()
+            for line in reader:
+                line = line.strip()
 
                 if not line:
                     continue

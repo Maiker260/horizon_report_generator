@@ -15,10 +15,13 @@ def certificates_check(zip_ctx, component):
             current_cert_number = None
             buffer = []
 
-            content = read_file_with_auto_encoding(file)
+            reader = read_file_with_auto_encoding(file)
 
-            for line in content.splitlines():
+            for line in reader:
                 line = line.strip()
+
+                if not line:
+                    continue
 
                 match = CERT_START_RE.search(line)
                 if (match):

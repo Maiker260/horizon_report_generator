@@ -20,6 +20,7 @@ def apps_check(line, kwd, app_type):
         _, date = raw_date.split(": ")
 
         version = "N/A"
+
         if len(pieces) > 1:
             raw_version = pieces[1]
             version = raw_version.strip("v").strip()

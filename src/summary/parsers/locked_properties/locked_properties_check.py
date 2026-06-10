@@ -10,10 +10,16 @@ def locked_properties_check(zip_ctx, component):
             continue
 
         with zip_ctx.open(filename) as file:
-            content = read_file_with_auto_encoding(file)
+            reader = read_file_with_auto_encoding(file)
 
-            for line in content.splitlines():
+            for line in reader:
+                line = line.strip()
+
+                if not line:
+                    continue
+
                 if line:
+                    print(line)
                     data.append(line)
 
     return data

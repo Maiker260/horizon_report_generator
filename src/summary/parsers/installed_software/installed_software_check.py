@@ -20,16 +20,19 @@ def installed_software_check(zip_ctx, component):
             continue
 
         with zip_ctx.open(filename) as file:
-            content = read_file_with_auto_encoding(file)
+            reader = read_file_with_auto_encoding(file)
 
-            for line in content.splitlines():
+            for line in reader:
                 stripped = line.strip()
+
+                if not stripped:
+                    continue
 
                 detected = False
 
                 for entry in SECURITY_INDEX:
                     if entry["pattern"].search(stripped):
-                        parsed = apps_check(line, entry["alias"], entry["category"])
+                        parsed = apps_check(stripped, entry["alias"], entry["category"])
 
                         parsed["vendor"] = entry["vendor"]
                         data["security_software"].append(parsed)
@@ -42,7 +45,7 @@ def installed_software_check(zip_ctx, component):
 
                 for entry in HORIZON_INDEX:
                     if entry["pattern"].search(stripped):
-                        parsed = apps_check(line, entry["alias"], entry["category"])
+                        parsed = apps_check(stripped, entry["alias"], entry["category"])
                         
                         parsed["vendor"] = entry["vendor"]
                         data["horizon_apps"].append(parsed)

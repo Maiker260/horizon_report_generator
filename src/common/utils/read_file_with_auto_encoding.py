@@ -1,15 +1,20 @@
+import io
+
 def read_file_with_auto_encoding(file):
-    raw = file.read()
+    raw = file.read(4096)
 
-    # UTF-16 BOM
-    if raw.startswith(b'\xff\xfe') or raw.startswith(b'\xfe\xff'):
-        return raw.decode("utf-16")
+    encoding = "utf-8"
 
-    # UTF-8 BOM
-    if raw.startswith(b'\xef\xbb\xbf'):
-        return raw.decode("utf-8-sig")
+    if raw.startswith(b"\xff\xfe") or raw.startswith(b"\xfe\xff"):
+        encoding = "utf-16"
 
-    try:
-        return raw.decode("utf-8")
-    except UnicodeDecodeError:
-        return raw.decode("latin-1", errors="ignore")
+    elif raw.startswith(b"\xef\xbb\xbf"):
+        encoding = "utf-8-sig"
+
+    file.seek(0)
+
+    return io.TextIOWrapper(
+        file,
+        encoding=encoding,
+        errors="ignore"
+    )

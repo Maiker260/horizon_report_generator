@@ -21,9 +21,9 @@ def systeminfo(zip_ctx, filename, component, current_data):
         return
 
     with zip_ctx.open(filename) as file:
-        content = read_file_with_auto_encoding(file)
+        reader = read_file_with_auto_encoding(file)
 
-        for line in content.splitlines():
+        for line in reader:
             if current_block:
                 if line and line[0].isspace():
                     block_lines.append(line)

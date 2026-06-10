@@ -16,9 +16,14 @@ def uag_ports_check(zip_ctx):
             continue
 
         with zip_ctx.open(filename) as file:
-            content = read_file_with_auto_encoding(file)
+            # content = read_file_with_auto_encoding(file)
 
-            for line in content.splitlines():
+            # for line in content.splitlines():
+            reader = read_file_with_auto_encoding(file)
+
+            for line in reader:
+                if not line:
+                    continue
                 
                 if line.startswith(("tcp", "udp")):
                     parts = line.split(maxsplit=7)

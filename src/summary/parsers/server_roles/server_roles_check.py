@@ -11,9 +11,12 @@ def server_roles_check(zip_ctx, component):
             continue
 
         with zip_ctx.open(filename) as file:
-            content = read_file_with_auto_encoding(file)
+            reader = read_file_with_auto_encoding(file)
 
-            for line in content.splitlines():
+            for line in reader:
+                if not line:
+                    continue
+
                 line = line.lower()
 
                 for role, keywords in UNWANTED_ROLES.items():

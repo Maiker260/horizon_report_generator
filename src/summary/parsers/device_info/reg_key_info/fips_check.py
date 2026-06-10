@@ -8,12 +8,15 @@ def fips_check(zip_ctx, filename):
 
     with zip_ctx.open(filename) as file:
         # Registry files are encode in utf-16
-        content = read_file_with_auto_encoding(file)
+        reader = read_file_with_auto_encoding(file)
 
-        for line in content.splitlines():
+        for line in reader:
             line = line.strip()
 
-            if line.strip().startswith('"FipsMode"'):
+            if not line:
+                continue
+
+            if line.startswith('"FipsMode"'):
                 _, value = line.split("=", 1)
                 value = value.strip().strip('"')
 

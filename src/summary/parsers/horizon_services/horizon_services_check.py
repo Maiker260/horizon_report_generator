@@ -12,10 +12,14 @@ def horizon_services_check(zip_ctx, component):
             continue
 
         with zip_ctx.open(filename) as file:
-            content = read_file_with_auto_encoding(file)
+            reader = read_file_with_auto_encoding(file)
 
-            for line in content.splitlines():
+            for line in reader:
                 line = line.strip()
+
+                if not line:
+                    continue
+                
                 line_lower = line.lower()
 
                 for service in services:
