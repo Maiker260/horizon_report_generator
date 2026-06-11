@@ -1,5 +1,6 @@
-from src.common.utils.read_file_with_auto_encoding import read_file_with_auto_encoding
 from src.summary.data.DATA_TO_COLLECT import DATA_TO_COLLECT
+from src.common.utils.read_file_with_auto_encoding import read_file_with_auto_encoding
+from src.summary.utils.get_uag_section_config import get_uag_section_config
 
 def uag_config(zip_ctx, filename):
     sections = DATA_TO_COLLECT["unified_access_gateway"]["uag_info"]
@@ -29,7 +30,7 @@ def uag_config(zip_ctx, filename):
                         })
                         sub_lines = []
 
-                    if stripped in sections:
+                    if get_uag_section_config(stripped, sections):
                         current_section = stripped
                     else:
                         current_section = None
@@ -49,13 +50,21 @@ def uag_config(zip_ctx, filename):
         name = entry["name"]
         lines = entry["lines"]
 
+        section_config = get_uag_section_config(name, sections)
+
         for config_line in lines:
             if "=" not in config_line:
                 continue
 
             key, value = config_line.split("=", 1)
 
-            if key.strip() in sections[name]:
-                data[key.strip()] = value.strip()
+            key = key.strip()
+            value = value.strip()
+
+            if key in section_config:
+                if key == "origin":
+                    data.setdefault("origins", []).append(value)
+                else:
+                    data[key] = value
 
     return data

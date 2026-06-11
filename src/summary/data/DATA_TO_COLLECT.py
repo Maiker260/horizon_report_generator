@@ -142,8 +142,12 @@ DATA_TO_COLLECT = {
                 "tls12Enabled",
                 "tls13Enabled",
                 "hostClockSyncEnabled",
+                "clockSkewTolerance"
             ],
             "Horizon": [
+                "authMethods",
+                "gatewayLocation",
+                "proxyPattern",
                 "minSHAHashSize",
                 "healthCheckUrl",
                 "blastExternalUrl",
@@ -151,6 +155,9 @@ DATA_TO_COLLECT = {
                 "proxyDestinationUrl",
                 "proxyDestinationUrlThumbprints",
                 "tunnelExternalUrl",
+            ],
+            r"OriginHeaderDetails\d+": [
+                "origin"
             ]
         },
         "horizon_ports": [9443, 443, 8443, 22443, 4172, 3389, 9427, 32111, 5500]

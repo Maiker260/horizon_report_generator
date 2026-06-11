@@ -5,6 +5,7 @@ sections = {
     "General": [
         "uagName",
         "uag_version",
+        "gatewayLocation"
     ],
     "Deployment": [
         "deploymentOption",
@@ -16,10 +17,13 @@ sections = {
         "tls11Enabled",
         "tls12Enabled",
         "tls13Enabled",
+        "authMethods"
     ],
     "System": [
         "hostClockSyncEnabled",
+        "clockSkewTolerance",
         "healthCheckUrl",
+        "proxyPattern"
     ],
     "URLs": [
         "proxyDestinationUrl",
@@ -28,6 +32,9 @@ sections = {
         "blastExternalUrl",
         "tunnelExternalUrl",
     ],
+    "Allowed Origins": [
+        "origins"
+    ]
 }
 
 def uag_info(data, component, letter):
@@ -60,6 +67,17 @@ def uag_info(data, component, letter):
             dns = info.get("dns", "-")
             content.append(f"      - DNS:              {dns}")
             content.append(f"      - Default Gateway:  {gateway}")
+
+            continue
+
+        if section == "Allowed Origins":
+            origins = info.get("origins", [])
+
+            if origins:
+                for origin in origins:
+                    content.append(f"      - {origin}")
+            else:
+                content.append("      - None")
 
             continue
 
