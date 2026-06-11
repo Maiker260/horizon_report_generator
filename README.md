@@ -64,9 +64,9 @@ The goal of this tool is to:
 
 2. Right-click the file
 
-3. Select `Horizon Report → Horizon Report Generator`
+3. Select `Horizon Report → Generate Summary Report // Generate Log Analysis`
 
-4. The tool will generate a report in the same directory as the original log bundle
+4. The tool will generate the report in the same directory as the original log bundle
 
 
 ## Built With
