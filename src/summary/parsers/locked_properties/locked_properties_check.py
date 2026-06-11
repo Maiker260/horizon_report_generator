@@ -19,7 +19,6 @@ def locked_properties_check(zip_ctx, component):
                     continue
 
                 if line:
-                    print(line)
                     data.append(line)
 
     return data

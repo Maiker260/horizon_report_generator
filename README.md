@@ -7,10 +7,17 @@ A lightweight and practical tool to generate structured, easy-to-read reports fr
 ### Context Menu Integration
 <img src="./assets/screenshots/WindowsMenu.webp" alt="Windows Menu" width="600"/>
 
-### Generated Report
-<img src="./assets/screenshots/First.webp" alt="First" width="600"/>
-<img src="./assets/screenshots/Second.webp" alt="Second" width="600"/>
-<img src="./assets/screenshots/Third.webp" alt="Third" width="600"/>
+### Log Analysis
+
+<img src="./assets/screenshots/Analysis.webp" alt="Analysis" width="600"/>
+
+### Summary Report
+<img src="./assets/screenshots/SummaryFirst.webp" alt="First" width="600"/>
+<img src="./assets/screenshots/SummarySecond.webp" alt="Second" width="600"/>
+<img src="./assets/screenshots/SummaryThird.webp" alt="Third" width="600"/>
+<img src="./assets/screenshots/SummaryFourth.webp" alt="Fourth" width="600"/>
+<img src="./assets/screenshots/SummaryFifth.webp" alt="Fifth" width="600"/>
+<img src="./assets/screenshots/SummarySixth.webp" alt="Sixth" width="600"/>
 
 ## Overview
 

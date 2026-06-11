@@ -14,22 +14,6 @@ rulesets = {
 def rule_parser(line, rules, filename):
     line_lower = line.lower()
 
-    # Test
-    # if not hasattr(rule_parser, "_printed"):
-    #     print(f"Rules loaded: {len(rules)}")
-
-    #     print(
-    #         f"Contains rules: "
-    #         f"{sum(1 for r in rules if r.match_type == 'contains')}"
-    #     )
-
-    #     print(
-    #         f"Regex rules: "
-    #         f"{sum(1 for r in rules if r.match_type == 'regex')}"
-    #     )
-
-    #     rule_parser._printed = True
-
     for rule in rules:
         if rule.match_type == "contains":
             for pattern in rule.lower_patterns:

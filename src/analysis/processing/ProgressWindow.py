@@ -6,7 +6,7 @@ class ProgressWindow:
     def __init__(self):
         self.window = tk.Tk()
         self.window.title("Log Analysis")
-        self.window.geometry("500x200")
+        self.window.geometry("450x150")
         self.window.resizable(False, False)
 
         # Timer
@@ -17,6 +17,7 @@ class ProgressWindow:
         )
         self.time_label.pack()
 
+        # Content
         self.status_label = tk.Label(
             self.window,
             text="Starting analysis..."
