@@ -6,6 +6,8 @@ class Rule:
     category: str
     patterns: list[str]
     
+    is_version_specific: bool = False
+    
     source_files: list[str] = field(default_factory=list)
 
     recommendations: list[str] = field(default_factory=list)

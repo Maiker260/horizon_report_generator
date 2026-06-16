@@ -14,6 +14,8 @@ ACRONYMS = {
 PHRASE_REPLACEMENTS = {
     "Proxy Destination URL": "Connection Server URL",
     "Proxy Destination URL Thumbprints": "Connection Server URL Thumbprints",
+    "Blast Urls": "Additional Blast External URLs",
+    "Tunnel Urls": "Additional Tunnel External URLs",
 }
 
 def normalize_uag_titles(text: str) -> str:
@@ -29,10 +31,13 @@ def normalize_uag_titles(text: str) -> str:
         lower_word = word.lower()
 
         match = re.match(r"(tls)(\d+)", lower_word)
+
         if match:
             _, version = match.groups()
+
             if len(version) == 2:
                 version = f"{version[0]}.{version[1]}"
+
             normalized_words.append(f"TLS {version}")
             continue
 

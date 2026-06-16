@@ -17,5 +17,24 @@ REPLICATION_RULES = [
         references=[
             "https://kb.omnissa.com/s/article/2091974"
         ]
+    ),
+    Rule(
+        name="Dynamic UDP ports exhaustion on Connection Server",
+        is_version_specific= True,
+        category="replication",
+        match_type="contains",
+        patterns=[
+            'Exception in thread "dnsjava NIO selector"',
+            "java.lang.ArrayIndexOutOfBoundsException: Index 0 out of bounds for length 0"
+        ],
+        source_files=[
+            r"debug-.*\.txt"
+        ],
+        recommendations=[
+            "This issue has been resolved in the next release of Horizon, 2406 (8.13)",
+        ],
+        references=[
+            "https://kb.omnissa.com/s/article/97398"
+        ]
     )
 ]

@@ -254,7 +254,7 @@ PROVISION_RULES = [
         ]
     ),
     Rule(
-        name="VC_FAULT_FATAL - The host does not have sufficient memory resources to satisfy the reservation.",
+        name="VC_FAULT_FATAL - The host does not have sufficient memory resources to satisfy the reservation",
         category="provisioning",
         match_type="contains",
         patterns=[

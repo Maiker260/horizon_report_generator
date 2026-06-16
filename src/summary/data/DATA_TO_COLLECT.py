@@ -151,10 +151,12 @@ DATA_TO_COLLECT = {
                 "minSHAHashSize",
                 "healthCheckUrl",
                 "blastExternalUrl",
+                "blastUrls",
                 "pcoipExternalUrl",
                 "proxyDestinationUrl",
                 "proxyDestinationUrlThumbprints",
                 "tunnelExternalUrl",
+                "tunnelUrls"
             ],
             r"OriginHeaderDetails\d+": [
                 "origin"

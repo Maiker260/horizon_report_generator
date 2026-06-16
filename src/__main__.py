@@ -11,19 +11,20 @@ feature = sys.argv[2]
 
 # Test
 
-# zip_path = Path("tmp") / "CS-2406.zip"
-# zip_path = Path("tmp") / "CS-2512.zip"
 # zip_path = Path("tmp") / "Agent-2406.zip"
 # zip_path = Path("tmp") / "Agent-2512.zip"
 # zip_path = Path("tmp") / "Client-2406.zip"
 # zip_path = Path("tmp") / "Client-2512T.zip"
 # zip_path = Path("tmp") / "Client-Testi.zip"
+# zip_path = Path("tmp") / "CS-2406.zip"
+# zip_path = Path("tmp") / "CS-2512.zip"
 # zip_path = Path("tmp") / "CS-Test1.zip"
 # zip_path = Path("tmp") / "CS-Test2.zip"
 # zip_path = Path("tmp") / "CS-Test3.zip"
 # zip_path = Path("tmp") / "NDC.zip"
 # zip_path = Path("tmp") / "UAG-Testi.zip"
 # zip_path = Path("tmp") / "UAG-2406 Testi.zip"
+# zip_path = Path("tmp") / "UAG-2512.zip"
 
 # feature = "summary_report"
 # feature = "log_analysis"

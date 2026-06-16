@@ -30,7 +30,9 @@ sections = {
         "proxyDestinationUrlThumbprints",
         "pcoipExternalUrl",
         "blastExternalUrl",
+        "blastUrls",
         "tunnelExternalUrl",
+        "tunnelUrls"
     ],
     "Allowed Origins": [
         "origins"
@@ -88,7 +90,7 @@ def uag_info(data, component, letter):
         max_width = max(len(name + ":") for name in normalized_fields)
 
         for field, display_name in zip(fields, normalized_fields):
-            value = info.get(field, "-")
+            value = info.get(field, "-") or "-"
 
             if value.lower() in ("true", "false"):
                 value = value.capitalize()

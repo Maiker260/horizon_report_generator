@@ -1,0 +1,189 @@
+from src.analysis.utils.rule_constructor import Rule
+
+CONSOLE_RULES = [
+    Rule(
+        name= "After a reboot, the Horizon Connection Server may fail to start properly and users may be unable to connect",
+        category= "console",
+        match_type="contains",
+        patterns= [
+            "LDAP connection failure to 127.0.0.1:389"
+        ],
+        source_files=[
+            r"debug-.*\.txt"
+        ],
+        recommendations= [
+            "The issue stops after changing the Omnissa Horizon Connection Server (wsbroker) service startup type to Automatic (Delayed Start)"
+        ],
+        references= [
+            "https://kb.omnissa.com/s/article/6001393"
+        ]
+    ),
+    Rule(
+        name= "Omnissa Horizon Connection Server Inaccessible over HTTP/HTTPS",
+        category= "console",
+        match_type="contains",
+        patterns= [
+            "Certificate thumbprint verification failed, no matching thumbprint. Presented identity: router/cs-hostname",
+            "General error occurred: Unexpected certificate: router/cs-hostname"
+        ],
+        source_files=[
+            r"debug-.*\.txt"
+        ],
+        recommendations= [
+            "Contact Omnissa Support to obtain the resolution script", 
+            "Run the script to resolve the issue"
+        ],
+        references= [
+            "https://kb.omnissa.com/s/article/6000184"
+        ]
+    ),
+    Rule(
+        name= "After restarting a Connection Server, the error 'Cannot look up datacenter from Virtual Center.' is displayed in the Horizon Console",
+        is_version_specific= True,
+        category= "console",
+        match_type="contains",
+        patterns= [
+            "Attempt to update tracker ended with a permanent failure",
+            "Failed to perform update on tracker after 3 attempts"
+        ],
+        source_files=[
+            r"debug-.*\.txt"
+        ],
+        recommendations= [],
+        references= [
+            "https://kb.omnissa.com/s/article/6001328"
+        ]
+    ),
+    Rule(
+        name= "Horizon Admin Console not accessible after connection server upgrade",
+        category= "console",
+        match_type="contains",
+        patterns= [
+            "Error creating topic config for topic: TrackerTopic",
+            "MS connection failed while connecting to topic",
+            "javax.net.ssl.SSLHandshakeException: no cipher suites in common"
+        ],
+        source_files=[
+            r"debug-.*\.txt", 
+            "info.log"
+        ],
+        recommendations= [
+            "Clearing the unsupported or deprecated cipher suites from the configuration. This will allow the application to fall back to its default set of supported cipher suites, ensuring compatibility and enabling successful TLS communication",
+            "Configure the supported cipher suites as per the documentation to ensure TLS compatibility and resolve the issue"
+        ],
+        references= [
+            "https://kb.omnissa.com/s/article/6001288"
+        ]
+    ),
+    Rule(
+        name= 'Horizon Connection Server Console displays "Internal Error Occurred", after an upgrade to 8.6 or later',
+        is_version_specific= True,
+        category= "console",
+        match_type="contains",
+        patterns= [
+            "InvalidArgument(parameter: connectionServers): A null value is invalid",
+        ],
+        source_files=[
+            r"debug-.*\.txt",
+        ],
+        recommendations= [],
+        references= [
+            "https://kb.omnissa.com/s/article/89986"
+        ]
+    ),
+    Rule(
+        name= '"Unable to connect" Error on Connection Server Admin Portal after Upgrade',
+        category= "console",
+        match_type="contains",
+        patterns= [
+            "Certificate authentication enabled, but no trustKeyfile specified",
+        ],
+        source_files=[
+            r"debug-.*\.txt",
+        ],
+        recommendations= [],
+        references= [
+            "https://kb.omnissa.com/s/article/94287"
+        ]
+    ),
+    Rule(
+        name= "Horizon Connection server service goes down due to JMS exception",
+        is_version_specific= True,
+        category= "console",
+        match_type="contains",
+        patterns= [
+            "com.swiftmq.jms.RequestTimeoutException: Request time out (60000) ms!",
+        ],
+        source_files=[
+            r"debug-.*\.txt",
+        ],
+        recommendations= [],
+        references= [
+            "https://kb.omnissa.com/s/article/6000997"
+        ]
+    ),
+    Rule(
+        name= 'Connection Server unable to accept vCenter thumbprint with an error "There was an error identifying the validity of the server"',
+        category= "console",
+        match_type="contains",
+        patterns= [
+            "[CertMatchingTrustManager] invalid certificate (and no trusted thumbprint) for",
+            "message:'ValidateCertificateChain Result: FAIL, EndEntityReasons: , ChainReasons: partialChain, noTrust']",
+        ],
+        source_files=[
+            r"debug-.*\.txt",
+        ],
+        recommendations= [
+            "Import the vCenter certificate along with the root certificates to Connection Server trusted root folder in all the connection server ( this is the windows certificate store"
+        ],
+        references= [
+            "https://kb.omnissa.com/s/article/67701"
+        ]
+    ),
+    Rule(
+        name= "Viewdbchk scanMachines fails with failure of connection to vCenter Server",
+        category= "console",
+        match_type="contains",
+        patterns= [
+            "message:'ValidateCertificateChain Result: FAIL, EndEntityReasons: cantCheckRevoked, ChainReasons: partialChain, noTrust']",
+        ],
+        source_files=[
+            r"debug-.*\.txt",
+        ],
+        recommendations= [],
+        references= [
+            "https://kb.omnissa.com/s/article/59635"
+        ]
+    ),
+    Rule(
+        name= "vCenter Server enters an error state when a replica Connection Server is added to your Horizon View Environment",
+        category= "console",
+        match_type="contains",
+        patterns= [
+            "at java.base/sun.security.ssl.AbstractTrustManagerWrapper.checkServerTrusted(Unknown Source)",
+        ],
+        source_files=[
+            r"debug-.*\.txt",
+        ],
+        recommendations= [],
+        references= [
+            "https://kb.omnissa.com/s/article/93701"
+        ]
+    ),
+    Rule(
+        name= "Installing the Omnissa Horizon View Client on a Connection Server interrupts Connection Server functionality",
+        category= "console",
+        match_type="contains",
+        patterns= [
+            "service::StartWinlogonNotification Failed Loading SysNtfy.dll: 0x8007007e",
+            "[ws_winauth] Cannot load vlicheck dll, error: 126 (The specified module could not be found.)"
+        ],
+        source_files=[
+            r"debug-.*\.txt",
+        ],
+        recommendations= [],
+        references= [
+            "https://kb.omnissa.com/s/article/2084138"
+        ]
+    ),
+]
