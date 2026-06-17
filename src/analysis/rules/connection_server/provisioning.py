@@ -115,7 +115,7 @@ PROVISION_RULES = [
         category="provisioning",
         match_type="contains",
         patterns=[
-            "LdapException: unable to create connection pool, resultCode=82 (local error), errorMessage=An error occurred while attempting to initialize the JAAS login context for GSSAPI authentication: LoginException(KDC has no support for encryption type (14))"
+            "LoginException(KDC has no support for encryption type (14))"
         ],
         source_files=[
             r"debug-.*\.txt"
