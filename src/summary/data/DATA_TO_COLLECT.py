@@ -85,9 +85,10 @@ DATA_TO_COLLECT = {
                 "PrintRedir", 
                 "ScannerRedirection", 
                 "SmartCard", 
+                "SmartCardSingleUserTS",
                 "StorageDriveRedir", 
                 "USB",
-                "teamsEnabled"
+                "teamsEnabled",
             ],
         },
         "log_level_features": {

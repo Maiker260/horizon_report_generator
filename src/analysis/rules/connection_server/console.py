@@ -186,4 +186,68 @@ CONSOLE_RULES = [
             "https://kb.omnissa.com/s/article/2084138"
         ]
     ),
+    Rule(
+        name= 'After upgrade to Horizon Connection Server 2503, Connection Server settings cannot be saved due to the error "Failed to fetch GSS Authenticator Configuration"',
+        category= "console",
+        match_type="contains",
+        patterns= [
+            'Cannot invoke "com.omnissa.vdi.vlsi.binding.vdi.infrastructure.ConnectionServer$ConnectionServerInfo.getId()" because "csInfo" is null at com.omnissa.vdi.vlsi.server.infrastructure.GSSAPIAuthenticatorManager.populateGSSAPIAuthenticatorInfo'
+        ],
+        source_files=[
+            r"debug-.*\.txt",
+        ],
+        recommendations= [],
+        references= [
+            "https://kb.omnissa.com/s/article/6000870"
+        ]
+    ),
+    Rule(
+        name= "Failure to upgrade to Horizon 2209 or Later from 2206 or earlier when message security is MIXED",
+        category= "console",
+        match_type="contains",
+        patterns= [
+            "[BrokerMessageSecurity]Could not configure message security: Invalid parameter for levelString: null",
+            "Message validation failure: Mismatch of signature 'tunnel/ | MSMessageSecurity] Failed to sign message"
+        ],
+        source_files=[
+            r"debug-.*\.txt",
+        ],
+        recommendations= [
+            "Set message security to ON or ENHANCED before upgrading and ensure all components have moved to your chosen steady-state mode."
+        ],
+        references= [
+            "https://kb.omnissa.com/s/article/90251"
+        ]
+    ),
+    Rule(
+        name= "Dashboard alerts for unrecognized requests for XML Api protocol connection in Horizon 2209 (8.7) and above",
+        category= "console",
+        match_type="contains",
+        patterns= [
+            "[ConnectionServerHandler] Incrementing the warning count : Reason : unrecognized request detected"
+        ],
+        source_files=[
+            r"debug-.*\.txt",
+        ],
+        recommendations= [],
+        references= [
+            "https://kb.omnissa.com/s/article/90398"
+        ]
+    ),
+    Rule(
+        name= "Unable to connect to admin page and stops accepting Horizon Client connections at Horizon 2303 and later",
+        is_version_specific= True,
+        category= "console",
+        match_type="contains",
+        patterns= [
+            "PooledProcessor] Problem processing HTTP connection: Software caused connection abort: socket write error"
+        ],
+        source_files=[
+            r"debug-.*\.txt",
+        ],
+        recommendations= [],
+        references= [
+            "https://kb.omnissa.com/s/article/93026"
+        ]
+    ),
 ]

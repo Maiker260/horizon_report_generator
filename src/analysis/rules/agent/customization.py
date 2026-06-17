@@ -35,4 +35,52 @@ CUSTOMIZATION_RULES = [
             "https://kb.omnissa.com/s/article/83985",
         ]
     ),
+    Rule(
+        name="AGENT_CUSTOMIZATION_FAULT - Internal template vm-XXXX customization failed Error Rename Failed In NGA Instant Clone Creation Error",
+        category="customization",
+        match_type="contains",
+        patterns=[
+            "customization failed. Rename Failed In NGA",
+            "customization failed. Failed to set computer name in NGA",
+            "Rename Failed In NGA. Cannot Continue",
+            "Set guestinfo.it.CustomizationErrorDesc to Rename Failed In NGA"
+        ],
+        source_files=[
+            r"debug-.*\.txt"
+        ],
+        recommendations=[],
+        references=[
+            "https://kb.omnissa.com/s/article/90782",
+        ]
+    ),
+    Rule(
+        name="AGENT_CUSTOMIZATION_FAULT - Internal template vm-XXXX customization failed Error description not set by agent Instant Clone Creation Error",
+        category="customization",
+        match_type="contains",
+        patterns=[
+            "customization failed. Error description not set by agent"
+        ],
+        source_files=[
+            r"debug-.*\.txt"
+        ],
+        recommendations=[],
+        references=[
+            "https://kb.omnissa.com/s/article/90781",
+        ]
+    ),
+    Rule(
+        name="Instant Clone provisioning fails intermittently with: Agent Initialization state error(26):Failed to verify domain trust(waited 45 seconds)",
+        category="customization",
+        match_type="contains",
+        patterns=[
+            "not found in current site.Skipping trust verify with preferred dc"
+        ],
+        source_files=[
+            r"debug-.*\.txt"
+        ],
+        recommendations=[],
+        references=[
+            "https://kb.omnissa.com/s/article/93066",
+        ]
+    ),
 ]

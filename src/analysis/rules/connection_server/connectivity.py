@@ -53,4 +53,147 @@ CONNECTIVITY_RULES = [
             "https://kb.omnissa.com/s/article/87762"
         ]
     ),
+    Rule(
+        name= 'After upgrading to Connection Server 2503, Users unable to launch VDIs with error message - "Failed to connect to the Connection Server"',
+        is_version_specific= True,
+        category= "connectivity",
+        match_type="regex",
+        patterns= [
+            r"IDOR attempt from IP address .* failed - unmatched token"
+        ],
+        source_files=[
+            r"debug-.*\.txt"
+        ],
+        recommendations= [],
+        references= [
+            "https://kb.omnissa.com/s/article/6000956"
+        ]
+    ),
+    Rule(
+        name= 'SQL exception when connecting to an Events Database after a Horizon Server Upgrade with "Certificates do not conform to algorithm constraints"',
+        category= "connectivity",
+        match_type="contains",
+        patterns= [
+            'Error: "Certificates do not conform to algorithm constraints"'
+        ],
+        source_files=[
+            r"debug-.*\.txt"
+        ],
+        recommendations= [
+            "Upgrade certificates to use supported cipher suites of Horizon"
+        ],
+        references= [
+            "https://kb.omnissa.com/s/article/90010"
+        ]
+    ),
+    Rule(
+        name= 'Connection Server is unable to connect to Horizon Events DB with error: "Event Database Configuration Error : Event database certificate is not trusted. Intermediate or root certificate has expired. Contact your administrator for assistance.”',
+        category= "connectivity",
+        match_type="contains",
+        patterns= [
+            "[ExceptionHandlerAdvice] Invalid Certificate configured on Event Database Server."
+        ],
+        source_files=[
+            r"debug-.*\.txt"
+        ],
+        recommendations= [],
+        references= [
+            "https://kb.omnissa.com/s/article/6001069"
+        ]
+    ),
+    Rule(
+        name= 'A user launch request fails with the error message "Cannot create a new session: Maximum connections reached"',
+        category= "connectivity",
+        match_type="contains",
+        patterns= [
+            "Cannot create a new session: Maximum connections reached"
+        ],
+        source_files=[
+            r"debug-.*\.txt"
+        ],
+        recommendations= [],
+        references= [
+            "https://kb.omnissa.com/s/article/88476"
+        ]
+    ),
+    Rule(
+        name= "Horizon 2206 fails to connect to vCenter",
+        category= "connectivity",
+        match_type="contains",
+        patterns= [
+            "Certificates do not conform to algorithm constraintsat"
+        ],
+        source_files=[
+            r"debug-.*\.txt"
+        ],
+        recommendations= [
+            "In Horizon 2206, the list of acceptable certificate signature schemes has changed and may no longer include the algorithm used to sign the vCenter certificate"
+        ],
+        references= [
+            "https://kb.omnissa.com/s/article/89331"
+        ]
+    ),
+    Rule(
+        name= "Agent Unreachable message in Administrator console report After upgrading Horizon agent",
+        category= "connectivity",
+        match_type="contains",
+        patterns= [
+            r"\[DesktopTracker\] CHANGEKEY message from agent.* is discarded as it cannot be validated"
+        ],
+        source_files=[
+            r"debug-.*\.txt"
+        ],
+        recommendations= [],
+        references= [
+            "https://kb.omnissa.com/s/article/2038679"
+        ]
+    ),
+    Rule(
+        name= "Instant Clone Creation Error: Rare Edge Case A Horizon Agent sends session report message continuously with no delay leading to provisioning failures, machine status sync slowness and machines get stuck in maintenance mode or in a deleting state",
+        category= "connectivity",
+        match_type="contains",
+        patterns= [
+            "HA message took a long time to process"
+        ],
+        source_files=[
+            r"debug-.*\.txt"
+        ],
+        recommendations= [],
+        references= [
+            "https://kb.omnissa.com/s/article/92459"
+        ]
+    ),
+    Rule(
+        name= "AGENT_PENDING_EXPIRED - The pending session on machine has expired",
+        category= "connectivity",
+        match_type="contains",
+        patterns= [
+            "has not been connected from the client within the allocated time, this may be due to a failure to make the protocol connection or an inability to log the user into the available session",
+            "is logging off,notifying the service to block reconnects while this completes"
+        ],
+        source_files=[
+            r"debug-.*\.txt"
+        ],
+        recommendations= [],
+        references= [
+            "https://kb.omnissa.com/s/article/90352"
+        ]
+    ),
+    Rule(
+        name= "AGENT_CUSTOMIZATION_FAULT : Internal template vm-XXXX customization failed. Failed To Obtain Valid IP Address Instant Clone Creation Error",
+        category= "connectivity",
+        match_type="contains",
+        patterns= [
+            "Check DHCP server connectivity",
+            "No valid network adapters found on vm",
+            "Some adapters were disconnected"
+        ],
+        source_files=[
+            r"debug-.*\.txt"
+        ],
+        recommendations= [],
+        references= [
+            "https://kb.omnissa.com/s/article/90784"
+        ]
+    ),
 ]

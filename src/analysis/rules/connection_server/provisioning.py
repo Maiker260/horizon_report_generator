@@ -270,4 +270,82 @@ PROVISION_RULES = [
             "https://kb.omnissa.com/s/article/90419"
         ]
     ),
+    Rule(
+        name="VC_FAULT_FATAL - javax.xml.ws.soap.SOAPFaultException fault was thrown by the VC server Instant Clone Creation Error",
+        category="provisioning",
+        match_type="contains",
+        patterns=[
+            "Cause: org.apache.cxf.binding.soap.SoapFault: Permission to perform this operation was denied"
+        ],
+        source_files=[
+            r"debug-.*\.txt"
+        ],
+        recommendations=[
+            "Validate vCenter permissions for the Account used by Horizon",
+            "Browse the Vcenter directly with the Managed Object Browser (MOB) with the Horizon Credentials"
+        ],
+        references=[
+            "https://kb.omnissa.com/s/article/90406"
+        ]
+    ),
+    Rule(
+        name="VC_FAULT_FATAL - javax.xml.ws.soap.SOAPFaultException fault was thrown by the VC server Instant Clone Creation Error",
+        category="provisioning",
+        match_type="contains",
+        patterns=[
+            "' has already been deleted or has not been completely created"
+        ],
+        source_files=[
+            r"debug-.*\.txt"
+        ],
+        recommendations=[],
+        references=[
+            "https://kb.omnissa.com/s/article/90406"
+        ]
+    ),
+    Rule(
+        name="SERVER_FAULT_FATAL: Unable to automatically reconnect to PBM subsystem Instant Clone Creation Error",
+        category="provisioning",
+        match_type="contains",
+        patterns=[
+            "[PBMClient] Connection Lost to PBM subsystem"
+        ],
+        source_files=[
+            r"debug-.*\.txt"
+        ],
+        recommendations=[],
+        references=[
+            "https://kb.omnissa.com/s/article/90575"
+        ]
+    ),
+    Rule(
+        name="AGENT_CUSTOMIZATION_FAULT - Internal template vm-XXXX customization failed Error description not set by agent Instant Clone Creation Error",
+        category="provisioning",
+        match_type="contains",
+        patterns=[
+            "customization failed. Error description not set by agent"
+        ],
+        source_files=[
+            r"debug-.*\.txt"
+        ],
+        recommendations=[],
+        references=[
+            "https://kb.omnissa.com/s/article/90781"
+        ]
+    ),
+    Rule(
+        name="AGENT_CUSTOMIZATION_FAULT - Internal template vm-XXXX customization failed Error Domain Join Failed. Verify DNS Failed In NGA Instant Clone Creation Error",
+        category="provisioning",
+        match_type="contains",
+        patterns=[
+            "customization failed Error Domain Join Failed. Verify DNS Failed In NGA"
+        ],
+        source_files=[
+            r"debug-.*\.txt"
+        ],
+        recommendations=[],
+        references=[
+            "https://kb.omnissa.com/s/article/90783"
+        ]
+    ),
 ]

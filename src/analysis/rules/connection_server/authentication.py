@@ -3,7 +3,7 @@ from src.analysis.utils.rule_constructor import Rule
 AUTHENTICATION_RULES = [
     Rule(
         name="Logging in to a Horizon View Connection Server using Smartcard Authentication fails",
-        category="authencation",
+        category="authentication",
         match_type="contains",
         patterns=[
             "The user's tokenGroups attribute needs to be obtained so that their group membership based entitlements can be determined",

@@ -19,4 +19,21 @@ AUTHENTICATION_RULES = [
             "https://kb.omnissa.com/s/article/91564"
         ]
     ),
+    Rule(
+        name="Radius Server timeout cannot be set longer than 120 seconds",
+        category="authentication",
+        match_type="contains",
+        patterns=[
+            "Message: radius-auth:The value of (Number of Attempts"
+        ],
+        source_files=[
+            "admin.log"
+        ],
+        recommendations=[
+            "The timeout value should be set within 120 seconds"
+        ],
+        references=[
+            "https://kb.omnissa.com/s/article/93056"
+        ]
+    ),
 ]
