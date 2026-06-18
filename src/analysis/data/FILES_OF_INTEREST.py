@@ -9,6 +9,7 @@ FILES_OF_INTEREST = {
         "admin.log", 
         "bsg.log", 
         "esmanager.log",
+        "authbroker.log"
     ],
     "agent": [
         r"debug-.*\.txt", 

@@ -36,4 +36,39 @@ NETWORK_RULES = [
             "https://kb.omnissa.com/s/article/90155"
         ]
     ),
+    Rule(
+        name="UAG 2312 admin UI reports HTTP ERROR 400 Bad Request",
+        category="network",
+        match_type="contains",
+        patterns=[
+            "Sending bad request. Incoming request does not have valid host header:"
+        ],
+        source_files=[
+            "esmanager.log"
+        ],
+        recommendations=[
+            "Ensure all Host header values traversing through UAG is allowed in either Allow Host Header or Auto-Allow Host Header section under System Configuration"
+        ],
+        references=[
+            "https://kb.omnissa.com/s/article/97414"
+        ]
+    ),
+    Rule(
+        name='Unified Access Gateway (UAG): Horizon users are intermittently disconnected while in session with error "Logout requested by system"',
+        category="network",
+        match_type="contains",
+        patterns=[
+            "Too many connections opened for session:"
+        ],
+        source_files=[
+            "esmanager.log"
+        ],
+        recommendations=[
+            "Disable multiplexing or any applicable feature on the load balancer appliance that reuses sessions that are presented to the UAG appliances",
+            "Please consult your load balancer or network appliance vendor for guidance on what features would reuse sessions in this manner"
+        ],
+        references=[
+            "https://kb.omnissa.com/s/article/87822"
+        ]
+    ),
 ]

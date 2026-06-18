@@ -35,4 +35,19 @@ AUTHENTICATION_RULES = [
             "https://kb.omnissa.com/s/article/6001000"
         ]
     ),
+    Rule(
+        name="Unified Access Gateway(UAG): Unable to configure Ping IDP",
+        category="authentication",
+        match_type="contains",
+        patterns=[
+            "InvalidArgument(parameter: server.staticMetadata): StaticMetadata with this entityID already in use"
+        ],
+        source_files=[
+            r"debug-.*\.txt",
+        ],
+        recommendations=[],
+        references=[
+            "https://kb.omnissa.com/s/article/81209"
+        ]
+    ),
 ]

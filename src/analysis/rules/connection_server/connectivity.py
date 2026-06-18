@@ -196,4 +196,35 @@ CONNECTIVITY_RULES = [
             "https://kb.omnissa.com/s/article/90784"
         ]
     ),
+    Rule(
+        name= "Unified Access Gateway(UAG): UAG Gateway Error Messages in Horizon View Administrator Portal Dashboard",
+        category= "connectivity",
+        match_type="contains",
+        patterns= [
+            "[GWMonitor] Could not get health information for"
+        ],
+        source_files=[
+            r"debug-.*\.txt"
+        ],
+        recommendations= [],
+        references= [
+            "https://kb.omnissa.com/s/article/90749"
+        ]
+    ),
+    Rule(
+        name= "Unified Access Gateway(UAG): Error: CSRF attempt from IP address failed - missing token with pre-login message configured",
+        category= "connectivity",
+        match_type="contains",
+        patterns= [
+            "failed - missing token"
+        ],
+        source_files=[
+            r"debug-.*\.txt"
+        ],
+        recommendations= [],
+        references= [
+            "https://kb.omnissa.com/s/article/86416"
+        ]
+    ),
+    
 ]
