@@ -1,4 +1,5 @@
 from src.analysis.utils.count_categories import count_categories
+from src.analysis.utils.format_timestamp import format_timestamp
 
 def content(data):
     total_findings = len(data)
@@ -61,6 +62,16 @@ def content(data):
                 continue
             
             report.append(f"{label}:")
+
+            if key == "samples":
+                for _, line in value:
+                    report.append(f"   - {line}")
+                    
+                report.append("")
+                continue
+
+            if key in ["last_line", "first_line"]:
+                value = format_timestamp(value)
 
             if isinstance(value, list):
                 for item in value:

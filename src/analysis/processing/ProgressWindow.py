@@ -9,15 +9,15 @@ class ProgressWindow:
         self.window.geometry("450x150")
         self.window.resizable(False, False)
 
-        # Timer
         self.start_time = time.time()
+        self.running = True
+
         self.time_label = tk.Label(
             self.window,
             text="Elapsed time: 00:00"
         )
         self.time_label.pack()
 
-        # Content
         self.status_label = tk.Label(
             self.window,
             text="Starting analysis..."
@@ -37,10 +37,29 @@ class ProgressWindow:
             mode="determinate"
         )
         self.progress.pack(pady=15)
-        
-        self.window.update()
+
+        self._update_timer()
+
         self.window.lift()
         self.window.focus_force()
+
+    def _update_timer(self):
+        if not self.running:
+            return
+
+        elapsed = int(time.time() - self.start_time)
+
+        minutes = elapsed // 60
+        seconds = elapsed % 60
+
+        self.time_label.config(
+            text=f"Elapsed time: {minutes:02}:{seconds:02}"
+        )
+
+        self.window.after(
+            1000,
+            self._update_timer
+        )
 
     def update_progress(
         self,
@@ -59,24 +78,14 @@ class ProgressWindow:
             text=filename
         )
 
-        # Update Timer
-        elapsed = int(time.time() - self.start_time)
-
-        minutes = elapsed // 60
-        seconds = elapsed % 60
-
-        self.time_label.config(
-            text=f"Elapsed time: {minutes:02}:{seconds:02}"
-        )
-
-        self.window.update()
-
     def close(self):
+        self.running = False
+
         self.status_label.config(
             text="Analysis Complete"
         )
 
-        self.window.update()
-        self.window.after(500)
-
-        self.window.destroy()
+        self.window.after(
+            500,
+            self.window.destroy
+        )
