@@ -6,6 +6,7 @@ from src.common.report.save_error_log import save_error_log
 from src.common.report.save_report import save_report
 from src.summary.generate_summary_report import generate_summary_report
 from src.analysis.generate_log_analysis import generate_log_analysis
+from src.summary.utils.validate_bundle_language import validate_bundle_language
 
 features = {    
     "summary_report": generate_summary_report,
@@ -20,6 +21,9 @@ def main(zip_path, feature):
             component = detect_component(zip_ctx)
 
             validate_bundle(zip_ctx, component)
+
+            if feature == "summary_report":
+                validate_bundle_language(zip_ctx)
 
             report = features[feature](zip_path, zip_ctx, component, feature)
             # print(report)

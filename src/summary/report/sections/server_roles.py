@@ -6,7 +6,7 @@ def server_roles(data, component, letter):
     content.append("-" * 30)
 
     if not roles:
-        content.append("\n   No Additional Roles Found.")
+        content.append("\n   * No Additional Roles Found.")
         return "\n".join(content)
 
     for role, info in roles.items():
