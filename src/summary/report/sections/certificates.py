@@ -15,6 +15,7 @@ def certificates(data, component, letter):
         return "\n".join(content)
 
     content.append("VDM Certificate(s):")
+    
     if len(vdm_certs) > 1:
         content.append("\n * MULTIPLE VDM CERTIFICATES DETECTED.")
 

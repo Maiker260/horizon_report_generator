@@ -3,7 +3,6 @@ import ctypes
 from pathlib import Path
 from src.main import main
 from src.exceptions import UnsupportedComponentError
-import ahocorasick
 
 APP_TITLE = "Horizon Report Generator"
 

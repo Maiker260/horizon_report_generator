@@ -89,6 +89,7 @@ DATA_TO_COLLECT = {
                 "StorageDriveRedir", 
                 "USB",
                 "teamsEnabled",
+                "RTAV"
             ],
         },
         "log_level_features": {

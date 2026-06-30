@@ -45,7 +45,7 @@ REPORT_SECTIONS = {
     ],
 }
 
-def generate_report(data, zip_path, component, feature):     
+def generate_report(data, zip_path, component, feature):
     report = ""
     log_level = None
 

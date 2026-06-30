@@ -8,6 +8,9 @@ def horizon_features(data, component, letter):
     content.append("-" * 30)
     content.append("")
 
+    if not features:
+        content.append("   * No additional agent features found.")
+        return "\n".join(content)
 
     feature_values = {}
 

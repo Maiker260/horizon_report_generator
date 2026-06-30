@@ -8,7 +8,7 @@ def locked_properties(data, component, letter):
 
     if not file_entries:
         content.append(
-            "   Locked.properties file not found or no relevant entries were detected."
+            "   * Locked.properties file not found or no relevant entries were detected."
         )
 
     for line in file_entries:
