@@ -27,7 +27,7 @@ def main(zip_path, feature):
 
             report = features[feature](zip_path, zip_ctx, component, feature)
             # print(report)
-            report_path = save_report(report, component, feature)
+            report_path = save_report(report, component, feature, zip_path)
 
             return report_path
 

@@ -1,11 +1,12 @@
 from pathlib import Path
 from src.common.report.utils.NAME_FIXES import FEATURE_FIXES, KEY_FIXES
 
-def save_report(report, component, feature):
+def save_report(report, component, feature, zip_path):
     key = KEY_FIXES.get(component, component.title())
     feature_name = FEATURE_FIXES.get(feature)
 
-    base_name = f"Horizon {key} - {feature_name}"
+    bundle_name = zip_path.stem
+    base_name = f"Horizon {key} - {feature_name} - {bundle_name}"
     extension = ".txt"
     file_path = Path(f"{base_name}{extension}")
     counter = 1
