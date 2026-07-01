@@ -32,4 +32,19 @@ UPGRADE_RULES = [
             "https://kb.omnissa.com/s/article/80464"
         ]
     ),
+    Rule(
+        name= "Enhanced Security Status is stuck in PENDING ENHANCED after changing Message Security Mode from Enabled or Mixed to Enhanced in Global Settings in Horizon",
+        category= "upgrade",
+        match_type="regex",
+        patterns= [
+            r"Waiting for .* machines to enter MS mode",
+        ],
+        source_files=[
+            r"debug-.*\.txt"
+        ],
+        recommendations= [],
+        references= [
+            "https://kb.omnissa.com/s/article/91923"
+        ]
+    ),
 ]

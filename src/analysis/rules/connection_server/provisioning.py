@@ -348,4 +348,50 @@ PROVISION_RULES = [
             "https://kb.omnissa.com/s/article/90783"
         ]
     ),
+    Rule(
+        name="vGPU enabled Instant clone desktops throw exception of unknown vGPU profiles",
+        category="provisioning",
+        match_type="contains",
+        patterns=[
+            "No GPU capable host available for provisioning"
+        ],
+        source_files=[
+            r"debug-.*\.txt"
+        ],
+        recommendations=[],
+        references=[
+            "https://kb.omnissa.com/s/article/59271"
+        ]
+    ),
+    Rule(
+        name="Instant clones gets stuck in maintenance mode during the resync operation if there is slow disk I/O or a storage disk failure",
+        is_version_specific= True,
+        category="provisioning",
+        match_type="contains",
+        patterns=[
+            "has failed. Timed out waiting for operation to complete. Total time waited"
+        ],
+        source_files=[
+            r"debug-.*\.txt"
+        ],
+        recommendations=[],
+        references=[
+            "https://kb.omnissa.com/s/article/6001386"
+        ]
+    ),
+    Rule(
+        name="Horizon Connection Server goes offline and requires service restart and duplicate provisioning tasks",
+        category="provisioning",
+        match_type="contains",
+        patterns=[
+            "<console-redirection> [ws_TomcatService] STDOUT: java.io.UTFDataFormatException"
+        ],
+        source_files=[
+            r"debug-.*\.txt"
+        ],
+        recommendations=[],
+        references=[
+            "https://kb.omnissa.com/s/article/6000786"
+        ]
+    ),
 ]

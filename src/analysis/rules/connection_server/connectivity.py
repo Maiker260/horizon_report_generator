@@ -226,5 +226,50 @@ CONNECTIVITY_RULES = [
             "https://kb.omnissa.com/s/article/86416"
         ]
     ),
-    
+    Rule(
+        name= "Unable to reconnect to Horizon Events DB, after upgrade to Horizon 2503",
+        category= "connectivity",
+        match_type="contains",
+        patterns= [
+            "Failed to recover events db connection",
+        ],
+        source_files=[
+            r"debug-.*\.txt"
+        ],
+        recommendations= [],
+        references= [
+            "https://kb.omnissa.com/s/article/6000947"
+        ]
+    ),
+    Rule(
+        name= "FIPS Enabled Connection Server fails to connect to MS SQL database",
+        category= "connectivity",
+        match_type="contains",
+        patterns= [
+            "org.bouncycastle.jsse.provider.ProvTlsClient.notifyAlertRaised raised fatal(2) certificate_unknown(46) alert: Failed to read record",
+        ],
+        source_files=[
+            r"debug-.*\.txt"
+        ],
+        recommendations= [],
+        references= [
+            "https://kb.omnissa.com/s/article/6000928"
+        ]
+    ),
+    Rule(
+        name= "Horizon Connection Server Troubleshooting",
+        category= "connectivity",
+        match_type="contains",
+        patterns= [
+            "[ws_java_bridgeDLL] java.lang.OutOfMemoryError: Java heap space",
+            "Disk space free threshold for log reached. No more messages will be logged until more disk space has become available or the threshold is reduced"
+        ],
+        source_files=[
+            r"debug-.*\.txt"
+        ],
+        recommendations= [],
+        references= [
+            "https://kb.omnissa.com/s/article/83960"
+        ]
+    ),
 ]

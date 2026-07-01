@@ -6,6 +6,7 @@ from src.analysis.rules.connection_server.console import CONSOLE_RULES
 from src.analysis.rules.connection_server.authentication import AUTHENTICATION_RULES
 from src.analysis.rules.connection_server.customization import CUSTOMIZATION_RULES
 from src.analysis.rules.connection_server.upgrade import UPGRADE_RULES
+from src.analysis.rules.connection_server.cloud_pod import CLOUD_POD_RULES
 
 CONNECTION_SERVER_RULESET = compile_rules(
     REPLICATION_RULES 
@@ -15,4 +16,5 @@ CONNECTION_SERVER_RULESET = compile_rules(
     + AUTHENTICATION_RULES
     + CUSTOMIZATION_RULES
     + UPGRADE_RULES
+    + CLOUD_POD_RULES
 )

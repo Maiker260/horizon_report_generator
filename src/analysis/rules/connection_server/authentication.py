@@ -50,4 +50,36 @@ AUTHENTICATION_RULES = [
             "https://kb.omnissa.com/s/article/81209"
         ]
     ),
+    Rule(
+        name='[Nutanix]Horizon Agent Installation on Golden Image Fails with "Authentication (AuthSSPI) AcceptSecurityContext Failed" During Registration',
+        is_version_specific= True,
+        category="authentication",
+        match_type="contains",
+        patterns=[
+            "Authentication (AuthSSPI) function AcceptSecurityContext failed, return value"
+        ],
+        source_files=[
+            r"debug-.*\.txt",
+        ],
+        recommendations=[],
+        references=[
+            "https://kb.omnissa.com/s/article/6001394"
+        ]
+    ),
+    Rule(
+        name='Smart card login for Horizon administrators option does not function. Error "A valid smart card is required for login. Please try again"',
+        category="authentication",
+        match_type="contains",
+        patterns=[
+            "UPN missing for mandatory smart card authentication for Admin",
+            "Authentication failed, Unexpected fault: ERROR_AUTH_SMARTCARD_REQUIRED"
+        ],
+        source_files=[
+            r"debug-.*\.txt",
+        ],
+        recommendations=[],
+        references=[
+            "https://kb.omnissa.com/s/article/83617"
+        ]
+    ),
 ]

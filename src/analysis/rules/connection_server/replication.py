@@ -30,9 +30,7 @@ REPLICATION_RULES = [
         source_files=[
             r"debug-.*\.txt"
         ],
-        recommendations=[
-            "This issue has been resolved in the next release of Horizon, 2406 (8.13)",
-        ],
+        recommendations=[],
         references=[
             "https://kb.omnissa.com/s/article/97398"
         ]

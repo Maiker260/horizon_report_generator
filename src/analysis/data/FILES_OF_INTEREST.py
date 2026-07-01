@@ -4,6 +4,7 @@ FILES_OF_INTEREST = {
         r"debug-.*\.txt", 
         "info.log", 
         r"vminst.*\.log",
+        "absg.log"
     ],
     "unified_access_gateway": [
         "admin.log", 
@@ -22,5 +23,6 @@ FILES_OF_INTEREST = {
         r"horizon-protocol-.*\.log", 
         r".*-horizon-client-.*\.txt",
         r"horizon-crtbora.*\.log",
+        r"debug-.*\.txt",
     ],
 }

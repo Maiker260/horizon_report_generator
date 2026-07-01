@@ -3,10 +3,12 @@ from src.analysis.utils.rule_constructor import Rule
 CONSOLE_RULES = [
     Rule(
         name= "After a reboot, the Horizon Connection Server may fail to start properly and users may be unable to connect",
+        is_version_specific= True,
         category= "console",
         match_type="contains",
         patterns= [
-            "LDAP connection failure to 127.0.0.1:389"
+            "LDAP connection failure to 127.0.0.1:389",
+            "Shared memory connection failure to Node Manager"
         ],
         source_files=[
             r"debug-.*\.txt"
@@ -160,7 +162,7 @@ CONSOLE_RULES = [
         category= "console",
         match_type="contains",
         patterns= [
-            "at java.base/sun.security.ssl.AbstractTrustManagerWrapper.checkServerTrusted(Unknown Source)",
+            "NoTrustedThumbprintException: InvalidCertificateException[reasons:notTrusted;cantCheckRevoked;chainReasons:invalid",
         ],
         source_files=[
             r"debug-.*\.txt",
@@ -248,6 +250,133 @@ CONSOLE_RULES = [
         recommendations= [],
         references= [
             "https://kb.omnissa.com/s/article/93026"
+        ]
+    ),
+    Rule(
+        name= "Blast gateway not running when a Certificate generated from IIS is used",
+        category= "console",
+        match_type="contains",
+        patterns= [
+            "keystoreutil.exe failed to load certificate from",
+            "Failed to acquire private key handle (error"
+        ],
+        source_files=[
+            "absg.log",
+        ],
+        recommendations= [],
+        references= [
+            "https://kb.omnissa.com/s/article/89820"
+        ]
+    ),
+    Rule(
+        name= "Unable to Add Virtual Desktops to Manual Pools with error: ADMIN_POOL_ADD_FAILED",
+        category= "console",
+        match_type="contains",
+        patterns= [
+            "Marshalling Error: Error writing request body to server",
+            "Could not find cached VM %s to validate Storage Accelerator against"
+        ],
+        source_files=[
+            r"debug-.*\.txt",
+        ],
+        recommendations= [],
+        references= [
+            "https://kb.omnissa.com/s/article/6001334"
+        ]
+    ),
+    Rule(
+        name= "Admin UI not loading because of the JMS errors during start up",
+        is_version_specific= True,
+        category= "console",
+        match_type="contains",
+        patterns= [
+            "[JMSMessagePublisher] Failed to publish message, keeping: com.swiftmq.jms.RequestTimeoutException: Request time out",
+        ],
+        source_files=[
+            r"debug-.*\.txt",
+        ],
+        recommendations= [],
+        references= [
+            "https://kb.omnissa.com/s/article/6001245"
+        ]
+    ),
+    Rule(
+        name= "After upgrade to 2312.2, Events to File System stopped working",
+        is_version_specific= True,
+        category= "console",
+        match_type="contains",
+        patterns= [
+            "java.lang.ClassNotFoundException: org.apache.commons.io.FileUtils at java.base/java.net.URLClassLoader.findClass(Unknown Source)",
+        ],
+        source_files=[
+            r"debug-.*\.txt",
+        ],
+        recommendations= [],
+        references= [
+            "https://kb.omnissa.com/s/article/6001037"
+        ]
+    ),
+    Rule(
+        name= "Horizon console is not displaying 'site name' under the 'guest customization' while editing or creating a pool",
+        is_version_specific= True,
+        category= "console",
+        match_type="contains",
+        patterns= [
+            "Error fetching sites from AD",
+        ],
+        source_files=[
+            r"debug-.*\.txt",
+        ],
+        recommendations= [],
+        references= [
+            "https://kb.omnissa.com/s/article/6000146"
+        ]
+    ),
+    Rule(
+        name= "Horizon OCSP based revocation check doesn't work in FIPS installation",
+        is_version_specific= True,
+        category= "console",
+        match_type="contains",
+        patterns= [
+            "Could not start the Ice Server MBean",
+        ],
+        source_files=[
+            r"debug-.*\.txt",
+        ],
+        recommendations= [],
+        references= [
+            "https://kb.omnissa.com/s/article/93115"
+        ]
+    ),
+    Rule(
+        name= "PCoIP Security Gateway shows red alert in Services Status",
+        category= "console",
+        match_type="contains",
+        patterns= [
+            "Server certificate validation failed for host localhost, Cert CN PCoIP Security Gateway",
+        ],
+        source_files=[
+            r"debug-.*\.txt",
+        ],
+        recommendations= [],
+        references= [
+            "https://kb.omnissa.com/s/article/84067"
+        ]
+    ),
+    Rule(
+        name= "Omnissa Horizon Admin Console inaccessible after importing CA signed certificate",
+        category= "console",
+        match_type="contains",
+        patterns= [
+            "Request contained unexpected header: vdmCertError=[]",
+            "Request contained unexpected header: vdmConnectionSource=[]"
+        ],
+        source_files=[
+            r"debug-.*\.txt",
+        ],
+        recommendations= [],
+        references= [
+            "https://kb.omnissa.com/s/article/6000390"
         ]
     ),
 ]

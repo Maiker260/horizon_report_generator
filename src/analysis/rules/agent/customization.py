@@ -83,4 +83,20 @@ CUSTOMIZATION_RULES = [
             "https://kb.omnissa.com/s/article/93066",
         ]
     ),
+    Rule(
+        name='[Nutanix]Horizon Agent Installation on Golden Image Fails with "Authentication (AuthSSPI) AcceptSecurityContext Failed" During Registration',
+        is_version_specific= True,
+        category="customization",
+        match_type="contains",
+        patterns=[
+            "authentication failed, reason=authChannelDown"
+        ],
+        source_files=[
+            r"debug-.*\.txt"
+        ],
+        recommendations=[],
+        references=[
+            "https://kb.omnissa.com/s/article/6001394",
+        ]
+    ),
 ]
