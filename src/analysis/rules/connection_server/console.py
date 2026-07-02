@@ -379,4 +379,50 @@ CONSOLE_RULES = [
             "https://kb.omnissa.com/s/article/6000390"
         ]
     ),
+    Rule(
+        name= 'Expanding VM for Dedicated Instant Clone Pool Fails with Error "Invalid Value for Member" in Horizon 8 (2312 and Later)',
+        category= "console",
+        match_type="contains",
+        patterns= [
+            "usedVMPolicy is only applicable for automated desktop pool with floating user assignment",
+        ],
+        source_files=[
+            r"debug-.*\.txt",
+        ],
+        recommendations= [],
+        references= [
+            "https://kb.omnissa.com/s/article/6000678"
+        ]
+    ),
+    Rule(
+        name= 'Horizon Console reports "Certificate Validation Failed" for vCenter after environmental maintenance',
+        category= "console",
+        match_type="contains",
+        patterns= [
+            "UnexpectedFault: Unexpected failure during certificate validation",
+            "CERTIFICATE_VALIDATION_FAILED",
+        ],
+        source_files=[
+            r"debug-.*\.txt",
+        ],
+        recommendations= [],
+        references= [
+            "https://kb.omnissa.com/s/article/86414"
+        ]
+    ),
+    Rule(
+        name= "Unable to load or edit Applications or Desktops in Horizon Console",
+        category= "console",
+        match_type="contains",
+        patterns= [
+            "Global entitlement dn must be present in global assignment",
+        ],
+        source_files=[
+            r"debug-.*\.txt",
+        ],
+        recommendations= [],
+        references= [
+            "https://kb.omnissa.com/s/article/88797"
+        ]
+    ),
 ]

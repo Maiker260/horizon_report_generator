@@ -272,4 +272,49 @@ CONNECTIVITY_RULES = [
             "https://kb.omnissa.com/s/article/83960"
         ]
     ),
+    Rule(
+        name= "HTTP error 500 when attempting to launch Horizon Desktops or Applications",
+        category= "connectivity",
+        match_type="contains",
+        patterns= [
+            "[AbstractReloadingMetadataResolver] Unable to unmarshall metadata org.opensaml.saml.metadata.resolver",
+        ],
+        source_files=[
+            r"debug-.*\.txt"
+        ],
+        recommendations= [],
+        references= [
+            "https://kb.omnissa.com/s/article/88281"
+        ]
+    ),
+    Rule(
+        name= 'The desktop sources for this desktop are not responding. Please try connecting to the desktop again later, or contact your system administrator" displayed when the number of desktops in the pool is less than the actual users',
+        category= "connectivity",
+        match_type="contains",
+        patterns= [
+            "Error Message: failed launching connection: NoServersAvailableException$ServersNotRespondingException",
+        ],
+        source_files=[
+            r"debug-.*\.txt"
+        ],
+        recommendations= [],
+        references= [
+            "https://kb.omnissa.com/s/article/59751"
+        ]
+    ),
+    Rule(
+        name= "Horizon Event DB Configuration Fails on a Non-English Operating System",
+        category= "connectivity",
+        match_type="contains",
+        patterns= [
+            "Unable to update database settings; database connection failed: Unable to create events tables: Invalid column name 'name'",
+        ],
+        source_files=[
+            r"debug-.*\.txt"
+        ],
+        recommendations= [],
+        references= [
+            "https://kb.omnissa.com/s/article/85519"
+        ]
+    ),
 ]

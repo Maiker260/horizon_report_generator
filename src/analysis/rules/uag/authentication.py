@@ -66,4 +66,18 @@ AUTHENTICATION_RULES = [
             "https://kb.omnissa.com/s/article/87337"
         ]
     ),
+    Rule(
+        name="Unified Access Gateway(UAG): RSA AM invalid certificate issues on UAG 2111 and later",
+        category="authentication",
+        patterns=[
+            "Provided PEM Certificate is missing or invalid",
+        ],
+        source_files=[
+            "authbroker.log"
+        ],
+        recommendations=[],
+        references=[
+            "https://kb.omnissa.com/s/article/88004"
+        ]
+    ),
 ]

@@ -394,4 +394,109 @@ PROVISION_RULES = [
             "https://kb.omnissa.com/s/article/6000786"
         ]
     ),
+    Rule(
+        name="SERVER_FAULT_FATAL: Mors cannot be null Instant Clone Creation Error",
+        category="provisioning",
+        match_type="contains",
+        patterns=[
+            "has failed. Mors cannot be null"
+        ],
+        source_files=[
+            r"debug-.*\.txt"
+        ],
+        recommendations=[],
+        references=[
+            "https://kb.omnissa.com/s/article/90558"
+        ]
+    ),
+    Rule(
+        name="Error creating Full Clone Pool in Horizon 2212 and Later: resetComputerAccount: Fail to create computer account constraint violation: unable to create entry, resultCode=19",
+        category="provisioning",
+        match_type="contains",
+        patterns=[
+            "constraint violation: unable to create entry, resultCode=19"
+        ],
+        source_files=[
+            r"debug-.*\.txt"
+        ],
+        recommendations=[],
+        references=[
+            "https://kb.omnissa.com/s/article/93991"
+        ]
+    ),
+    Rule(
+        name="SERVER_FAULT_FATAL: javax.xml.ws.WebServiceException: Could not send Message Instant Clone Creation Error",
+        category="provisioning",
+        match_type="contains",
+        patterns=[
+            "[javax.xml.ws.WebServiceException] Message: Could not send Message."
+        ],
+        source_files=[
+            r"debug-.*\.txt"
+        ],
+        recommendations=[],
+        references=[
+            "https://kb.omnissa.com/s/article/90573"
+        ]
+    ),
+    Rule(
+        name="Horizon 8.10 Persistent Disk: VC_FAULT_FATAL - Could not find available slots on controllers of type com.omnissa.vim25hic.VirtualLsiLogicController in VM",
+        category="provisioning",
+        match_type="contains",
+        patterns=[
+            "Could not find available slots on controllers of type"
+        ],
+        source_files=[
+            r"debug-.*\.txt"
+        ],
+        recommendations=[],
+        references=[
+            "https://kb.omnissa.com/s/article/92903"
+        ]
+    ),
+    Rule(
+        name="VC_FAULT_FATAL - A general system error occurred: Error in digest configuration The specified feature is not supported by this version",
+        category="provisioning",
+        match_type="contains",
+        patterns=[
+            "VC_FAULT_FATAL: A general system error occurred: Error in digest configuration The specified feature is not supported by this version"
+        ],
+        source_files=[
+            r"debug-.*\.txt"
+        ],
+        recommendations=[],
+        references=[
+            "https://kb.omnissa.com/s/article/90415"
+        ]
+    ),
+    Rule(
+        name="VC_FAULT_FATAL: A specified parameter was not correct: spec.disk.backing.crypto Instant Clone Creation Error",
+        category="provisioning",
+        match_type="contains",
+        patterns=[
+            "A specified parameter was not correct: spec.disk.backing.crypto"
+        ],
+        source_files=[
+            r"debug-.*\.txt"
+        ],
+        recommendations=[],
+        references=[
+            "https://kb.omnissa.com/s/article/90427"
+        ]
+    ),
+    Rule(
+        name="VC_FAULT_FATAL: The name already exists Instant Clone Creation Error",
+        category="provisioning",
+        match_type="regex",
+        patterns=[
+            r"Fault type is VC_FAULT_FATAL - The name .* already exists"
+        ],
+        source_files=[
+            r"debug-.*\.txt"
+        ],
+        recommendations=[],
+        references=[
+            "https://kb.omnissa.com/s/article/90426"
+        ]
+    ),
 ]

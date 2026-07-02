@@ -34,5 +34,20 @@ REPLICATION_RULES = [
         references=[
             "https://kb.omnissa.com/s/article/97398"
         ]
-    )
+    ),
+    Rule(
+        name="Unable to see virtual machines and the desktop configurations in the Horizon administration console after ADAM database maintenance",
+        category="replication",
+        match_type="contains",
+        patterns=[
+            "[LDAP: error code 32 - 0000208D: NameErr: DSID-03100288, problem 2001 (NO_OBJECT)",
+        ],
+        source_files=[
+            r"debug-.*\.txt"
+        ],
+        recommendations=[],
+        references=[
+            "https://kb.omnissa.com/s/article/88536"
+        ]
+    ),
 ]
