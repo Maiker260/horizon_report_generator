@@ -1,8 +1,8 @@
 import re
-from src.summary.parsers.device_info.systeminfo import systeminfo
+from src.summary.parsers.common.device_info.systeminfo import systeminfo
 from src.summary.data.FILES_OF_INTEREST import FILES_OF_INTEREST
-from src.summary.parsers.device_info.ipconfig.ipconfig import ipconfig
-from src.summary.parsers.device_info.reg_keys import reg_keys
+from src.summary.parsers.common.device_info.ipconfig.ipconfig import ipconfig
+from src.summary.parsers.common.device_info.reg_keys import reg_keys
 
 parsers = {
     "systeminfo": systeminfo,

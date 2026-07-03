@@ -1,8 +1,7 @@
 from src.common.utils.read_file_with_auto_encoding import read_file_with_auto_encoding
 
 def fips_check(zip_ctx, filename):
-    data = {}
-
+    
     if not zip_ctx.exists(filename):
         return
 

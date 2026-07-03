@@ -1,4 +1,7 @@
 FILES_OF_INTEREST = {
+    "enrollment_server": [
+        r"debug-.*\.txt", 
+    ],
     "connection_server": [
         "ldap_replica_status.txt", 
         r"debug-.*\.txt", 

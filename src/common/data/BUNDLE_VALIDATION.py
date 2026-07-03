@@ -1,4 +1,17 @@
 BUNDLE_VALIDATION = {
+    "enrollment_server": {
+        "required": [
+            "systeminfo.txt",
+            "ipconfig-all.txt",
+            "net-start.txt",
+            "netstat-abov.txt",
+            "installed_software.txt",
+        ],
+        "structural": [
+            r"wsnm_starts\.txt",
+        ],
+    },
+
     "connection_server": {
         "required": [
             "systeminfo.txt",
@@ -12,6 +25,7 @@ BUNDLE_VALIDATION = {
             r"adam.*\.ldif",
         ],
     },
+
     "agent": {
         "required": [
             "systeminfo.txt",
@@ -24,6 +38,7 @@ BUNDLE_VALIDATION = {
             "v4v-agent-logs",
         ],
     },
+
     "client": {
         "required": [
             "systeminfo.txt",
@@ -33,6 +48,7 @@ BUNDLE_VALIDATION = {
             r".*_Horizon_Client",
         ],
     },
+
     "unified_access_gateway": {
         "required": [
             "uag_config.ini",

@@ -11,6 +11,17 @@ COMMON_FILES_OF_INTEREST = {
 }
 
 FILES_OF_INTEREST = {
+    "enrollment_server": {
+        "device_info": COMMON_FILES_OF_INTEREST["device_info"],
+        "server_roles": [
+            "tasklist-svc.txt", 
+            "net-start.txt"
+        ],
+        "horizon_services": COMMON_FILES_OF_INTEREST["horizon_services"],
+        "horizon_ports": COMMON_FILES_OF_INTEREST["horizon_ports"],
+        "installed_software": COMMON_FILES_OF_INTEREST["installed_software"],
+        "service_keys": ["omnissa-reg.txt"]
+    },
     "connection_server": {
         "device_info": COMMON_FILES_OF_INTEREST["device_info"],
         "server_roles": [

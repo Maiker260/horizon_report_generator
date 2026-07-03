@@ -1,4 +1,13 @@
 HORIZON_COMPONENT_MARKERS = {
+    "enrollment_server": {
+        "files": [
+            "enrollment-server-trusted-cert-store.txt",
+        ],
+        "patterns": [
+            r"wsnm_starts\.txt",
+        ],
+    },
+
     "connection_server": {
         "dirs": [
             r".*-logs/broker",
@@ -44,6 +53,7 @@ HORIZON_COMPONENT_MARKERS = {
             r".*_HTML5MMRx64.log",
         ],
     },
+
     "unified_access_gateway": {
         "files": [
             "uag_config.ini",

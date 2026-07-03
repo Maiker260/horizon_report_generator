@@ -30,6 +30,36 @@ COMMON_DATA_TO_COLLECT = {
 }
 
 DATA_TO_COLLECT = {
+    "enrollment_server": {
+        "device_info": (
+            COMMON_DATA_TO_COLLECT["device_info"] +
+            [
+                "Domain",
+                "Original Install Date",
+                "Total Physical Memory",
+                "Available Physical Memory",
+                "Hotfix(s)",
+            ]
+        ),
+        "server_roles": [],
+        "horizon_services": COMMON_DATA_TO_COLLECT["horizon_services"],
+        "horizon_ports": [
+            135, 32111
+        ],
+        "installed_software": COMMON_DATA_TO_COLLECT["installed_software"],
+        "log_level": COMMON_DATA_TO_COLLECT["log_level"],
+        "service_keys": {
+            "registry_suffix": [
+                r"Horizon\Enrollment Service",
+            ],
+            "values": [
+                "PreferLocalCa",
+                "UseKerberosAuthenticationToCa",
+                "UseNTLMAuthenticationToCa"
+            ]
+        }
+    },
+
     "connection_server": {
         "device_info": (
             COMMON_DATA_TO_COLLECT["device_info"] +
@@ -44,8 +74,8 @@ DATA_TO_COLLECT = {
         "server_roles": [],
         "horizon_services": COMMON_DATA_TO_COLLECT["horizon_services"],
         "horizon_ports": [
-            80, 443, 8443, 4172, 389, 3389, 22389, 22636,
-            18443, 4001, 4002, 4100, 4101, 8009, 8472,
+            80, 443, 389, 3389, 22389, 32111, 8443, 4172,
+            135, 4001, 4002, 4100, 4101, 8472,
         ],
         "installed_software": COMMON_DATA_TO_COLLECT["installed_software"],
         "certificates": [
@@ -71,7 +101,7 @@ DATA_TO_COLLECT = {
             ]
         ),
         "horizon_services": COMMON_DATA_TO_COLLECT["horizon_services"],
-        "horizon_ports": [3389, 4172, 22443, 9427, 32111, 4001, 4002, 55000],
+        "horizon_ports": [389, 3389, 4172, 22443, 9427, 32111, 4001, 4002],
         "installed_software": COMMON_DATA_TO_COLLECT["installed_software"],
         "horizon_features": {
             "registry_suffix": [

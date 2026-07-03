@@ -28,6 +28,7 @@ def open_ports(data, component, letter):
 
             if port_str not in grouped:
                 udp_ports = {
+                    "enrollment_server": [],
                     "connection_server": [4172, 8443],
                     "agent": [4172, 22443, 55000],
                     "client": [443, 4172, 8443, 22443],

@@ -2,7 +2,7 @@ from src.summary.data.FILES_OF_INTEREST import FILES_OF_INTEREST
 from src.summary.data.DATA_TO_COLLECT import DATA_TO_COLLECT
 from src.summary.data.SOFTWARE_RULES import SOFTWARE_RULES
 from src.common.utils.read_file_with_auto_encoding import read_file_with_auto_encoding
-from src.summary.parsers.installed_software.apps_check import apps_check
+from src.summary.parsers.common.installed_software.apps_check import apps_check
 from src.summary.utils.build_detection_index import build_detection_index
 
 def installed_software_check(zip_ctx, component):

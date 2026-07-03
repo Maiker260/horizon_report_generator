@@ -1,7 +1,7 @@
 import re
 from src.summary.data.FILES_OF_INTEREST import FILES_OF_INTEREST
-from src.summary.parsers.uag_parsers.uag_info.uag_config import uag_config
-from src.summary.parsers.uag_parsers.uag_info.version_check import version_check
+from src.summary.parsers.uag.uag_info.uag_config import uag_config
+from src.summary.parsers.uag.uag_info.version_check import version_check
 
 parsers = {
     "uag_config": uag_config,

@@ -1,8 +1,8 @@
 from src.summary.utils.search_keyword import search_keyword
 from src.summary.utils.normalize_line import normalize_line
 from src.summary.data.DATA_TO_COLLECT import DATA_TO_COLLECT
-from src.summary.parsers.device_info.hotfixes import parse_hotfixes
-from src.summary.parsers.device_info.network_cards import parse_nics
+from src.summary.parsers.common.device_info.hotfixes import parse_hotfixes
+from src.summary.parsers.common.device_info.network_cards import parse_nics
 from src.common.utils.read_file_with_auto_encoding import read_file_with_auto_encoding
 
 BLOCK_PARSERS = {

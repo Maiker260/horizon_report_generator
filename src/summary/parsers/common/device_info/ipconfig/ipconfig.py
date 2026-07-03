@@ -1,4 +1,4 @@
-from src.summary.parsers.device_info.ipconfig.get_dns_server import get_dns_server
+from src.summary.parsers.common.device_info.ipconfig.get_dns_server import get_dns_server
 from src.common.utils.read_file_with_auto_encoding import read_file_with_auto_encoding
 
 def ipconfig(zip_ctx, filename, component, current_data):

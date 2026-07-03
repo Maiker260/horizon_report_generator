@@ -33,7 +33,7 @@ def device_information(data, component, letter):
         content.append(f"{label:<{max_width + 1}}  {value}")
 
     # Hotfixes
-    if component in ["connection_server", "agent"]:
+    if component in ["connection_server", "enrollment_server", "agent"]:
         content.append(f"\nInstalled Patches:")
         for patch in hotfixes:
             content.append(f"   - {patch}")

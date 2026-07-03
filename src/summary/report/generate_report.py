@@ -2,16 +2,17 @@ import string
 from src.common.report.sections.header import header
 from src.common.report.sections.footer import footer
 
-from src.summary.report.sections.device_information import device_information
-from src.summary.report.sections.server_roles import server_roles
-from src.summary.report.sections.running_services import running_services
-from src.summary.report.sections.open_ports import open_ports
-from src.summary.report.sections.installed_applications import installed_applications
-from src.summary.report.sections.certificates import certificates
-from src.summary.report.sections.locked_properties import locked_properties
-from src.summary.report.sections.horizon_features import horizon_features
-from src.summary.report.sections.log_level_features import log_level_features
+from src.summary.report.sections.common.device_information import device_information
+from src.summary.report.sections.common.running_services import running_services
+from src.summary.report.sections.common.open_ports import open_ports
+from src.summary.report.sections.common.installed_applications import installed_applications
+from src.summary.report.sections.common.log_level_features import log_level_features
+from src.summary.report.sections.connection_server.server_roles import server_roles
+from src.summary.report.sections.connection_server.certificates import certificates
+from src.summary.report.sections.connection_server.locked_properties import locked_properties
+from src.summary.report.sections.agent.horizon_features import horizon_features
 from src.summary.report.sections.uag.uag_info import uag_info
+from src.summary.report.sections.enrollment_server.service_keys import service_keys
 from src.summary.report.sections.references_notes import summary_references_notes
 
 from src.summary.utils.report_sections.format_log_level import format_log_level
@@ -24,6 +25,12 @@ COMMON_REPORT_SECTIONS = [
 ]
 
 REPORT_SECTIONS = {
+    "enrollment_server": lambda: (
+        COMMON_REPORT_SECTIONS[:1]
+        + [server_roles]
+        + COMMON_REPORT_SECTIONS[1:]
+        + [service_keys]
+    ),
     "connection_server": lambda: (
         COMMON_REPORT_SECTIONS[:1]
         + [server_roles]
