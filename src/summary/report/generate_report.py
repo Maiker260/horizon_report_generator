@@ -10,6 +10,7 @@ from src.summary.report.sections.common.log_level_features import log_level_feat
 from src.summary.report.sections.connection_server.server_roles import server_roles
 from src.summary.report.sections.connection_server.certificates import certificates
 from src.summary.report.sections.connection_server.locked_properties import locked_properties
+from src.summary.report.sections.connection_server.configuration import configuration
 from src.summary.report.sections.agent.horizon_features import horizon_features
 from src.summary.report.sections.uag.uag_info import uag_info
 from src.summary.report.sections.enrollment_server.service_keys import service_keys
@@ -27,12 +28,14 @@ COMMON_REPORT_SECTIONS = [
 REPORT_SECTIONS = {
     "enrollment_server": lambda: (
         COMMON_REPORT_SECTIONS[:1]
+        + [configuration]
         + [server_roles]
         + COMMON_REPORT_SECTIONS[1:]
         + [service_keys]
     ),
     "connection_server": lambda: (
         COMMON_REPORT_SECTIONS[:1]
+        + [configuration]
         + [server_roles]
         + COMMON_REPORT_SECTIONS[1:]
         + [certificates]
@@ -57,7 +60,7 @@ def generate_report(data, zip_path, component, feature):
     log_level = None
 
     if component  != "unified_access_gateway":
-        log_level = format_log_level(component, data["device_info"]["horizon_reg"]["log_level"])
+        log_level = format_log_level(component, data["configuration"]["horizon_reg"]["log_level"])
 
     # Header
     report += header(zip_path, component, feature, log_level)

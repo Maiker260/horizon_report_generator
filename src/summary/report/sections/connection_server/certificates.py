@@ -2,7 +2,7 @@ def certificates(data, component, letter):
     certs = data["certificates"]
 
     content = []
-    content.append(f"\n\n{letter}. CERTIFICATES")
+    content.append(f"\n\n\n{letter}. CERTIFICATES")
     content.append("-" * 30)
     content.append("")
 

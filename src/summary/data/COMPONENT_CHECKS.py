@@ -3,6 +3,7 @@ from src.summary.parsers.common.horizon_services.horizon_services_check import h
 from src.summary.parsers.common.horizon_ports.horizon_ports_check import horizon_ports_check
 from src.summary.parsers.common.installed_software.installed_software_check import installed_software_check
 from src.summary.parsers.common.log_level_features.log_level_features_check import log_level_features_check
+from src.summary.parsers.connection_server.configuration.configuration_check import configuration_check
 from src.summary.parsers.connection_server.server_roles.server_roles_check import server_roles_check
 from src.summary.parsers.connection_server.certificates.certificates_check import certificates_check
 from src.summary.parsers.connection_server.locked_properties.locked_properties_check import locked_properties_check
@@ -23,6 +24,7 @@ COMPONENT_CHECKS = {
     "enrollment_server": {
         "parsers": {
             **COMMON_PARSERS,
+            "configuration": configuration_check,
             "server_roles": server_roles_check,
             "service_keys": service_keys
         }
@@ -30,6 +32,7 @@ COMPONENT_CHECKS = {
     "connection_server": {
         "parsers": {
             **COMMON_PARSERS,
+            "configuration": configuration_check,
             "server_roles": server_roles_check,
             "certificates": certificates_check,
             "locked_properties": locked_properties_check,

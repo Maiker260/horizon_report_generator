@@ -2,8 +2,8 @@ COMMON_FILES_OF_INTEREST = {
     "device_info": [
         "systeminfo.txt", 
         "ipconfig-all.txt", 
-        "omnissa-reg.txt", 
-        "vmware-reg.txt"
+        # "omnissa-reg.txt", 
+        # "vmware-reg.txt"
     ],
     "horizon_services": ["net-start.txt"],
     "horizon_ports": ["netstat-abov.txt"],
@@ -13,6 +13,10 @@ COMMON_FILES_OF_INTEREST = {
 FILES_OF_INTEREST = {
     "enrollment_server": {
         "device_info": COMMON_FILES_OF_INTEREST["device_info"],
+        "configuration": [
+            "omnissa-reg.txt", 
+            "vmware-reg.txt"
+        ],
         "server_roles": [
             "tasklist-svc.txt", 
             "net-start.txt"
@@ -24,6 +28,11 @@ FILES_OF_INTEREST = {
     },
     "connection_server": {
         "device_info": COMMON_FILES_OF_INTEREST["device_info"],
+        "configuration": [
+            "omnissa-reg.txt", 
+            "vmware-reg.txt",
+            "config.properties"
+        ],
         "server_roles": [
             "tasklist-svc.txt", 
             "net-start.txt"

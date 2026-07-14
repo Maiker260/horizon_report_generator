@@ -13,8 +13,4 @@ def extract_device_info(data, component):
         if field not in ["Network Card(s)", "Hotfix(s)"]:
             result[field] = sys_info.get(field, "N/A")
 
-    if component in ["connection_server", "enrollment_server"]:
-        horizon_reg = data.get("horizon_reg", {})
-        result["Horizon Fips Mode"] = horizon_reg.get("FipsMode", "N/A")
-
     return result

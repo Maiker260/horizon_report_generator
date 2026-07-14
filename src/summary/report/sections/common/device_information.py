@@ -7,7 +7,6 @@ KEY_FIXES = {
     "Original Install Date": "OS Install Date",
     "Total Physical Memory": "Total Memory",
     "Available Physical Memory": "Available Memory",
-    "Horizon Fips Mode": "Horizon FIPS Mode",
 }
 
 def device_information(data, component, letter):
@@ -27,7 +26,7 @@ def device_information(data, component, letter):
 
     # One line content
     for key, value in info.items():
-        key = KEY_FIXES.get(key, key)  
+        key = KEY_FIXES.get(key, key)
         label = f"{key}:"
         
         content.append(f"{label:<{max_width + 1}}  {value}")

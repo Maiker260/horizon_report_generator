@@ -71,6 +71,15 @@ DATA_TO_COLLECT = {
                 "Hotfix(s)",
             ]
         ),
+        "configuration": [
+            "clientHost",
+            "clientPort",
+            "pcoipClientIPAddress",
+            "pcoipClientUDPPort",
+            "pcoipClientTCPPort",
+            "appblastClientHost",
+            "appblastClientPort",
+        ],
         "server_roles": [],
         "horizon_services": COMMON_DATA_TO_COLLECT["horizon_services"],
         "horizon_ports": [

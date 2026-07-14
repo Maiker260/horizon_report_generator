@@ -20,6 +20,7 @@ feature = sys.argv[2]
 # zip_path = Path("tmp") / "Client-2512T.zip"
 # zip_path = Path("tmp") / "Client-Testi.zip"
 # zip_path = Path("tmp") / "CS-2406.zip"
+# zip_path = Path("tmp") / "TunnelEnabled.zip"
 # zip_path = Path("tmp") / "CS-2512.zip"
 # zip_path = Path("tmp") / "CS-Test1.zip"
 # zip_path = Path("tmp") / "CS-Test2.zip"
