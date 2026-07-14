@@ -15,6 +15,7 @@ from src.summary.parsers.uag.uag_ports.uag_ports_check import uag_ports_check
 
 COMMON_PARSERS = {
     "device_info": device_info_check,
+    "configuration": configuration_check,
     "horizon_services": horizon_services_check,
     "horizon_ports": horizon_ports_check,
     "installed_software": installed_software_check,
@@ -24,7 +25,6 @@ COMPONENT_CHECKS = {
     "enrollment_server": {
         "parsers": {
             **COMMON_PARSERS,
-            "configuration": configuration_check,
             "server_roles": server_roles_check,
             "service_keys": service_keys
         }
@@ -32,7 +32,6 @@ COMPONENT_CHECKS = {
     "connection_server": {
         "parsers": {
             **COMMON_PARSERS,
-            "configuration": configuration_check,
             "server_roles": server_roles_check,
             "certificates": certificates_check,
             "locked_properties": locked_properties_check,

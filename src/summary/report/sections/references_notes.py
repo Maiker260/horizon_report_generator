@@ -17,7 +17,7 @@ def summary_references_notes(component):
     # Role Detection Criteria
     if component == "connection_server":
         content.append("\n\nRole Detection Indicators:")
-        content.append("  Server roles are identified based on running processes and services.")
+        content.append("  *Server roles are identified based on running processes and services.\n")
         content.append("  The following processes/services names are used as indicators:\n")
 
         max_width = max(len(key + ":") for key in UNWANTED_ROLES)

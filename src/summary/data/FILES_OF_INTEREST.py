@@ -1,9 +1,11 @@
 COMMON_FILES_OF_INTEREST = {
     "device_info": [
         "systeminfo.txt", 
-        "ipconfig-all.txt", 
-        # "omnissa-reg.txt", 
-        # "vmware-reg.txt"
+        "ipconfig-all.txt",
+    ],
+    "configuration": [
+        "omnissa-reg.txt", 
+        "vmware-reg.txt"
     ],
     "horizon_services": ["net-start.txt"],
     "horizon_ports": ["netstat-abov.txt"],
@@ -13,10 +15,7 @@ COMMON_FILES_OF_INTEREST = {
 FILES_OF_INTEREST = {
     "enrollment_server": {
         "device_info": COMMON_FILES_OF_INTEREST["device_info"],
-        "configuration": [
-            "omnissa-reg.txt", 
-            "vmware-reg.txt"
-        ],
+        "configuration": COMMON_FILES_OF_INTEREST["configuration"],
         "server_roles": [
             "tasklist-svc.txt", 
             "net-start.txt"
@@ -29,8 +28,7 @@ FILES_OF_INTEREST = {
     "connection_server": {
         "device_info": COMMON_FILES_OF_INTEREST["device_info"],
         "configuration": [
-            "omnissa-reg.txt", 
-            "vmware-reg.txt",
+            *COMMON_FILES_OF_INTEREST["configuration"],
             "config.properties"
         ],
         "server_roles": [
@@ -45,6 +43,7 @@ FILES_OF_INTEREST = {
     },
     "agent": {
         "device_info": COMMON_FILES_OF_INTEREST["device_info"],
+        "configuration": COMMON_FILES_OF_INTEREST["configuration"],
         "horizon_services": COMMON_FILES_OF_INTEREST["horizon_services"],
         "horizon_ports": COMMON_FILES_OF_INTEREST["horizon_ports"],
         "installed_software": COMMON_FILES_OF_INTEREST["installed_software"],
@@ -60,6 +59,7 @@ FILES_OF_INTEREST = {
     },
     "client": {
         "device_info": COMMON_FILES_OF_INTEREST["device_info"],
+        "configuration": COMMON_FILES_OF_INTEREST["configuration"],
         "horizon_services": COMMON_FILES_OF_INTEREST["horizon_services"],
         "horizon_ports": COMMON_FILES_OF_INTEREST["horizon_ports"],
         "installed_software": COMMON_FILES_OF_INTEREST["installed_software"],
