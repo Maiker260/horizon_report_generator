@@ -1,6 +1,7 @@
 KEY_FIXES = {
     "connection_server": "CS",
     "unified_access_gateway": "UAG",
+    "enrollment_server": "ES"
 }
 
 FEATURE_FIXES = {

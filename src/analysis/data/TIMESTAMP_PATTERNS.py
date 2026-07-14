@@ -94,4 +94,17 @@ TIMESTAMP_PATTERNS = [
             "%d/%b/%Y:%H:%M:%S %z"
         )
     ),
+
+    # 06/16 11:38:21,342
+    (
+    re.compile(
+        r"^\d{2}/\d{2}"
+        r"\s+\d{2}:\d{2}:\d{2}"
+        r",\d+"
+    ),
+    lambda s: datetime.strptime(
+        f"{CURRENT_YEAR}/{s}",
+        "%Y/%m/%d %H:%M:%S,%f"
+    )
+)
 ]

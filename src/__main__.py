@@ -34,6 +34,7 @@ feature = sys.argv[2]
 # zip_path = Path("tmp") / "FIX-CS.zip"
 # zip_path = Path("tmp") / "FIX-Client.zip"
 # zip_path = Path("tmp") / "FIX-AGENT.zip"
+# zip_path = Path("tmp") / "FIX-UAG.zip"
 
 # feature = "summary_report"
 # feature = "log_analysis"
