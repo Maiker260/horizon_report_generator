@@ -210,7 +210,8 @@ SOFTWARE_RULES = {
         "Lakeside": ["lakeside"],
         "SysTrack": ["systrack"],
         "Liquidware": ["liquidware"],
-        "UberAgent": ["uberagent"]
+        "UberAgent": ["uberagent"],
+        "Dynatrace": ["dynatrace", "dynatrace oneagent", "dynatrace one agent"]
     },
 
     "Remote Tool": {

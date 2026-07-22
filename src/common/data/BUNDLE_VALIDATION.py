@@ -46,6 +46,7 @@ BUNDLE_VALIDATION = {
         ],
         "structural": [
             r".*_Horizon_Client",
+            r".*-horizon-viewclient-.*\.txt",
         ],
     },
 

@@ -16,7 +16,6 @@ def update_findings(findings, result, line, timestamp):
             "first_line": timestamp,
             "last_line": timestamp,
             "samples": [(timestamp, line)]
-            # "samples": [line]
         }
     else:
         finding["occurrences"] += 1

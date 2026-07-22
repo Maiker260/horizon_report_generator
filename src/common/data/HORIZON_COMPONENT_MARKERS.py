@@ -50,6 +50,7 @@ HORIZON_COMPONENT_MARKERS = {
         "patterns": [
             r".*_Horizon_Client_.*\.log",
             r".*ViewClientx64\.log",
+            r".*-horizon-viewclient-.*\.txt",
             r".*_HTML5MMRx64.log",
         ],
     },

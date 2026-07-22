@@ -1,4 +1,5 @@
 from src.exceptions import UnsupportedComponentError
+from src.common.utils.read_file_with_auto_encoding import read_file_with_auto_encoding
 
 REQUIRED_SYSTEMINFO_KEYS = (
     "Host Name:",
@@ -12,11 +13,13 @@ def validate_bundle_language(zip_ctx):
         return
 
     with zip_ctx.open("systeminfo.txt") as f:
-        systeminfo_text = f.read().decode("utf-8", errors="ignore")
+        reader = read_file_with_auto_encoding(f)
 
-    if not all(key in systeminfo_text for key in REQUIRED_SYSTEMINFO_KEYS):
-        raise UnsupportedComponentError(
-            "This support bundle was generated from a non-English Windows installation.\n\n"
-            "The parser currently supports only Horizon bundles generated "
-            "from English Windows installations."
-        )
+        systeminfo_text = reader.read()
+
+        if not all(key in systeminfo_text for key in REQUIRED_SYSTEMINFO_KEYS):
+            raise UnsupportedComponentError(
+                "This support bundle was generated from a non-English Windows installation.\n\n"
+                "The parser currently supports only Horizon bundles generated "
+                "from English Windows installations."
+            )
