@@ -31,6 +31,7 @@ FILES_OF_INTEREST = {
             *COMMON_FILES_OF_INTEREST["configuration"],
             "config.properties"
         ],
+        "replication": ["ldap_replica_status.txt"],
         "server_roles": [
             "tasklist-svc.txt", 
             "net-start.txt"

@@ -1,4 +1,5 @@
 import string
+
 from src.common.report.sections.header import header
 from src.common.report.sections.footer import footer
 
@@ -7,6 +8,7 @@ from src.summary.report.sections.common.running_services import running_services
 from src.summary.report.sections.common.open_ports import open_ports
 from src.summary.report.sections.common.installed_applications import installed_applications
 from src.summary.report.sections.common.log_level_features import log_level_features
+from src.summary.report.sections.connection_server.replication import replication
 from src.summary.report.sections.connection_server.server_roles import server_roles
 from src.summary.report.sections.connection_server.certificates import certificates
 from src.summary.report.sections.connection_server.locked_properties import locked_properties
@@ -36,6 +38,7 @@ REPORT_SECTIONS = {
     "connection_server": lambda: (
         COMMON_REPORT_SECTIONS[:1]
         + [configuration]
+        + [replication]
         + [server_roles]
         + COMMON_REPORT_SECTIONS[1:]
         + [certificates]

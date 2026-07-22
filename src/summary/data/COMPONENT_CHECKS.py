@@ -4,6 +4,7 @@ from src.summary.parsers.common.horizon_ports.horizon_ports_check import horizon
 from src.summary.parsers.common.installed_software.installed_software_check import installed_software_check
 from src.summary.parsers.common.log_level_features.log_level_features_check import log_level_features_check
 from src.summary.parsers.connection_server.configuration.configuration_check import configuration_check
+from src.summary.parsers.connection_server.replication import replication_status_check
 from src.summary.parsers.connection_server.server_roles.server_roles_check import server_roles_check
 from src.summary.parsers.connection_server.certificates.certificates_check import certificates_check
 from src.summary.parsers.connection_server.locked_properties.locked_properties_check import locked_properties_check
@@ -33,6 +34,7 @@ COMPONENT_CHECKS = {
         "parsers": {
             **COMMON_PARSERS,
             "server_roles": server_roles_check,
+            "replication_status": replication_status_check,
             "certificates": certificates_check,
             "locked_properties": locked_properties_check,
         }

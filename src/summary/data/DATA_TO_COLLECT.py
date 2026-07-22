@@ -80,6 +80,7 @@ DATA_TO_COLLECT = {
             "appblastClientHost",
             "appblastClientPort",
         ],
+        "replication": [],
         "server_roles": [],
         "horizon_services": COMMON_DATA_TO_COLLECT["horizon_services"],
         "horizon_ports": [

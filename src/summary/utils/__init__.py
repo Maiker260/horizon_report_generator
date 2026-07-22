@@ -13,5 +13,5 @@ __all__ = [
     "build_detection_index", 
     "extract_reg_key_info",
     "get_uag_section_config",
-    "validate_bundle_language"
+    "validate_bundle_language",
 ]
