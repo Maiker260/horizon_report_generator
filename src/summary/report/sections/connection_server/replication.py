@@ -1,3 +1,6 @@
+from src.summary.utils.report_sections.replication.is_replication_successful import is_replication_successful
+from src.summary.utils.report_sections.replication.format_context import format_context
+
 REPLICATION_SECTIONS = {
     "inbound": "Inbound",
     "outbound": "Outbound",
@@ -11,31 +14,26 @@ REPLICATION_LABELS = {
 }
 
 def replication(data, component, letter):
-    replication = data.get("replication_status") or {}
+    replication_data = data.get("replication_status") or {}
 
-    if not replication:
+    if not replication_data:
         return ""
 
-    partners = replication.get("neighbors", [])
-    transport = replication.get("transport") or "Unknown"
-    kcc_connections = replication.get("kcc_connections", 0)
-    kcc_failures = replication.get("kcc_failures")
-    replication_errors = replication.get("replication_errors")
+    partners = replication_data.get("neighbors", [])
+    transport = replication_data.get("transport") or "Unknown"
+    kcc_connections = replication_data.get("kcc_connections",0)
+    kcc_failures = replication_data.get("kcc_failures")
+    replication_errors = replication_data.get("replication_errors")
 
-    max_width = max(
-        len(label)
-        for label in REPLICATION_LABELS.values()
-    )
-
-    # Replication status
+    # Overall status
     overall_status = "HEALTHY"
 
     for section in REPLICATION_SECTIONS:
-        for neighbors in replication.get(section, {}).values():
-            for neighbor in neighbors:
-                status = neighbor.get("status", "").upper()
+        section_data = replication_data.get(section, {})
 
-                if status not in ("SUCCESS", "SUCCESSFUL"):
+        for neighbors in section_data.values():
+            for neighbor in neighbors:
+                if not is_replication_successful(neighbor):
                     overall_status = "FAILED"
                     break
 
@@ -48,90 +46,86 @@ def replication(data, component, letter):
     if kcc_failures or replication_errors:
         overall_status = "FAILED"
 
-    # Report
+    # Title
     content = [
         f"\n\n\n{letter}. REPLICATION STATUS",
         "-" * 30,
         "",
     ]
 
+    # No neighbors
     if not partners:
-        content.append("   * No replication neighbors found. ")
-        return "\n".join(content).rstrip()
-    
-    content.append(f"Overall Status:  {overall_status}\n")
+        content.append("   * No replication neighbors found.")
 
+        return "\n".join(content).rstrip()
+
+    # Replication summary
+    max_width = max(
+        len(label)
+        for label in REPLICATION_LABELS.values()
+    )
+
+    content.append(f"Overall Status:  {overall_status}\n")
     content.append("Replication:")
 
     content.extend([
-        f"   {REPLICATION_LABELS['transport']:<{max_width + 1}} "
-        f"{transport}",
-        f"   {REPLICATION_LABELS['kcc_connections']:<{max_width + 1}} "
-        f"{kcc_connections}",
-        f"   {REPLICATION_LABELS['kcc_failures']:<{max_width + 1}} "
-        f"{kcc_failures or 'None'}",
-        f"   {REPLICATION_LABELS['replication_errors']:<{max_width + 1}} "
-        f"{replication_errors or 'None'}",
+        (
+            f"   {REPLICATION_LABELS['transport']:<{max_width + 1}} "
+            f"{transport}"
+        ),
+        (
+            f"   {REPLICATION_LABELS['kcc_connections']:<{max_width + 1}} "
+            f"{kcc_connections}"
+        ),
+        (
+            f"   {REPLICATION_LABELS['kcc_failures']:<{max_width + 1}} "
+            f"{kcc_failures or 'None'}"
+        ),
+        (
+            f"   {REPLICATION_LABELS['replication_errors']:<{max_width + 1}} "
+            f"{replication_errors or 'None'}"
+        ),
     ])
 
+    # Neighbors
     content.append("")
+    content.append("Neighbors:")
 
-    if partners:
-        content.append("Neighbors:")
-        content.extend(
-            f"   - {partner}"
-            for partner in partners
-        )
-    else:
-        content.append(
-            f"{'neighbors: ':<{max_width + 1}} "
-            f"Unknown"
-        )
+    content.extend(
+        f"   - {partner}"
+        for partner in partners
+    )
 
-    # Replication details
+    # Inbound / Outbound
     for section_key, section_title in REPLICATION_SECTIONS.items():
-        section_data = replication.get(section_key, {})
+
+        section_data = replication_data.get(section_key, {})
 
         if not section_data:
             continue
+
+        naming_context_max_width = max(
+            len(naming_context)
+            for naming_context in section_data
+        )
 
         content.extend([
             "",
             f"{section_title}:",
         ])
 
-        sections_labels_max_width = max(
-            len(label)
-            for label in section_data
-        )
-
         for naming_context, neighbors in section_data.items():
             if not neighbors:
                 continue
 
-            # Single neighbor
-            if len(neighbors) == 1:
-                neighbor = neighbors[0]
-                status = neighbor.get("status", "UNKNOWN")
-                last_attempt = (neighbor.get("last_attempt")or "Unknown")
+            has_failure = any(
+                not is_replication_successful(neighbor)
+                for neighbor in neighbors
+            )
 
-                content.append(
-                    f"   {naming_context + ':':<{sections_labels_max_width + 1}}  {status} {last_attempt}"
-                )
+            if has_failure:
+                content.append("")
 
-                continue
-
-            # Multiple neighbors
-            content.append(f"   {naming_context}:")
-
-            for neighbor in neighbors:
-                partner = neighbor.get("neighbor", "Unknown")
-                status = neighbor.get("status", "UNKNOWN",)
-                last_attempt = (neighbor.get("last_attempt") or "Unknown")
-
-                content.append(
-                    f"      - {partner}: "
-                    f"{status} ({last_attempt})"
-                )
+            content.extend(format_context(naming_context, neighbors, naming_context_max_width))
 
     return "\n".join(content).rstrip()
