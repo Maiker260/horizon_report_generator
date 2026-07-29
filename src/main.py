@@ -32,5 +32,5 @@ def main(zip_path, feature):
             return report_path
 
     except Exception as e:
-        # save_error_log(e, feature)
+        save_error_log(e, feature)
         raise

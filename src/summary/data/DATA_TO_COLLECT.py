@@ -36,6 +36,7 @@ DATA_TO_COLLECT = {
             [
                 "Domain",
                 "Original Install Date",
+                "NUMBER_OF_PROCESSORS",
                 "Total Physical Memory",
                 "Available Physical Memory",
                 "Hotfix(s)",
@@ -66,6 +67,7 @@ DATA_TO_COLLECT = {
             [
                 "Domain",
                 "Original Install Date",
+                "NUMBER_OF_PROCESSORS",
                 "Total Physical Memory",
                 "Available Physical Memory",
                 "Hotfix(s)",

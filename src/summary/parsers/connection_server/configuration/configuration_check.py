@@ -1,6 +1,6 @@
 import re
 from src.summary.data.FILES_OF_INTEREST import FILES_OF_INTEREST
-from src.summary.parsers.common.device_info.reg_keys import reg_keys
+from src.summary.parsers.common.device_info.configuration.reg_keys import reg_keys
 from src.summary.parsers.connection_server.configuration.config_file import config_file
 from src.summary.parsers.connection_server.configuration.database_file import database_file
 

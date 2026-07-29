@@ -7,6 +7,7 @@ KEY_FIXES = {
     "Original Install Date": "OS Install Date",
     "Total Physical Memory": "Total Memory",
     "Available Physical Memory": "Available Memory",
+    "NUMBER_OF_PROCESSORS": "CPU Core Count",
 }
 
 def device_information(data, component, letter):

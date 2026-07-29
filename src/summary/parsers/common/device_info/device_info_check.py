@@ -1,11 +1,13 @@
 import re
-from src.summary.parsers.common.device_info.systeminfo import systeminfo
+from src.summary.parsers.common.device_info.system_info.system_info import system_info
 from src.summary.data.FILES_OF_INTEREST import FILES_OF_INTEREST
 from src.summary.parsers.common.device_info.ipconfig.ipconfig import ipconfig
+from src.summary.parsers.common.device_info.set_file import set_file
 
 parsers = {
-    "systeminfo": systeminfo,
+    "systeminfo": system_info,
     "ipconfig": ipconfig,
+    "set": set_file,
 }
 
 def device_info_check(zip_ctx, component):

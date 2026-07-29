@@ -1,8 +1,8 @@
 from src.summary.utils.search_keyword import search_keyword
 from src.summary.utils.normalize_line import normalize_line
 from src.summary.data.DATA_TO_COLLECT import DATA_TO_COLLECT
-from src.summary.parsers.common.device_info.hotfixes import parse_hotfixes
-from src.summary.parsers.common.device_info.network_cards import parse_nics
+from src.summary.parsers.common.device_info.system_info.hotfixes import parse_hotfixes
+from src.summary.parsers.common.device_info.system_info.network_cards import parse_nics
 from src.common.utils.read_file_with_auto_encoding import read_file_with_auto_encoding
 
 BLOCK_PARSERS = {
@@ -10,7 +10,7 @@ BLOCK_PARSERS = {
     "Network Card(s)": parse_nics,
 }
 
-def systeminfo(zip_ctx, filename, component, current_data):
+def system_info(zip_ctx, filename, component, current_data):
     keywords = DATA_TO_COLLECT[component]["device_info"]
 
     data = {}

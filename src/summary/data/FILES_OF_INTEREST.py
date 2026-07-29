@@ -2,6 +2,7 @@ COMMON_FILES_OF_INTEREST = {
     "device_info": [
         "systeminfo.txt", 
         "ipconfig-all.txt",
+        "set.txt"
     ],
     "configuration": [
         "omnissa-reg.txt", 
