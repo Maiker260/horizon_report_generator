@@ -29,7 +29,9 @@ FILES_OF_INTEREST = {
         "device_info": COMMON_FILES_OF_INTEREST["device_info"],
         "configuration": [
             *COMMON_FILES_OF_INTEREST["configuration"],
-            "config.properties"
+            "config.properties",
+            "adam.ldif",
+            "adam-legacy.ldif"
         ],
         "replication": ["ldap_replica_status.txt"],
         "server_roles": [

@@ -16,6 +16,7 @@ from src.summary.report.sections.connection_server.configuration import configur
 from src.summary.report.sections.agent.horizon_features import horizon_features
 from src.summary.report.sections.uag.uag_info import uag_info
 from src.summary.report.sections.enrollment_server.service_keys import service_keys
+from src.summary.report.sections.enrollment_server.es_configuration import es_configuration
 from src.summary.report.sections.references_notes import summary_references_notes
 
 from src.summary.utils.report_sections.format_log_level import format_log_level
@@ -30,7 +31,7 @@ COMMON_REPORT_SECTIONS = [
 REPORT_SECTIONS = {
     "enrollment_server": lambda: (
         COMMON_REPORT_SECTIONS[:1]
-        + [configuration]
+        + [es_configuration]
         + [server_roles]
         + COMMON_REPORT_SECTIONS[1:]
         + [service_keys]

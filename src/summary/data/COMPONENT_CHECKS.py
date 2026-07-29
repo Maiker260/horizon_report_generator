@@ -33,8 +33,8 @@ COMPONENT_CHECKS = {
     "connection_server": {
         "parsers": {
             **COMMON_PARSERS,
-            "server_roles": server_roles_check,
             "replication_status": replication_status_check,
+            "server_roles": server_roles_check,
             "certificates": certificates_check,
             "locked_properties": locked_properties_check,
         }

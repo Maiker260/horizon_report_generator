@@ -2,7 +2,7 @@ from src.summary.data.DATA_TO_COLLECT import DATA_TO_COLLECT
 from src.common.utils.read_file_with_auto_encoding import read_file_with_auto_encoding
 
 def config_file(zip_ctx, filename, component):
-    keywords = DATA_TO_COLLECT[component]["configuration"]
+    keywords = DATA_TO_COLLECT[component]["configuration"]["config_file"]
 
     data = {}
 

@@ -2,12 +2,12 @@ import sys
 from pathlib import Path
 from src.main import main
 
-if len(sys.argv) < 2:
-    print("No ZIP file was provided.")
-    sys.exit(1)
+# if len(sys.argv) < 2:
+#     print("No ZIP file was provided.")
+#     sys.exit(1)
 
-zip_path = Path(sys.argv[1])
-feature = sys.argv[2]
+# zip_path = Path(sys.argv[1])
+# feature = sys.argv[2]
 
 # Test
 
@@ -22,9 +22,10 @@ feature = sys.argv[2]
 # zip_path = Path("tmp") / "Client-Testi2.zip"
 # zip_path = Path("tmp") / "CS-2406.zip"
 # zip_path = Path("tmp") / "TunnelEnabled.zip"
+# zip_path = Path("tmp") / "TunnelDisabled.zip"
 # zip_path = Path("tmp") / "CS-2512.zip"
 # zip_path = Path("tmp") / "CS-Test1.zip"
-# zip_path = Path("tmp") / "CS-Test2.zip"
+zip_path = Path("tmp") / "CS-Test2.zip"
 # zip_path = Path("tmp") / "CS-Test3.zip"
 # zip_path = Path("tmp") / "CS-Test4.zip"
 # zip_path = Path("tmp") / "CS-Test5-20sBrete.zip"
@@ -42,7 +43,7 @@ feature = sys.argv[2]
 # zip_path = Path("tmp") / "ReplicIssue.zip"
 # zip_path = Path("tmp") / "GloRepli.zip"
 
-# feature = "summary_report"
+feature = "summary_report"
 # feature = "log_analysis"
 
 main(zip_path, feature)

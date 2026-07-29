@@ -5,6 +5,7 @@ from .build_detection_index import build_detection_index
 from .extract_reg_key_info import extract_reg_key_info
 from .get_uag_section_config import get_uag_section_config
 from .validate_bundle_language import validate_bundle_language
+from .get_hostname import get_hostname
 
 __all__ = [
     "search_keyword", 
@@ -14,4 +15,5 @@ __all__ = [
     "extract_reg_key_info",
     "get_uag_section_config",
     "validate_bundle_language",
+    "get_hostname"
 ]
