@@ -1,4 +1,6 @@
 from src.summary.data.DATA_TO_COLLECT import DATA_TO_COLLECT
+from src.summary.utils.report_sections.open_ports.group_by_process import group_by_process
+from src.summary.utils.report_sections.open_ports.format_addresses import format_addresses
 
 def open_ports(data, component, letter):
     expected_ports = DATA_TO_COLLECT[component]["horizon_ports"]
@@ -45,13 +47,14 @@ def open_ports(data, component, letter):
 
             content.append(f"   Port {port_str}:")
 
-            for entry in grouped[port_str]:
+            for entry in group_by_process(grouped[port_str]):
                 fields = {
-                    "PID": entry['PID'],
-                    "State": entry['state'],
-                    "Process": entry['process'],
-                    "Local Address": entry['local_address'],
-                    "Foreign Address": entry['foreign_address'],
+                    "PID": entry["PID"],
+                    "State": entry["State"],
+                    "Process": entry["Process"],
+                    "Local Address": format_addresses(entry["Local Addresses"]),
+                    "Foreign Address": format_addresses(entry["Foreign Addresses"]),
+                    # "Expected Purpose": "",
                 }
 
                 max_width = max(len(key + ":") for key in fields)

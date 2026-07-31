@@ -1,0 +1,5 @@
+from .COMMON_DATA_TO_COLLECT import COMMON_DATA_TO_COLLECT
+
+__all__ = [
+    "COMMON_DATA_TO_COLLECT",
+]

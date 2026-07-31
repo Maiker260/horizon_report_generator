@@ -1,224 +1,69 @@
-COMMON_DATA_TO_COLLECT = {
-    "device_info": [
-        "Host Name", 
-        "OS Name", 
-        "OS Version", 
-        "System Boot Time",
-        "Time Zone",
-        "Network Card(s)"
-    ],
-    "horizon_services": [
-        "Omnissa", 
-        "VMware"
-    ],
-    "installed_software": {
-        "Horizon": {
-            "Omnissa": ["omnissa"],
-            "VMware": ["vmware"]
-        }
-    },
-    "log_level": {
-        "registry_suffix": [
-            r"Omnissa\Horizon",
-            r"SOFTWARE\VMware, Inc.\VMware VDM"
-        ],
-        "values": [
-            "DebugEnabled",
-            "TraceEnabled"
-        ]
-    }
-}
+from src.summary.data.data_to_collect.enrollment_server.DEVICE_INFO import ES_DEVICE_INFO
+from src.summary.data.data_to_collect.enrollment_server.PORTS import ES_PORTS
+from src.summary.data.data_to_collect.enrollment_server.SERVICE_KEYS import ES_SERVICE_KEYS
+
+from src.summary.data.data_to_collect.connection_server.CONFIGURATION import CS_CONFIGURATION
+from src.summary.data.data_to_collect.connection_server.DEVICE_INFO import CS_DEVICE_INFO
+from src.summary.data.data_to_collect.connection_server.CERTIFICATES import CS_CERTIFICATES
+from src.summary.data.data_to_collect.connection_server.PORTS import CS_PORTS
+
+from src.summary.data.data_to_collect.agent.DEVICE_INFO import AGENT_DEVICE_INFO
+from src.summary.data.data_to_collect.agent.PORTS import AGENT_PORTS
+from src.summary.data.data_to_collect.agent.HORIZON_FEATURES import AGENT_HORIZON_FEATURES
+from src.summary.data.data_to_collect.agent.LOG_LEVEL_FEATURES import AGENT_LOG_LEVEL_FEATURES
+
+from src.summary.data.data_to_collect.client.LOG_LEVEL_FEATURES import CLIENT_LOG_LEVEL_FEATURES
+from src.summary.data.data_to_collect.client.PORTS import CLIENT_PORTS
+
+from src.summary.data.data_to_collect.uag.UAG_INFO import UAG_INFO
+from src.summary.data.data_to_collect.uag.PORTS import UAG_PORTS
+
+from src.summary.data.data_to_collect.COMMON_DATA_TO_COLLECT import COMMON_DATA_TO_COLLECT
 
 DATA_TO_COLLECT = {
     "enrollment_server": {
-        "device_info": (
-            COMMON_DATA_TO_COLLECT["device_info"] +
-            [
-                "Domain",
-                "Original Install Date",
-                "NUMBER_OF_PROCESSORS",
-                "Total Physical Memory",
-                "Available Physical Memory",
-                "Hotfix(s)",
-            ]
-        ),
+        "device_info": ES_DEVICE_INFO,
         "server_roles": [],
         "horizon_services": COMMON_DATA_TO_COLLECT["horizon_services"],
-        "horizon_ports": [
-            135, 32111
-        ],
+        "horizon_ports": ES_PORTS,
         "installed_software": COMMON_DATA_TO_COLLECT["installed_software"],
         "log_level": COMMON_DATA_TO_COLLECT["log_level"],
-        "service_keys": {
-            "registry_suffix": [
-                r"Horizon\Enrollment Service",
-            ],
-            "values": [
-                "PreferLocalCa",
-                "UseKerberosAuthenticationToCa",
-                "UseNTLMAuthenticationToCa"
-            ]
-        }
+        "service_keys": ES_SERVICE_KEYS
     },
 
     "connection_server": {
-        "device_info": (
-            COMMON_DATA_TO_COLLECT["device_info"] +
-            [
-                "Domain",
-                "Original Install Date",
-                "NUMBER_OF_PROCESSORS",
-                "Total Physical Memory",
-                "Available Physical Memory",
-                "Hotfix(s)",
-            ]
-        ),
-        "configuration": {
-            "config_file": [
-                "clientHost",
-                "clientPort",
-                "pcoipClientIPAddress",
-                "pcoipClientUDPPort",
-                "pcoipClientTCPPort",
-                "appblastClientHost",
-                "appblastClientPort",
-            ],
-            "database_file": [
-                "pae-SAMLEnabled",
-                "pae-RADIUSEnabled",
-                "pae-BypassTunnel",
-                "pae-BypassPCoIPSecureGateway",
-                "pae-BypassAppBlastSecureGateway",
-                "pae-ABSGDirectHTMLAccessOnly",
-            ],
-            "set_file": [
-                "NUMBER_OF_PROCESSORS"
-            ]
-        },
+        "device_info": CS_DEVICE_INFO,
+        "configuration": CS_CONFIGURATION,
         "replication": [],
         "server_roles": [],
         "horizon_services": COMMON_DATA_TO_COLLECT["horizon_services"],
-        "horizon_ports": [
-            80, 443, 389, 3389, 22389, 32111, 8443, 4172,
-            135, 4001, 4002, 4100, 4101, 8472,
-        ],
+        "horizon_ports": CS_PORTS,
         "installed_software": COMMON_DATA_TO_COLLECT["installed_software"],
-        "certificates": [
-            "serial number",
-            "signature algorithm",
-            "issuer",
-            "subject",
-            "certificate extensions",
-            "cert_friendly_name_prop_id(11)"
-        ],
+        "certificates": CS_CERTIFICATES,
         "log_level": COMMON_DATA_TO_COLLECT["log_level"],
     },
 
     "agent": {
-        "device_info": (
-            COMMON_DATA_TO_COLLECT["device_info"] +
-            [
-                "Domain",
-                "Original Install Date",
-                "Total Physical Memory",
-                "Available Physical Memory",
-                "Hotfix(s)",
-            ]
-        ),
+        "device_info": AGENT_DEVICE_INFO,
         "horizon_services": COMMON_DATA_TO_COLLECT["horizon_services"],
-        "horizon_ports": [389, 3389, 4172, 22443, 9427, 32111, 4001, 4002],
+        "horizon_ports": AGENT_PORTS,
         "installed_software": COMMON_DATA_TO_COLLECT["installed_software"],
-        "horizon_features": {
-            "registry_suffix": [
-                r"Installer\Features_HorizonAgent",
-                "WebRTCRedir"
-            ],
-            "values": [
-                "BlastUDP",
-                "ClientDriveRedirection", 
-                "FIDO2Redirection",
-                "PrintRedir", 
-                "ScannerRedirection", 
-                "SmartCard", 
-                "SmartCardSingleUserTS",
-                "StorageDriveRedir", 
-                "USB",
-                "teamsEnabled",
-                "RTAV"
-            ],
-        },
-        "log_level_features": {
-            "registry_suffix": [
-                "UsbRedirection",
-                "PrintRedir",
-                "ViewScanner",
-                "FIDO2",
-                "SDR",
-                "RTAV",
-            ],
-            "values": ["loglevel"]
-        },
+        "horizon_features": AGENT_HORIZON_FEATURES,
+        "log_level_features": AGENT_LOG_LEVEL_FEATURES,
         "log_level": COMMON_DATA_TO_COLLECT["log_level"],
     },
 
     "client": {
         "device_info": COMMON_DATA_TO_COLLECT["device_info"],
         "horizon_services": COMMON_DATA_TO_COLLECT["horizon_services"],
-        "horizon_ports": [443, 4172, 8443, 3389, 22443, 9427, 32111],
+        "horizon_ports": CLIENT_PORTS,
         "installed_software": COMMON_DATA_TO_COLLECT["installed_software"],
-        "log_level_features": {
-            "registry_suffix": [
-                "UsbRedirection",
-                "PrintRedir",
-                "ScannerRedirection",
-                "FIDO2",
-                "SDR",
-                "RTAV",
-                "tsdr"
-            ],
-            "values": ["loglevel"]
-        },
+        "log_level_features": CLIENT_LOG_LEVEL_FEATURES,
         "log_level": COMMON_DATA_TO_COLLECT["log_level"],
     },
 
     "unified_access_gateway": {
-        "uag_info": {
-            "General": [
-                "uagName",
-                "fipsEnabled",
-                "deploymentOption",
-                "ip0",
-                "netmask0",
-                "ip1",
-                "netmask1",
-                "ip2",
-                "netmask2",
-                "defaultGateway",
-                "dns",
-                "tls11Enabled",
-                "tls12Enabled",
-                "tls13Enabled",
-                "hostClockSyncEnabled",
-                "clockSkewTolerance"
-            ],
-            "Horizon": [
-                "authMethods",
-                "gatewayLocation",
-                "proxyPattern",
-                "minSHAHashSize",
-                "healthCheckUrl",
-                "blastExternalUrl",
-                "blastUrls",
-                "pcoipExternalUrl",
-                "proxyDestinationUrl",
-                "proxyDestinationUrlThumbprints",
-                "tunnelExternalUrl",
-                "tunnelUrls"
-            ],
-            r"OriginHeaderDetails\d+": [
-                "origin"
-            ]
-        },
-        "horizon_ports": [9443, 443, 8443, 22443, 4172, 3389, 9427, 32111, 5500]
+        "uag_info": UAG_INFO,
+        "horizon_ports": UAG_PORTS
     },
 }
