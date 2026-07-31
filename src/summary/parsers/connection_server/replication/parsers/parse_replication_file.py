@@ -4,6 +4,7 @@ from src.summary.parsers.connection_server.replication.parsers.parse_naming_cont
 from src.summary.parsers.connection_server.replication.parsers.parse_partner import parse_partner
 from src.summary.parsers.connection_server.replication.parsers.parse_replication_attempt import parse_replication_attempt
 from src.summary.parsers.connection_server.replication.parsers.parse_kcc_line import parse_kcc_line
+from src.summary.parsers.connection_server.replication.parsers.parse_options import parse_options
 
 def parse_replication_file(zip_ctx, filename, data):
     # Parse a single replication log file.
@@ -21,6 +22,10 @@ def parse_replication_file(zip_ctx, filename, data):
             line = raw_line.strip()
 
             if not line:
+                continue
+
+            # Replication options
+            if parse_options(line, data):
                 continue
 
             # Section detection

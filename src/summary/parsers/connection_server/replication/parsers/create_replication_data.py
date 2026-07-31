@@ -3,7 +3,9 @@ def create_replication_data():
 
     return {
         "neighbors": [],
-        "transport": None,
+        # "transport": None,
+        "DSA Options": None,
+        "Site Options": None,
         "kcc_connections": 0,
         "kcc_failures": None,
         "replication_errors": None,

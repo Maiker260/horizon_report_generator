@@ -7,7 +7,9 @@ REPLICATION_SECTIONS = {
 }
 
 REPLICATION_LABELS = {
-    "transport": "Transport:",
+    # "transport": "Transport:",
+    "DSA Options": "DSA Options",
+    "Site Options": "Site Options",
     "kcc_connections": "KCC Connections:",
     "kcc_failures": "KCC Failures:",
     "replication_errors": "Replication Errors:",
@@ -20,7 +22,9 @@ def replication(data, component, letter):
         return ""
 
     partners = replication_data.get("neighbors", [])
-    transport = replication_data.get("transport") or "Unknown"
+    # transport = replication_data.get("transport") or "Unknown"
+    dsa_options = replication_data.get("DSA Options")
+    site_options = replication_data.get("Site Options")
     kcc_connections = replication_data.get("kcc_connections",0)
     kcc_failures = replication_data.get("kcc_failures")
     replication_errors = replication_data.get("replication_errors")
@@ -70,9 +74,17 @@ def replication(data, component, letter):
 
     content.extend([
         (
-            f"   {REPLICATION_LABELS['transport']:<{max_width + 1}} "
-            f"{transport}"
+            f"   {REPLICATION_LABELS['DSA Options']:<{max_width + 1}} "
+            f"{dsa_options}"
         ),
+        (
+            f"   {REPLICATION_LABELS['Site Options']:<{max_width + 1}} "
+            f"{site_options}"
+        ),
+        # (
+        #     f"   {REPLICATION_LABELS['transport']:<{max_width + 1}} "
+        #     f"{transport}"
+        # ),
         (
             f"   {REPLICATION_LABELS['kcc_connections']:<{max_width + 1}} "
             f"{kcc_connections}"
