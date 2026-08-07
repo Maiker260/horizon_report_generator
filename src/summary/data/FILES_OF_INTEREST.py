@@ -34,7 +34,10 @@ FILES_OF_INTEREST = {
             "adam.ldif",
             "adam-legacy.ldif"
         ],
-        "replication": ["ldap_replica_status.txt"],
+        "replication": [
+            "ldap_replica_status.txt",
+            "ldap_replica_status-global.txt"
+        ],
         "server_roles": [
             "tasklist-svc.txt", 
             "net-start.txt"

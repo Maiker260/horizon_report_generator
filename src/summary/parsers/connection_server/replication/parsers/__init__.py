@@ -1,5 +1,4 @@
 from .parse_partner import parse_partner
-from .parse_kcc_line import parse_kcc_line
 from .create_replication_data import create_replication_data
 from .is_replication_error_line import is_replication_error_line
 from .normalize_replication_data import normalize_replication_data
@@ -10,7 +9,6 @@ from .parse_options import parse_options
 
 __all__ = [
     "parse_partner",
-    "parse_kcc_line",
     "create_replication_data",
     "is_replication_error_line",
     "normalize_replication_data",

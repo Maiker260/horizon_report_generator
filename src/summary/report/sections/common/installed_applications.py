@@ -27,10 +27,10 @@ def installed_applications(data, component, letter):
 
         if not info:
             if title == "Horizon":
-                content.append(f"   No Horizon Software found.")
+                content.append(f"   * No Horizon Software found.")
                 content.append("")
             else:
-                content.append(f"   No Antivirus/EDR, VPN, Monitoring Agent or Remote Tool found.")
+                content.append(f"   * No Antivirus/EDR, VPN, Monitoring Agent or Remote Tool found.")
             continue
 
         for kwd in info:

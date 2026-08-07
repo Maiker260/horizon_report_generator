@@ -5,13 +5,13 @@ REPLICATION_SECTIONS = {
     "==== OUTBOUND NEIGHBORS FOR CHANGE NOTIFICATIONS ============": "outbound",
 }
 
-KCC_SECTION = "==== KCC CONNECTION OBJECTS ============================================"
-
 NAMING_CONTEXTS = {
     "CN=Configuration,": "Configuration",
     "CN=Schema,": "Schema",
-    "DC=vdi,DC=vmware,DC=int": "Horizon LDAP",
-    "DC=vdi,DC=horizon,DC=internal": "Horizon LDAP",
+    "DC=vdi,DC=vmware,DC=int": "Horizon",
+    "DC=vdi,DC=horizon,DC=internal": "Horizon",
+    "DC=vdiglobal,DC=vmware,DC=int": "Horizon Global",
+    "DC=vdiglobal,DC=horizon,DC=internal": "Horizon Global",
 }
 
 SUCCESSFUL_ATTEMPT_PATTERN = re.compile(
@@ -31,10 +31,5 @@ FAILED_ATTEMPT_PATTERN = re.compile(
 
 PARTNER_PATTERN = re.compile(
     r"Default-First-Site-Name\\(.+?)\s+via\s+RPC",
-    re.IGNORECASE,
-)
-
-KCC_CONNECTION_PATTERN = re.compile(
-    r"Connection name\s*:\s*(.+)",
     re.IGNORECASE,
 )

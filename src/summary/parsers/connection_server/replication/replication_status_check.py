@@ -5,14 +5,24 @@ from src.summary.parsers.connection_server.replication.parsers.normalize_replica
 
 def replication_status_check(zip_ctx, component):
     files = FILES_OF_INTEREST[component]["replication"]
-    data = create_replication_data()
+
+    replication = {
+        "local": None,
+        "global": None,
+    }
 
     for filename in files:
         if not zip_ctx.exists(filename):
             continue
 
+        data = create_replication_data()
+
         parse_replication_file(zip_ctx, filename, data)
+        normalize_replication_data(data)
 
-    normalize_replication_data(data)
+        if filename.endswith("-global.txt"):
+            replication["global"] = data
+        else:
+            replication["local"] = data
 
-    return data
+    return replication

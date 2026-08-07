@@ -3,11 +3,15 @@ from .format_single_neighbor import format_single_neighbor
 from .format_multiple_neighbors import format_multiple_neighbors
 from .format_result import format_result
 from .is_replication_successful import is_replication_successful
+from .build_replication import build_replication_section
+from .normalize_partner import normalize_partner
 
 __all__ = [
     "format_context",
     "format_single_neighbor",
     "format_multiple_neighbors",
     "format_result",
-    "is_replication_successful"
+    "is_replication_successful",
+    "build_replication_section",
+    "normalize_partner"
 ]

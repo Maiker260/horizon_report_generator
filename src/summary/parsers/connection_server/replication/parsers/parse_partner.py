@@ -9,8 +9,7 @@ def parse_partner(line, data):
         return None
 
     partner = partner_match.group(1)
-
-    if partner not in data["neighbors"]:
-        data["neighbors"].append(partner)
+    
+    data["neighbors"].add(partner)
 
     return partner

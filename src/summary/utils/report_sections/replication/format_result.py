@@ -6,13 +6,17 @@ def format_result(neighbor, indent):
 
     content = []
 
+    label_width = len("Last Attempt")
+
     last_attempt = neighbor.get("last_attempt")
     result = neighbor.get("result")
     result_hex = neighbor.get("result_hex")
     error = neighbor.get("error")
 
     if last_attempt:
-        content.append(f"{indent}- Last Attempt: {last_attempt}")
+        content.append(
+            f"{indent}- {'Last Attempt:':<{label_width + 1}} {last_attempt}"
+        )
 
     if result is not None:
         result_text = str(result)
@@ -20,9 +24,13 @@ def format_result(neighbor, indent):
         if result_hex:
             result_text += f" ({result_hex})"
 
-        content.append(f"{indent}- Result: {result_text}")
+        content.append(
+            f"{indent}- {'Result:':<{label_width + 1}} {result_text}"
+        )
 
     if error:
-        content.append(f"{indent}- Error: {error}")
+        content.append(
+            f"{indent}- {'Error:':<{label_width + 1}} {error}"
+        )
 
     return content
