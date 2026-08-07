@@ -31,6 +31,7 @@ feature = sys.argv[2]
 # zip_path = Path("tmp") / "CS-Test5-20sBrete.zip"
 # zip_path = Path("tmp") / "NDC.zip"
 # zip_path = Path("tmp") / "UAG-Testi.zip"
+# zip_path = Path("tmp") / "UAG-Testi2.zip"
 # zip_path = Path("tmp") / "UAG-2406 Testi.zip"
 # zip_path = Path("tmp") / "UAG-2512.zip"
 # zip_path = Path("tmp") / "ES-Test.zip"
