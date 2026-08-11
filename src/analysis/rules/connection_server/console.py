@@ -425,4 +425,19 @@ CONSOLE_RULES = [
             "https://kb.omnissa.com/s/article/88797"
         ]
     ),
+    Rule(
+        name= "Omnissa Horizon Administrator Console or Dashboard Fails to load with java.net.BindException: Address already in use: JVM_Bind",
+        category= "console",
+        match_type="contains",
+        patterns= [
+            "java.net.BindException: Address already in use: JVM_Bind",
+        ],
+        source_files=[
+            r"debug-.*\.txt",
+        ],
+        recommendations= [],
+        references= [
+            "https://kb.omnissa.com/s/article/2078101"
+        ]
+    ),
 ]

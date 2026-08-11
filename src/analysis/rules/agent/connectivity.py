@@ -81,4 +81,19 @@ CONNECTIVITY_RULES = [
             "https://kb.omnissa.com/s/article/6000914"
         ]
     ),
+    Rule(
+        name= "Cannot connect VDI with PCoIP due to insufficient TCP MSS in the network",
+        category= "connectivity",
+        match_type="contains",
+        patterns= [
+            "MGMT_PCOIP_DATA :Invite packet not received, aborting session",
+        ],
+        source_files=[
+            r"pcoip_server_.*\.txt"
+        ],
+        recommendations= [],
+        references= [
+            "https://kb.omnissa.com/s/article/93504"
+        ]
+    ),
 ]

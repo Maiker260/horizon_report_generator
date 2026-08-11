@@ -291,9 +291,9 @@ PROVISION_RULES = [
     Rule(
         name="VC_FAULT_FATAL - javax.xml.ws.soap.SOAPFaultException fault was thrown by the VC server Instant Clone Creation Error",
         category="provisioning",
-        match_type="contains",
+        match_type="regex",
         patterns=[
-            "' has already been deleted or has not been completely created"
+            r"javax.xml.ws.soap.SOAPFaultException fault was thrown by the VC server .* has already been deleted or has not been completely created"
         ],
         source_files=[
             r"debug-.*\.txt"
@@ -497,6 +497,81 @@ PROVISION_RULES = [
         recommendations=[],
         references=[
             "https://kb.omnissa.com/s/article/90426"
+        ]
+    ),
+    Rule(
+        name="VC_FAULT_FATAL: Cannot complete the file creation operation Instant Clone Creation Error",
+        category="provisioning",
+        match_type="contains",
+        patterns=[
+            "cloneprep.common.CPVcSubsystemException: Cannot complete file creation operation."
+        ],
+        source_files=[
+            r"debug-.*\.txt"
+        ],
+        recommendations=[],
+        references=[
+            "https://kb.omnissa.com/s/article/90412"
+        ]
+    ),
+    Rule(
+        name="SERVER_FAULT_FATAL:Runtime error: MoId cannot be null Instant Clone Creation Error",
+        category="provisioning",
+        match_type="contains",
+        patterns=[
+            "SERVER_FAULT_FATAL - Runtime error: MoId cannot be null"
+        ],
+        source_files=[
+            r"debug-.*\.txt"
+        ],
+        recommendations=[],
+        references=[
+            "https://kb.omnissa.com/s/article/90572"
+        ]
+    ),
+    Rule(
+        name="VC_FAULT_FATAL - A specified parameter was not correct: vm.ctkEnabled. Instant Clone Creation Error",
+        category="provisioning",
+        match_type="contains",
+        patterns=[
+            "VC_FAULT_FATAL - A specified parameter was not correct: vm.ctkEnabled"
+        ],
+        source_files=[
+            r"debug-.*\.txt"
+        ],
+        recommendations=[],
+        references=[
+            "https://kb.omnissa.com/s/article/76280"
+        ]
+    ),
+    Rule(
+        name="SERVER_FAULT_FATAL: Failed to retrieve progress for request Id Instant Clone Creation Error",
+        category="provisioning",
+        match_type="contains",
+        patterns=[
+            "SERVER_FAULT_FATAL - Failed to retrieve progress for request Id"
+        ],
+        source_files=[
+            r"debug-.*\.txt"
+        ],
+        recommendations=[],
+        references=[
+            "https://kb.omnissa.com/s/article/75019"
+        ]
+    ),
+    Rule(
+        name="[Nutanix] How to cleanly pair a Golden Image",
+        category="provisioning",
+        match_type="regex",
+        patterns=[
+            r"Fault type is UNKNOWN_FAULT_FATAL - Timed out while waiting for VM .* to shutdown."
+        ],
+        source_files=[
+            r"debug-.*\.txt"
+        ],
+        recommendations=[],
+        references=[
+            "https://kb.omnissa.com/s/article/6001305"
         ]
     ),
 ]

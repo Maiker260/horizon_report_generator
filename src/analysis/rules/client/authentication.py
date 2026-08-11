@@ -50,4 +50,34 @@ AUTHENTICATION_RULES = [
             "https://kb.omnissa.com/s/article/90720"
         ]
     ),
+    Rule(
+        name="The desktop pool with 'Client Restrictions' enabled does not appear on the pool selection screen when logging into the client machine as a local account",
+        category="connectivity",
+        match_type="contains",
+        patterns=[
+            "CdkClientInfo_GetMachineDistinguishedName: GetComputerObjectNameW failed with code: 0x00000005"
+        ],
+        source_files=[
+            r".*-horizon-client-.*\.txt", r"debug-.*\.txt",
+        ],
+        recommendations=[],
+        references=[
+            "https://kb.omnissa.com/s/article/95909"
+        ]
+    ),
+    Rule(
+        name="Logging in to View Client using the Log in as current user option fails",
+        category="authentication",
+        match_type="contains",
+        patterns=[
+            "[ws_winauth] [GSSApiProcessServerContext]: Negotiate failed. Error 0x8009030C"
+        ],
+        source_files=[
+            r".*-horizon-client-.*\.txt", r"debug-.*\.txt",
+        ],
+        recommendations=[],
+        references=[
+            "https://kb.omnissa.com/s/article/91656"
+        ]
+    ),
 ]

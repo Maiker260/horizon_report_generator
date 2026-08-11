@@ -317,4 +317,19 @@ CONNECTIVITY_RULES = [
             "https://kb.omnissa.com/s/article/85519"
         ]
     ),
+    Rule(
+        name= "Two or more sessions are assigned to the same user when using blast",
+        category= "connectivity",
+        match_type="contains",
+        patterns= [
+            "Key CryptExportKey get size FAILED (error 2148073483)",
+        ],
+        source_files=[
+            "absg.log",
+        ],
+        recommendations= [],
+        references= [
+            "https://kb.omnissa.com/s/article/68178"
+        ]
+    ),
 ]

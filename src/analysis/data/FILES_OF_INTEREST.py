@@ -7,13 +7,13 @@ FILES_OF_INTEREST = {
         r"debug-.*\.txt", 
         "info.log", 
         r"vminst.*\.log",
-        "absg.log"
+        "absg.log",
     ],
     "unified_access_gateway": [
         "admin.log", 
         "bsg.log", 
         "esmanager.log",
-        "authbroker.log"
+        "authbroker.log",
     ],
     "agent": [
         r"debug-.*\.txt", 
@@ -21,11 +21,13 @@ FILES_OF_INTEREST = {
         r".*-html5Server-.*\.log", 
         r"vminst.*\.log", 
         r"Blast-Worker-.*\.log",
+        r"pcoip_server_.*\.txt",
     ],
     "client": [
         r"horizon-protocol-.*\.log", 
         r".*-horizon-client-.*\.txt",
         r"horizon-crtbora.*\.log",
         r"debug-.*\.txt",
+        r"pcoip_client_.*\.txt",
     ],
 }

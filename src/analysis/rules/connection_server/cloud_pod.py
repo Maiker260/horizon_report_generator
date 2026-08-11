@@ -79,4 +79,34 @@ CLOUD_POD_RULES = [
             "https://kb.omnissa.com/s/article/52849"
         ]
     ),
+    Rule(
+        name="Cloud Pod Architecture fails to initialize after a failed upgrade",
+        category="cpa",
+        match_type="contains",
+        patterns=[
+            "Unable to read Global LDAP",
+        ],
+        source_files=[
+            r"debug-.*\.txt",
+        ],
+        recommendations=[],
+        references=[
+            "https://kb.omnissa.com/s/article/76048"
+        ]
+    ),
+    Rule(
+        name="After unjoining and rejoining a pod all inter pod session launches for resources on that pod fails",
+        category="cpa",
+        match_type="contains",
+        patterns=[
+            "Could not unwrap CPA encryption key: Failed to unwrap wrapped encryption key. Message: Failed to unwrap wrapped encryption key: decipher: Error: 30000",
+        ],
+        source_files=[
+            r"debug-.*\.txt",
+        ],
+        recommendations=[],
+        references=[
+            "https://kb.omnissa.com/s/article/95191"
+        ]
+    ),
 ]
