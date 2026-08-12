@@ -99,4 +99,19 @@ CUSTOMIZATION_RULES = [
             "https://kb.omnissa.com/s/article/6001394",
         ]
     ),
+    Rule(
+        name='Horizon Sysprep For Full Clones: Errors out with " Sysprep stall timeout hit, requesting reboot"',
+        category="customization",
+        match_type="contains",
+        patterns=[
+            "[wsnm_jms] Sysprep stall timeout hit, requesting reboot"
+        ],
+        source_files=[
+            r"debug-.*\.txt"
+        ],
+        recommendations=[],
+        references=[
+            "https://kb.omnissa.com/s/article/92363",
+        ]
+    ),
 ]

@@ -4,6 +4,7 @@ from src.analysis.rules.agent.ms_teams import MS_TEAMS_RULES
 from src.analysis.rules.agent.connectivity import CONNECTIVITY_RULES
 from src.analysis.rules.agent.upgrade import UPGRADE_RULES
 from src.analysis.rules.agent.authentication import AUTHENTICATION_RULES
+from src.analysis.rules.agent.features import FEATURES_RULES
 
 AGENT_RULESET = compile_rules(
     CUSTOMIZATION_RULES 
@@ -11,4 +12,5 @@ AGENT_RULESET = compile_rules(
     + CONNECTIVITY_RULES
     + UPGRADE_RULES
     + AUTHENTICATION_RULES
+    + FEATURES_RULES
 )

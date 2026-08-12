@@ -6,7 +6,7 @@ NETWORK_RULES = [
         category="network",
         match_type="regex",
         patterns=[
-            r"java.net.UnknownHostException.*Name or service not known"
+            r"java.net.UnknownHostException:.*Name or service not known"
         ],
         source_files=[
             "esmanager.log"

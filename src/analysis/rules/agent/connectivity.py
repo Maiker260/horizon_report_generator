@@ -78,7 +78,7 @@ CONNECTIVITY_RULES = [
             "Disable the AMD display driver in Device Manager"
         ],
         references= [
-            "https://kb.omnissa.com/s/article/6000914"
+            "https://kb.omnissa.com/s/article/6001373"
         ]
     ),
     Rule(
@@ -94,6 +94,52 @@ CONNECTIVITY_RULES = [
         recommendations= [],
         references= [
             "https://kb.omnissa.com/s/article/93504"
+        ]
+    ),
+    Rule(
+        name= "Horizon VGPU: Mouse Misbehavior and Session freezing over Blast",
+        category= "connectivity",
+        match_type="contains",
+        patterns= [
+            "Access is denied.), LocalSystem: True Removed reason: (0x00000000) : The operation completed successfully. trying again...",
+        ],
+        source_files=[
+            r"Blast-Worker-SessionId.*\.log"
+        ],
+        recommendations= [],
+        references= [
+            "https://kb.omnissa.com/s/article/94184"
+        ]
+    ),
+    Rule(
+        name= "Intermittent RDSH published App Launch failure",
+        category= "connectivity",
+        match_type="regex",
+        patterns= [
+            r"VMRdsProtocolListener.*::CreateSession\(\): Connection failed error 3",
+        ],
+        source_files=[
+            r"debug-.*\.txt"
+        ],
+        recommendations= [],
+        references= [
+            "https://kb.omnissa.com/s/article/92943"
+        ]
+    ),
+    Rule(
+        name= "Omnissa Session Monitor fails to Start resulting in Horizon Agent Errors, including configuration errors",
+        category= "connectivity",
+        match_type="contains",
+        patterns= [
+            "[wsnm_desktop] Failed to open Session Monitor, status unexpected, error=2.  Windows Session Tracker watcher will retry in 10 seconds",
+            "[ws_sm] Failed to open KSM status 5, error: 31.  Retrying in 10 seconds"
+        ],
+        source_files=[
+            r"debug-.*\.txt"
+        ],
+        recommendations= [],
+        references= [
+            "https://kb.omnissa.com/s/article/90648"
         ]
     ),
 ]

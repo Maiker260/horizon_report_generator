@@ -23,7 +23,7 @@ MS_TEAMS_RULES = [
         category="ms_teams",
         match_type="regex",
         patterns=[
-            r"HTML5Server::OnAcceptWebSocketConn.*rejected due to different session"
+            r"\[HTML5Server::OnAcceptWebSocketConn\] .* rejected due to different session"
         ],
         source_files=[
             r".*-html5Server-.*\.log"

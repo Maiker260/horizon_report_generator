@@ -22,6 +22,7 @@ FILES_OF_INTEREST = {
         r"vminst.*\.log", 
         r"Blast-Worker-.*\.log",
         r"pcoip_server_.*\.txt",
+        r"Blast-Worker-SessionId.*\.log",
     ],
     "client": [
         r"horizon-protocol-.*\.log", 
@@ -29,5 +30,6 @@ FILES_OF_INTEREST = {
         r"horizon-crtbora.*\.log",
         r"debug-.*\.txt",
         r"pcoip_client_.*\.txt",
+        r"print_service_.*\.log",
     ],
 }

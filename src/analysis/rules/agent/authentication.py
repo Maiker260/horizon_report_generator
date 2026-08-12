@@ -77,4 +77,19 @@ AUTHENTICATION_RULES = [
             "https://kb.omnissa.com/s/article/94971"
         ]
     ),
+    Rule(
+        name="Kerberos error when using Windows Hello for Business with Logon as Current User",
+        category="authentication",
+        match_type="contains",
+        patterns=[
+            "The attempted logon is invalid. This is either due to a bad username or authentication information. The Kerberos protocol encountered an error while attempting to utilize the smartcard subsystem.'"
+        ],
+        source_files=[
+            r"debug-.*\.txt",
+        ],
+        recommendations=[],
+        references=[
+            "https://kb.omnissa.com/s/article/91459"
+        ]
+    ),
 ]

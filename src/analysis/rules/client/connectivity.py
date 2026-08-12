@@ -256,4 +256,19 @@ CONNECTIVITY_RULES = [
             "https://kb.omnissa.com/s/article/93504"
         ]
     ),
+    Rule(
+        name='Omnissa Horizon Client prompts "Log off Desktop to switch protocol?" with a Physical Desktop Horizon Agent',
+        category="connectivity",
+        match_type="contains",
+        patterns=[
+            "The task 'CdkKillSessionTask' failed with the error: You do not have a current session from which to log off. (domain=56, code=1)"
+        ],
+        source_files=[
+            r".*-horizon-client-.*\.txt", r"debug-.*\.txt",
+        ],
+        recommendations=[],
+        references=[
+            "https://kb.omnissa.com/s/article/92358"
+        ]
+    ),
 ]

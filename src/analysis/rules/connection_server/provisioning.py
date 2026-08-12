@@ -293,7 +293,7 @@ PROVISION_RULES = [
         category="provisioning",
         match_type="regex",
         patterns=[
-            r"javax.xml.ws.soap.SOAPFaultException fault was thrown by the VC server .* has already been deleted or has not been completely created"
+            r"javax.xml.ws.soap.SOAPFaultException fault was thrown by the VC server: .* has already been deleted or has not been completely created"
         ],
         source_files=[
             r"debug-.*\.txt"
@@ -572,6 +572,21 @@ PROVISION_RULES = [
         recommendations=[],
         references=[
             "https://kb.omnissa.com/s/article/6001305"
+        ]
+    ),
+    Rule(
+        name="Initial publish of an Instant Clone desktop pool image fails and the template VMs are deleted",
+        category="provisioning",
+        match_type="regex",
+        patterns=[
+            r'"After waiting for 600 seconds internal template VM: .* is still has not finished customization. Giving up."'
+        ],
+        source_files=[
+            r"debug-.*\.txt"
+        ],
+        recommendations=[],
+        references=[
+            "https://kb.omnissa.com/s/article/2144938"
         ]
     ),
 ]
