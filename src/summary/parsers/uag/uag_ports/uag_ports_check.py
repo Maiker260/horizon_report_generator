@@ -16,9 +16,6 @@ def uag_ports_check(zip_ctx):
             continue
 
         with zip_ctx.open(filename) as file:
-            # content = read_file_with_auto_encoding(file)
-
-            # for line in content.splitlines():
             reader = read_file_with_auto_encoding(file)
 
             for line in reader:
@@ -37,6 +34,7 @@ def uag_ports_check(zip_ctx):
                     if int(port) not in ports:
                         continue
 
+                    # TCP and UDP entries have different field positions
                     if protocol.startswith("tcp"):
                         protocol = "tcp"
                         state = parts[5]

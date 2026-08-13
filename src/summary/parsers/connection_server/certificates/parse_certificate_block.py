@@ -28,12 +28,12 @@ def parse_certificate_block(lines):
     for line in lines:
         stripped = line.strip()
 
-        # Detect if the certificate is archived
+        # Check if the certificate is archived
         if stripped.startswith("Archived"):
             cert["archived"] = True
             continue
 
-        # Detect Private key
+        # Check private key availability and exportability
         if stripped.startswith("Private Key:"):
             cert["has_private_key"] = True
             cert["private_key_exportable"] = True
@@ -44,7 +44,7 @@ def parse_certificate_block(lines):
             cert["private_key_exportable"] = False
             continue
 
-        # Simple lines
+        # Parse simple certificate fields
         for pattern, field_name in simple_handlers:
 
             match = pattern.search(line)
@@ -52,7 +52,7 @@ def parse_certificate_block(lines):
                 cert[field_name] = match.group(1).strip()
                 break
         else:
-            # Sections
+            # Parse certificate sections
             matched_section = False
 
             for header, sec_name in SECTION_HEADERS.items():
@@ -103,7 +103,7 @@ def parse_certificate_block(lines):
                     })
                 continue
 
-            # issuer / subject
+            # Issuer and subject common names
             if section in ("issuer", "subject"):
 
                 match = CN_RE.search(line)

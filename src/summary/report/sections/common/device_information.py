@@ -11,6 +11,21 @@ KEY_FIXES = {
 }
 
 def device_information(data, component, letter):
+    # Example:
+    
+    # A. MACHINE INFORMATION
+    # ------------------------------
+    # Operating System:  Windows Server 2022
+    # Boot Time:         2026-08-12 10:30:00
+    #
+    # Network Interfaces:
+    #
+    #    #1
+    #      - Adapter:     Ethernet
+    #      - Interface:   Ethernet0
+    #      - IP Addresses:
+    #                     192.168.1.10
+
     device_info = data["device_info"]
     systeminfo = device_info["systeminfo"]
 
@@ -55,6 +70,7 @@ def device_information(data, component, letter):
         keys = list(fields)
         max_width_nic = max(len(key) for key in keys)
 
+        # Skip the Index field; it is displayed above
         for key in keys[1:]:
             value = fields.get(key, "N/A")
 

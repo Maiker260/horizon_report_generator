@@ -36,24 +36,15 @@ def analyze_logs(zip_ctx, component, progress_callback=None):
                 else:
                     raw = None
 
+                # Parse the timestamp only when it changes
                 if raw and raw != last_timestamp_raw:
                     last_timestamp_raw = raw
                     last_timestamp = parse_timestamp(raw)
 
-                result = rule_parser(
-                    line,
-                    automaton,
-                    regex_rules,
-                    matched_file
-                )
+                result = rule_parser(line, automaton, regex_rules, matched_file)
                 
                 if result:
-                    update_findings(
-                        findings,
-                        result,
-                        line,
-                        last_timestamp
-                    )
+                    update_findings(findings, result, line, last_timestamp)
 
     return [
         {

@@ -23,7 +23,6 @@ def horizon_services_check(zip_ctx, component):
                 line_lower = line.lower()
 
                 for service in services:
-
                     if service.lower() in line_lower:
                         data[service].append(line.strip())
 

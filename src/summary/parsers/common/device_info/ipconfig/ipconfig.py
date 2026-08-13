@@ -8,7 +8,8 @@ def ipconfig(zip_ctx, filename, component, current_data):
     cards = current_data["systeminfo"].get("Network Card(s)")
     if not cards:
         return
-    
+
+    # Map connection names to their corresponding network cards
     nic_map = {
         card["Connection Name"]: card for card in cards
     }

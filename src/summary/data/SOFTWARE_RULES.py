@@ -7,7 +7,8 @@ SOFTWARE_RULES = {
             "defender for endpoint",
             "microsoft defender for servers",
             "microsoft defender for business",
-            "microsoft defender xdr"
+            "microsoft defender xdr",
+            "sense",
         ],
 
         "Symantec / Broadcom": [
@@ -34,13 +35,19 @@ SOFTWARE_RULES = {
             "apex one",
             "officescan",
             "trend micro deep security",
-            "trend micro worry free"
+            "trend micro worry free",
+            "deep security agent",
         ],
 
         "Kaspersky": [
             "kaspersky",
             "kaspersky endpoint security",
             "kaspersky security center"
+        ],
+
+        "Tanium": [
+            "tanium",
+            "tanium client",
         ],
 
         "ESET": [
@@ -76,7 +83,13 @@ SOFTWARE_RULES = {
             "sentinelone",
             "sentinel one",
             "sentinel one agent",
-            "sentinelone ranger"
+            "sentinelone ranger",
+            "sentinel agent",
+        ],
+
+        "Wazuh": [
+            "wazuh",
+            "wazuh agent",
         ],
 
         "Cylance / BlackBerry": [
@@ -132,6 +145,12 @@ SOFTWARE_RULES = {
             "check point",
             "check point harmony",
             "check point endpoint security"
+        ],
+
+        "Tenable": [
+            "tenable",
+            "tenable agent",
+            "nessus agent",
         ],
 
         "Cisco": [
@@ -194,17 +213,95 @@ SOFTWARE_RULES = {
     },
 
     "Firewall / Network Security": {
+        "Cloudflare": [
+            "cloudflare warp",
+            "cloudflare warp client",
+            "cloudflare",
+        ],
+
+        "Cisco": [
+            "cisco secure endpoint",
+            "cisco amp",
+            "amp for endpoints",
+            "cisco umbrella",
+        ],
+
+        "Microsoft": [
+            "azure vpn",
+            "azure network adapter",
+            "microsoft tunnel",
+        ],
+
+        "Forcepoint": [
+            "forcepoint",
+            "forcepoint one",
+            "forcepoint endpoint",
+        ],
+
+        "Symantec / Broadcom": [
+            "symantec endpoint protection",
+            "symantec web protection",
+            "symantec web security",
+        ],
+
+        "McAfee / Trellix": [
+            "mcafee",
+            "trellix",
+            "trellix web control",
+            "trellix endpoint security",
+        ],
+
         "Zscaler": ["zscaler"],
-        "Forcepoint": ["forcepoint"],
         "Check Point": ["check point"],
         "Netskope": ["netskope"],
         "iboss": ["iboss"],
-        "Palo Alto Networks": ["globalprotect", "cortex"],
-        "Cisco": ["cisco secure endpoint", "amp for endpoints"],
-        "Fortinet": ["forticlient"]
+        "Palo Alto Networks": ["globalprotect"],
     },
 
     "Monitoring Agent": {
+        "Datadog": [
+            "datadog",
+            "datadog agent",
+        ],
+
+        "New Relic": [
+            "new relic",
+            "newrelic",
+            "new relic infrastructure agent",
+        ],
+
+        "Sentry": [
+            "sentry",
+            "sentry agent",
+        ],
+
+        "AppDynamics": [
+            "appdynamics",
+            "appdynamics agent",
+        ],
+
+        "SolarWinds": [
+            "solarwinds",
+            "solarwinds agent",
+        ],
+
+        "ScienceLogic": [
+            "sciencelogic",
+            "sl1 agent",
+        ],
+
+        "Splunk": [
+            "splunk",
+            "splunk universal forwarder",
+        ],
+
+        "Elastic": [
+            "elastic agent",
+            "elastic beats",
+            "filebeat",
+            "winlogbeat",
+        ],
+
         "ControlUp": ["controlup"],
         "Nexthink": ["nexthink"],
         "Lakeside": ["lakeside"],
@@ -215,6 +312,46 @@ SOFTWARE_RULES = {
     },
 
     "Remote Tool": {
+        "RustDesk": [
+            "rustdesk",
+        ],
+
+        "Chrome Remote Desktop": [
+            "chrome remote desktop",
+            "chromeremotedesktop",
+        ],
+
+        "Splashtop": [
+            "splashtop",
+            "splashtop streamer",
+            "splashtop remote",
+        ],
+
+        "RemotePC": [
+            "remotepc",
+        ],
+
+        "Zoho": [
+            "zoho assist",
+            "zoho",
+        ],
+
+        "GoTo": [
+            "gotoassist",
+            "goto resolve",
+            "logmein",
+        ],
+
+        "DWService": [
+            "dwagent",
+            "dwservice",
+        ],
+
+        "MeshCentral": [
+            "meshcentral",
+            "mesh agent",
+        ],
+
         "TeamViewer": ["teamviewer"],
         "AnyDesk": ["anydesk"],
         "ConnectWise": ["connectwise"],
@@ -225,13 +362,48 @@ SOFTWARE_RULES = {
     },
 
     "VPN Agent": {
+        "OpenVPN": [
+            "openvpn",
+            "openvpn connect",
+        ],
+
+        "WireGuard": [
+            "wireguard",
+        ],
+
+        "GlobalProtect": [
+            "globalprotect",
+            "pan gps",
+        ],
+
+        "Citrix": [
+            "citrix secure access",
+            "citrix gateway",
+        ],
+
+        "F5": [
+            "f5 vpn",
+            "f5 big-ip edge client",
+            "big-ip edge",
+        ],
+
+        "SonicWall": [
+            "sonicwall",
+            "sonicwall netextender",
+            "sonicwall vpn"
+        ],
+
+        "Pulse Secure": [
+            "pulse secure",
+            "pulse secure client",
+        ],
+
+        "OpenConnect": [
+            "openconnect",
+        ],
+
         "Cisco AnyConnect": ["anyconnect"],
-        "Fortinet": ["forticlient"],
-        "Palo Alto Networks": ["globalprotect"],
-        "Zscaler": ["zscaler"],
         "Netskope": ["netskope"],
-        "Pulse Secure": ["pulse secure"],
         "Ivanti": ["ivanti"],
-        "SonicWall": ["sonicwall vpn"]
     }
 }

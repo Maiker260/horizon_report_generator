@@ -21,20 +21,23 @@ GROUPS = [
     ["pae-BypassAppBlastSecureGateway", "appblastClientHost",],
 ]
 
-# DATABASE_FIELDS = {
-#     "pae-SAMLEnabled",
-#     "pae-RADIUSEnabled",
-#     "pae-BypassTunnel",
-#     "pae-BypassPCoIPSecureGateway",
-#     "pae-BypassAppBlastSecureGateway",
-#     "pae-ABSGDirectHTMLAccessOnly",
-# }
-
 def _is_enabled(value):
     return str(value) == "1"
 
 
 def configuration(data, component, letter):
+    # Example:
+
+    # Horizon FIPS Mode:      False
+    # SAML Enabled:           Disabled
+    # RADIUS:                 Disabled
+
+    # HTTP(s) Secure Tunnel:  Enabled
+    # External URL:           url:443
+
+    # PCoIP Secure Gateway:   Enabled
+    # PCoIP External URL:     url:443
+
     horizon_reg = data["configuration"].get("horizon_reg", {})
     config = data["configuration"].get("config", {})
     database = data["configuration"].get("database", {})

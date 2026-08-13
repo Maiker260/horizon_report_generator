@@ -6,6 +6,7 @@ class ZipContext:
         self.zip_file = zip_file
         self.files = zip_file.namelist()
 
+        # Cache filenames for faster lookups
         self._names = [PurePosixPath(f).name for f in self.files]
         self._names_set = set(self._names)
 

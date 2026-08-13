@@ -2,6 +2,13 @@ from src.summary.utils.format_section import format_section
 from src.summary.data.DATA_TO_COLLECT import DATA_TO_COLLECT
 
 def log_level_features(data, component, letter):
+    # Example:
+    
+    # COMPONENT LOG LEVELS
+    
+    # Printer Redirection:  Info
+    # Scanner Redirection:  Debug
+    
     features = data["log_level_features"]
 
     content = []

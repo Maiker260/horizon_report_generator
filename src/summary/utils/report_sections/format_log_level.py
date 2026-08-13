@@ -9,6 +9,7 @@ def format_log_level(component, reg_data):
     trace = flags.get("TraceEnabled")
     debug = flags.get("DebugEnabled")
 
+    # Connection Server defaults to Debug when no log level is configured
     if trace is None and debug is None:
         if component == "connection_server":
             return "Debug"

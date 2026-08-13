@@ -4,6 +4,15 @@ from src.common.report.utils.NAME_FIXES import FEATURE_FIXES
 date = datetime.datetime.now()
 
 def header(zip_path, component, feature, log_level):
+    # Example:
+    # ==================================================
+    # FEATURE NAME
+    # Generated:          Wed Aug 12 20:20:00 2026 (Local Time)
+    # Bundle:             logs.zip
+    # Horizon Product:    Horizon Connection Server
+    # Horizon Log Level:  DEBUG
+    # ==================================================
+
     component = component.replace("_", " ").title()
     now = date.strftime("%c")
 

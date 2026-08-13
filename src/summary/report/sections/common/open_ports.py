@@ -3,6 +3,25 @@ from src.summary.utils.report_sections.open_ports.group_by_process import group_
 from src.summary.utils.report_sections.open_ports.format_addresses import format_addresses
 
 def open_ports(data, component, letter):
+    # Example:
+
+    # TCP:
+    
+    # Port 135:
+    #     - PID:              724
+    #     - State:            LISTENING
+    #     - Process:          svchost.exe
+    #     - Local Address:    0.0.0.0:135, [::]:135
+    #     - Foreign Address:  WIN-C2OSD2Q4M1E:0, WIN-C2OSD2Q4M1E:0
+
+    # Port 443:
+    #     - PID:              4112
+    #     - State:            LISTENING
+    #     - Process:          ws_TunnelService.exe
+    #     - Local Address:    0.0.0.0:443
+    #     - Foreign Address:  WIN-C2OSD2Q4M1E:0
+
+
     expected_ports = DATA_TO_COLLECT[component]["horizon_ports"]
     ports = data["horizon_ports"]
 
@@ -29,6 +48,7 @@ def open_ports(data, component, letter):
             port_str = str(port_number)
 
             if port_str not in grouped:
+                # Skip UDP ports that are not applicable to this component
                 udp_ports = {
                     "enrollment_server": [],
                     "connection_server": [4172, 8443],
@@ -54,7 +74,6 @@ def open_ports(data, component, letter):
                     "Process": entry["Process"],
                     "Local Address": format_addresses(entry["Local Addresses"]),
                     "Foreign Address": format_addresses(entry["Foreign Addresses"]),
-                    # "Expected Purpose": "",
                 }
 
                 max_width = max(len(key + ":") for key in fields)

@@ -9,7 +9,7 @@ if len(sys.argv) < 2:
 zip_path = Path(sys.argv[1])
 feature = sys.argv[2]
 
-# Test
+# Tests
 
 # zip_path = Path("tmp") / "Agent-2406.zip"
 # zip_path = Path("tmp") / "Agent-2512.zip"

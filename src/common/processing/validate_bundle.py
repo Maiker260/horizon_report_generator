@@ -14,7 +14,7 @@ def validate_bundle(zip_ctx, component):
     component = KEY_FIXES.get(component, component.title())
 
     missing_required = [
-        f for f in markers["required"] if not zip_ctx.exists(f)
+        file for file in markers["required"] if not zip_ctx.exists(file)
     ]
 
     structural_found = any(

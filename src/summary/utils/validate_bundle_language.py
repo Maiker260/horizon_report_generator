@@ -9,6 +9,8 @@ REQUIRED_SYSTEMINFO_KEYS = (
 )
 
 def validate_bundle_language(zip_ctx):
+    # Validate that the bundle was generated from an English Windows installation
+
     if not zip_ctx.exists("systeminfo.txt"):
         return
 

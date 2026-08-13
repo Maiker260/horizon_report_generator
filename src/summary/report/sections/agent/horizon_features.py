@@ -1,6 +1,13 @@
 from src.summary.utils.format_section import format_section
 
 def horizon_features(data, component, letter):
+    # Example:
+
+    # HORIZON AGENT FEATURES
+    
+    # Printer Redirection:  Enabled
+    # Scanner Redirection:  Disabled
+
     features = data["horizon_features"]
     content = []
 

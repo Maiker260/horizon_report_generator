@@ -32,11 +32,14 @@ def configuration_check(zip_ctx, component):
             continue
 
         file = match.group()
+        
+        # Map the ADAM file to the database parser
         file = "database" if file == "adam" else file
 
         parsers_list = parsers.get(component, parsers["common"])
 
         if file in parsers_list:
+            # Use a shared key for Omnissa and VMware registry data
             key = "horizon_reg" if file in ("omnissa", "vmware") else file
 
             if key not in data:

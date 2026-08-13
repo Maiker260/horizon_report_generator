@@ -68,6 +68,7 @@ def horizon_ports_check(zip_ctx, component):
                     ip_part, port_part = last_entry["local_address"].rsplit(":", 1)
                     unique_key = (protocol, ip_part, port_part, process_name)
 
+                    # Avoid adding duplicate port entries
                     if unique_key not in seen_entries:
                         seen_entries.add(unique_key)
                         data[last_entry["protocol"]].append(last_entry)

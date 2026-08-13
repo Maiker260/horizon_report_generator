@@ -35,6 +35,7 @@ def normalize_uag_titles(text: str) -> str:
         if match:
             _, version = match.groups()
 
+            # Format TLS versions such as tls12 as TLS 1.2
             if len(version) == 2:
                 version = f"{version[0]}.{version[1]}"
 

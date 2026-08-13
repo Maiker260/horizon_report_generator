@@ -1,4 +1,11 @@
 def server_roles(data, component, letter):
+    # Example:
+
+    # Domain Controller
+    #   - Status:    Detected (Running)
+    #   - Evidence:  ntds.exe
+    #   - File:      tasklist-svc.txt
+
     roles = data["server_roles"]
 
     content = []

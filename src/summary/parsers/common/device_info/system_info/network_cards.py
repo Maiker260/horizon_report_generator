@@ -34,6 +34,7 @@ def parse_nics(lines):
             ip_candidate = ip_match.group(1)
 
             try:
+                # Validate the value before adding it as an IP address
                 ipaddress.ip_address(ip_candidate)
                 current["IP Addresses"].append(ip_candidate)
             except ValueError:

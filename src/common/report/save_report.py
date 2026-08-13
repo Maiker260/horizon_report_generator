@@ -2,6 +2,8 @@ from pathlib import Path
 from src.common.report.utils.NAME_FIXES import FEATURE_FIXES, KEY_FIXES
 
 def save_report(report, component, feature, zip_path):
+    # Example: Horizon CS - Summary Report - logs
+
     key = KEY_FIXES.get(component, component.title())
     feature_name = FEATURE_FIXES.get(feature)
 

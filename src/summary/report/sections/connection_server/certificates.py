@@ -1,4 +1,20 @@
 def certificates(data, component, letter):
+    # Example:
+
+    # VDM Certificate(s):
+    #    #1
+    #      - Friendly Name:            vdm
+    #      - Serial Number:            123456
+    #      - Issuer:                   Example CA
+    #      - Subject:                  Horizon Connection Server
+    #      - Subject Alternative Name(s):
+    #                                  server.example.com
+    #                                  192.168.1.10
+    #      - Valid From (Not Before):  Jan 01 00:00:00 2026
+    #      - Valid To (Not After):     Jan 01 00:00:00 2027
+    #      - Has Private Key:          Yes
+    #      - Private Key Exportable:   No
+
     certs = data["certificates"]
 
     content = []
@@ -15,7 +31,8 @@ def certificates(data, component, letter):
         return "\n".join(content)
 
     content.append("VDM Certificate(s):")
-    
+
+    # Flag multiple VDM certificates for review
     if len(vdm_certs) > 1:
         content.append("\n * MULTIPLE VDM CERTIFICATES DETECTED.")
 

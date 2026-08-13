@@ -2,15 +2,15 @@ from src.common.data.HORIZON_COMPONENT_MARKERS import HORIZON_COMPONENT_MARKERS
 from src.exceptions import UnsupportedComponentError
 
 def detect_component(zip_ctx):
-    scores = {k: 0 for k in HORIZON_COMPONENT_MARKERS}
+    scores = {key: 0 for key in HORIZON_COMPONENT_MARKERS}
 
     for component, evidence in HORIZON_COMPONENT_MARKERS.items():
-        for d in evidence.get("dirs", []):
-            if zip_ctx.exists_dir(d):
+        for dir in evidence.get("dirs", []):
+            if zip_ctx.exists_dir(dir):
                 scores[component] += 1
 
-        for f in evidence.get("files", []):
-            if zip_ctx.exists(f):
+        for file in evidence.get("files", []):
+            if zip_ctx.exists(file):
                 scores[component] += 1
 
         for pattern in evidence.get("patterns", []):

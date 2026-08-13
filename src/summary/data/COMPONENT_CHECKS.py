@@ -3,12 +3,15 @@ from src.summary.parsers.common.horizon_services.horizon_services_check import h
 from src.summary.parsers.common.horizon_ports.horizon_ports_check import horizon_ports_check
 from src.summary.parsers.common.installed_software.installed_software_check import installed_software_check
 from src.summary.parsers.common.log_level_features.log_level_features_check import log_level_features_check
+
 from src.summary.parsers.connection_server.configuration.configuration_check import configuration_check
 from src.summary.parsers.connection_server.replication import replication_status_check
 from src.summary.parsers.connection_server.server_roles.server_roles_check import server_roles_check
 from src.summary.parsers.connection_server.certificates.certificates_check import certificates_check
 from src.summary.parsers.connection_server.locked_properties.locked_properties_check import locked_properties_check
+
 from src.summary.parsers.agent.horizon_features import horizon_features_check
+
 from src.summary.parsers.enrollment_server.service_keys import service_keys
 
 from src.summary.parsers.uag.uag_info.uag_info_check import uag_info_check

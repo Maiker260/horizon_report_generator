@@ -40,6 +40,7 @@ class ProgressWindow:
 
         self._update_timer()
 
+        # Bring the window to the front
         self.window.lift()
         self.window.focus_force()
 
@@ -56,17 +57,10 @@ class ProgressWindow:
             text=f"Elapsed time: {minutes:02}:{seconds:02}"
         )
 
-        self.window.after(
-            1000,
-            self._update_timer
-        )
+        # Update the timer every second
+        self.window.after(1000, self._update_timer)
 
-    def update_progress(
-        self,
-        current,
-        total,
-        filename
-    ):
+    def update_progress(self, current, total, filename):
         self.progress["maximum"] = total
         self.progress["value"] = current
 
@@ -85,7 +79,5 @@ class ProgressWindow:
             text="Analysis Complete"
         )
 
-        self.window.after(
-            500,
-            self.window.destroy
-        )
+        # Delay closing to show the completion message
+        self.window.after(500, self.window.destroy)

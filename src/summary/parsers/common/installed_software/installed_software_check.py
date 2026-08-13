@@ -40,6 +40,7 @@ def installed_software_check(zip_ctx, component):
                         detected = True
                         break
 
+                # Check Horizon apps only if the software was not detected as security software
                 if detected:
                     continue
 

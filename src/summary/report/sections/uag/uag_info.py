@@ -1,55 +1,43 @@
 import re
 from src.summary.utils.report_sections.normalize_uag_titles import normalize_uag_titles
-
-sections = {
-    "General": [
-        "uagName",
-        "uag_version",
-        "gatewayLocation"
-    ],
-    "Deployment": [
-        "deploymentOption",
-    ],
-    "Networking": [],
-    "Security": [
-        "fipsEnabled",
-        "minSHAHashSize",
-        "tls11Enabled",
-        "tls12Enabled",
-        "tls13Enabled",
-        "authMethods"
-    ],
-    "System": [
-        "hostClockSyncEnabled",
-        "clockSkewTolerance",
-        "healthCheckUrl",
-        "proxyPattern"
-    ],
-    "URLs": [
-        "proxyDestinationUrl",
-        "proxyDestinationUrlThumbprints",
-        "pcoipExternalUrl",
-        "blastExternalUrl",
-        "blastUrls",
-        "tunnelExternalUrl",
-        "tunnelUrls"
-    ],
-    "Allowed Origins": [
-        "origins"
-    ]
-}
+from src.summary.report.sections.uag.sections import UAG_SECTIONS
 
 def uag_info(data, component, letter):
+    # Example output:
+
+    # UAG INFORMATION
+    # ------------------------------
+
+    #    General:
+    #       - UAG Name:        UAG01
+    #       - UAG Version:     2506
+
+    #    Networking:
+    #       NIC 1:
+    #         - IP Address:  192.168.1.10
+    #         - Netmask:     255.255.255.0
+    #       - DNS:              192.168.1.1
+    #       - Default Gateway:  192.168.1.254
+
+    #    Security:
+    #       - FIPS Enabled:    False
+    #       - TLS 1.2 Enabled: True
+
+    #    URLs:
+    #       - Proxy Destination URL:  https://example.com
+    #       - PCoIP External URL:     https://pcoip.example.com
+
     info = data["uag_info"]
     content = []
 
     content.append(f"\n\n{letter}. UAG INFORMATION")
     content.append("-" * 30)
 
-    for section, fields in sections.items():
+    for section, fields in UAG_SECTIONS.items():
         content.append(f"\n   {section}:")
 
         if section == "Networking":
+            # Build network interface sections from numbered IP fields
             interfaces = sorted([key for key in info.keys() if re.match(r"ip\d+", key)])
 
             for interface in interfaces:

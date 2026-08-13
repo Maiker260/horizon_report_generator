@@ -4,6 +4,7 @@ from src.analysis.processing.gather_data import gather_data
 from src.analysis.processing.ProgressWindow import ProgressWindow
 
 def generate_log_analysis(zip_path, zip_ctx, component, feature):
+    # Show analysis progress
     progress_window = ProgressWindow()
 
     result = {}
@@ -20,6 +21,7 @@ def generate_log_analysis(zip_path, zip_ctx, component, feature):
         finally:
             progress_window.close()
 
+    #  Run the analyzer in a background thread
     thread = threading.Thread(
         target=analize_logs,
         daemon=True

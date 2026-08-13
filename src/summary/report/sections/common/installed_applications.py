@@ -6,6 +6,16 @@ SECTION_TITLES = {
 }
 
 def installed_applications(data, component, letter):
+    # Example:
+
+    # Horizon:
+
+    #  Omnissa:
+    #     - Omnissa Horizon Connection Server
+    #         Installed:  2026-02-03
+    #         Version:    8.17
+
+    
     applications = data["installed_software"]
 
     if not isinstance(applications, dict):
@@ -22,7 +32,7 @@ def installed_applications(data, component, letter):
         title = "Horizon" if app_type == "horizon_apps" else "Security Software"
         content.append(f"{title}:\n")
 
-        # Group by Type
+        # Group applications by Type
         grouped = {}
 
         if not info:
@@ -50,7 +60,7 @@ def installed_applications(data, component, letter):
                 content.append("   " + ("-" * len(section_name)))
                 content.append("")
 
-            # Group by Vendor
+            # Group applications by Vendor
             vendor_group = {}
 
             for app in app_data:

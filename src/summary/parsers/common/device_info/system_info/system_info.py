@@ -25,6 +25,7 @@ def system_info(zip_ctx, filename, component, current_data):
 
         for line in reader:
             if current_block:
+                # Collect indented lines belonging to the current block
                 if line and line[0].isspace():
                     block_lines.append(line)
                     continue

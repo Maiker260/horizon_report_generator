@@ -18,6 +18,7 @@ def get_dns_server(block):
                 
                 if dns:
                     dns_list.append(dns)
+                    
             continue
 
         if collecting_dns:
