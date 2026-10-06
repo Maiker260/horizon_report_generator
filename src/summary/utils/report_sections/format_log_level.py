@@ -11,7 +11,7 @@ def format_log_level(component, reg_data):
 
     # Connection Server defaults to Debug when no log level is configured
     if trace is None and debug is None:
-        if component == "connection_server":
+        if component in ["connection_server", "enrollment_server"]:
             return "Debug"
         
         return "Info"
