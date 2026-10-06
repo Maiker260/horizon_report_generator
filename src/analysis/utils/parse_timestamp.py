@@ -1,3 +1,4 @@
+from datetime import timezone
 from src.analysis.data.TIMESTAMP_PATTERNS import TIMESTAMP_PATTERNS
 
 def parse_timestamp(raw_timestamp):
@@ -11,7 +12,12 @@ def parse_timestamp(raw_timestamp):
             continue
 
         try:
-            return parser(match.group(0))
+            timestamp = parser(match.group(0))
+
+            if timestamp.tzinfo is None:
+                timestamp = timestamp.replace(tzinfo=timezone.utc)
+
+            return timestamp
         except ValueError:
             continue
 

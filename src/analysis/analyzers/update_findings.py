@@ -1,4 +1,4 @@
-import datetime
+from datetime import datetime, timezone
 
 def update_findings(findings, result, line, timestamp):
     key = (result["rule_name"], result["category"])
@@ -29,5 +29,11 @@ def update_findings(findings, result, line, timestamp):
                 finding["last_line"] = timestamp
 
         finding["samples"].append((timestamp, line))
-        finding["samples"].sort(key=lambda x: x[0] or datetime.min)
+        finding["samples"].sort(
+            key=lambda x: (
+                x[0]
+                if x[0] is not None
+                else datetime.min.replace(tzinfo=timezone.utc)
+            )
+        )
         finding["samples"] = finding["samples"][-3:]
