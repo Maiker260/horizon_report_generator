@@ -8,7 +8,7 @@ BUNDLE_VALIDATION = {
             "installed_software.txt",
         ],
         "structural": [
-            r"wsnm_starts\.txt",
+            "enrollment-server-trusted-cert-store.txt",
         ],
     },
 
